@@ -1,0 +1,872 @@
+package newhorizon.content.blocks;
+
+import arc.graphics.Color;
+import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.Fill;
+import arc.graphics.g2d.Lines;
+import arc.math.Angles;
+import arc.math.Interp;
+import arc.math.Mathf;
+import arc.util.Time;
+import arc.util.Tmp;
+import mindustry.content.Fx;
+import mindustry.entities.Effect;
+import mindustry.gen.Building;
+import mindustry.graphics.Layer;
+import mindustry.graphics.Pal;
+import mindustry.type.Category;
+import mindustry.type.ItemStack;
+import mindustry.type.LiquidStack;
+import mindustry.world.Block;
+import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.draw.*;
+import newhorizon.content.NHColor;
+import newhorizon.content.NHFx;
+import newhorizon.content.NHItems;
+import newhorizon.content.NHLiquids;
+import newhorizon.expand.block.drawer.*;
+import newhorizon.expand.block.production.drill.AdaptDrill;
+import newhorizon.expand.block.production.drill.DrillModule;
+import newhorizon.expand.block.production.drill.LiquidRadiator;
+import newhorizon.expand.block.production.drill.OreCollector;
+import newhorizon.expand.block.production.factory.RecipeGenericCrafter;
+
+import static mindustry.type.ItemStack.with;
+import static newhorizon.util.func.NHFunc.rand;
+
+public class ProductionBlock {
+    public static Block
+            sandCracker, decoherenceReverser, tungstenReconstructor, titaniumReconstructor, /*resourceConvertor,*/ oilRefiner, scanCollector,
+            resonanceMiningFacility, interlockingDrill, beamMiningFacility, implosionMiningFacility,
+            airRadiator, liquidRadiator, compoundHydrator;
+
+    public static void load() {
+
+        scanCollector = new OreCollector("scan-collector") {{
+            requirements(Category.production, ItemStack.with(
+                    NHItems.silicon, 40,
+                    NHItems.graphite, 40
+            ));
+            size = 3;
+            // Formerly two size-2 links; the current API requires one link per occupied tile.
+            addLink(
+                    p(0, 2), p(1, 2), p(0, 3), p(1, 3),
+                    p(0, -3), p(1, -3), p(0, -2), p(1, -2)
+            );
+
+            itemCapacity = 30;
+
+            consumePower(2.5f);
+            consumeLiquid(NHLiquids.ammonia, 5f / 60f).boost();
+        }};
+
+        sandCracker = new RecipeGenericCrafter("sand-cracker") {{
+            requirements(Category.production, ItemStack.with(
+                    NHItems.silicon, 40,
+                    NHItems.graphite, 40
+            ));
+            size = 2;
+            health = 300;
+            armor = 2;
+            itemCapacity = 30;
+            rotate = false;
+
+            drawer = new DrawMulti(
+                    new DrawBaseRegion("-2x2"),
+                    new DrawRotator(),
+                    new DrawRegion()
+            );
+
+            craftEffect = NHFx.hugeSmokeGray;
+
+            updateEffect = new Effect(80f, e -> {
+                Fx.rand.setSeed(e.id);
+                Draw.color(Color.lightGray, Color.gray, e.fin());
+                Angles.randLenVectors(e.id, 4, 2.0F + 12.0F * e.fin(Interp.pow3Out), (x, y) -> {
+                    Fill.circle(e.x + x, e.y + y, e.fout() * Fx.rand.random(1, 2.5f));
+                });
+            }).layer(Layer.blockOver + 1);
+
+            consumePower(5f);
+        }};
+
+        decoherenceReverser = new GenericCrafter("decoherence-reverser") {{
+            requirements(Category.production, with(
+                    NHItems.titanium, 40,
+                    NHItems.silicon, 40,
+                    NHItems.hardLight, 60
+            ));
+
+            size = 2;
+            scaledHealth = 100f;
+            liquidCapacity = 120f;
+            craftTime = 60f;
+
+            consumePower(1f);
+            consumeLiquid(NHLiquids.water, 30 / 60f);
+            outputLiquid = new LiquidStack(NHLiquids.quantumLiquid, 18 / 60f);
+
+            drawer = new DrawMulti(
+                    new DrawBaseRegion("-2x2"),
+                    new DrawLiquidTile(NHLiquids.water, 2f),
+                    new DrawLiquidTile(NHLiquids.quantumLiquid, 2f),
+                    new DrawArcSmelt() {{
+                        midColor = flameColor = NHColor.darkEnrColor.lerp(Color.lightGray, 0.3f);
+                        flameRad = 0.3f;
+                        circleSpace = 1f;
+                        particleStroke = 0.8f;
+                        particleRad = 4.5f;
+                        particleLen = 1.5f;
+                    }},
+                    new DrawRegion()
+            );
+
+            craftEffect = NHFx.square(NHColor.darkEnrColor, 60, 6, 16, 2);
+            updateEffect = NHFx.square(NHColor.processorBlue, 60, 2, 12, 2);
+        }};
+
+
+        tungstenReconstructor = new GenericCrafter("tungsten-reconstructor") {{
+            requirements(Category.production, with(
+                    NHItems.titanium, 30
+            ));
+
+            size = 2;
+            health = 600;
+            itemCapacity = 30;
+            craftTime = 60f;
+
+            consumePower(90f / 60f);
+            consumeItems(with(NHItems.titanium, 5));
+            outputItems = with(NHItems.tungsten, 4);
+
+            drawer = new DrawMulti(
+                    new DrawDefault()
+            );
+        }};
+
+        titaniumReconstructor = new GenericCrafter("titanium-reconstructor") {{
+            requirements(Category.production, with(
+                    NHItems.tungsten, 30
+            ));
+
+            size = 2;
+            health = 600;
+            itemCapacity = 30;
+            craftTime = 60f;
+
+            consumePower(90f / 60f);
+            consumeItems(with(NHItems.tungsten, 5));
+            outputItems = with(NHItems.titanium, 4);
+
+            drawer = new DrawMulti(
+                    new DrawDefault()
+            );
+        }};
+
+        /*resourceConvertor = new RecipeGenericCrafter("resource-convertor") {{
+            requirements(Category.production, ItemStack.with(
+                    NHItems.silicon, 40,
+                    NHItems.graphite, 40
+            ));
+
+            size = 2;
+            craftTime = 1f;
+            itemCapacity = 120;
+            liquidCapacity = 120f;
+
+            rotate = false;
+
+            craftEffect = updateEffect = NHFx.square(NHColor.thurmixRed, 10, 6, 16, 3);
+
+            consumePower(300f / 60f);
+
+            drawer = new DrawMulti(new DrawDefault());
+        }};*/
+
+        oilRefiner = new GenericCrafter("oil-refiner") {{
+            requirements(Category.production, ItemStack.with(
+                    NHItems.silicon, 40,
+                    NHItems.graphite, 40
+            ));
+            size = 2;
+            health = 300;
+            armor = 2;
+            itemCapacity = 20;
+            liquidCapacity = 30;
+            craftTime = 60f;
+
+            consumePower(300f / 60f);
+            consumeItems(with(NHItems.sand, 3));
+            outputLiquids = LiquidStack.with(NHLiquids.oil, 15 / 60f);
+
+            drawer = new DrawMulti(
+                    new DrawBaseRegion("-2x2"),
+                    new DrawLiquidTile(NHLiquids.oil),
+                    new DrawCrucibleFlame() {{
+                        midColor = flameColor = Pal.accent;
+                        flameRad /= 1.585f;
+                        particleRad /= 1.5f;
+                    }},
+                    new DrawRegion()
+            );
+
+            craftEffect = updateEffect = NHFx.square(Pal.accent, 60, 6, 12, 2);
+        }};
+
+        compoundHydrator = new GenericCrafter("compound-hydrator") {{
+//            baseEfficiency = 1f;
+//            attribute = NHContent.quantum;
+//            boostScale = 0.25f;
+//            maxBoost = 2f;
+
+            size = 3;
+            squareSprite = false;
+            health = 560;
+
+            requirements(Category.crafting, with(
+                    NHItems.beryllium, 120,
+                    NHItems.silicon, 60,
+                    NHItems.presstanium, 40,
+                    NHItems.oxide,40
+            ));
+            hasPower = true;
+            consumePower(6f);
+            hasLiquids = true;
+
+            consumeLiquids(LiquidStack.with(
+                    NHLiquids.nitrogen, 6f / 60f,
+                    NHLiquids.hydrogen, 18f / 60f
+            ));
+            consumeItem(NHItems.oxide, 1);
+
+            outputLiquid = new LiquidStack(NHLiquids.ammonia, 48f/60f);
+            craftTime = 120f;
+
+            liquidCapacity = 180f;
+            itemCapacity = 16;
+
+            drawer = new DrawMulti(
+                    new DrawRegion("-bottom"),
+                    new DrawPistons() {{
+                        sinMag = 2.75f;
+                        sinScl = 5f;
+                        sides = 4;
+                        lenOffset += 0.25f;
+                        angleOffset = 45f;
+                        sideOffset = Mathf.PI / 2f;
+                    }},
+                    new DrawLiquidTile(NHLiquids.ammonia, 38f / 4f),
+                    new DrawDefault(),
+                    new DrawGlowRegion() {{
+                        color = NHLiquids.ammonia.color;
+                        alpha = 0.721f;
+                    }}
+            );
+        }};
+        /*
+
+        xenIterator = new RecipeGenericCrafter("xen-iterator"){{
+            requirements(Category.production, ItemStack.with(
+                    NHItems.metalOxhydrigen, 40,
+                    NHItems.juniorProcessor, 80,
+                    NHItems.zeta, 100
+            ));
+            size = 3;
+            health = 150 * 9;
+            armor = 10f;
+            itemCapacity = 30;
+            rotate = false;
+
+            liquidCapacity = 300f;
+            //consumePower(5f);
+        }};
+
+         */
+        interlockingDrill = new AdaptDrill("interlocking-drill") {{
+            requirements(Category.production, with(
+                    NHItems.silicar, 30
+            ));
+
+            size = 3;
+            tier = 3;
+            modulesEnabled = false;
+
+            drawRim = false;
+            hasPower = false;
+            hasLiquids = true;
+            itemCapacity = 30;
+            liquidCapacity = 60f;
+
+            drillTime = 337.5f;
+            liquidBoostIntensity = 1.6f;
+            warmupSpeed = 0.035f;
+
+            drillEffect = Fx.mineHuge;
+            updateEffectChance = 0.06f;
+
+            drawer = new DrawMulti(
+                    new DrawRegion("-base"),
+                    new DrawRotator() {{
+                        suffix = "-rotor";
+                        rotateSpeed = 3f;
+                        usesSpinDraw = true;
+                        useDrillWarmup = true;
+                    }},
+                    new DrawRegion("-top"),
+                    new DrawTeamTop(),
+                    new DrawDrillOreTop()
+            );
+
+            consumeLiquid(NHLiquids.ammonia, 6f / 60f).boost();
+        }};
+
+
+        resonanceMiningFacility = new AdaptDrill("resonance-mining-facility") {{
+            requirements(Category.production, with(
+                    NHItems.hardLight, 40,
+                    NHItems.presstanium, 30,
+                    NHItems.juniorProcessor, 30
+            ));
+
+            size = 4;
+            tier = 5;
+            blockedItem = NHItems.thorium;
+
+            drawRim = false;
+            hasPower = true;
+
+            maxModules = 2;
+
+            drillTime = 240;
+            itemCapacity = 30;
+            warmupSpeed = 0.035f;
+
+            drillEffect = Fx.mineHuge;
+            updateEffect = new Effect(30f, e -> {
+                Draw.color(e.color, Color.white, e.fout() * 0.66f);
+                Draw.alpha(0.55f * e.fout() + 0.5f);
+                Angles.randLenVectors(e.id, 2, 4f + e.finpow() * 17f, (x, y) -> {
+                    Fill.square(e.x + x, e.y + y, e.fout() * rand(e.id).random(2.5f, 4));
+                });
+            });
+            updateEffectChance = 0.06f;
+
+            drawer = new DrawMulti(
+                    new DrawRegion("-base"),
+                    new DrawDrillPistonsInterp() {{
+                        sinScl = 4f;
+                        sinMag = 3.5f;
+                        suffix = "-piston0";
+                    }},
+                    new DrawDrillPistonsInterp() {{
+                        sinScl = 4f;
+                        sinMag = 3.5f;
+                        sinOffset = Mathf.pi * 8f;
+                        angleOffset = 45;
+                        suffix = "-piston1";
+                    }},
+                    new DrawRegion("-top"),
+                    new DrawTeamTop(),
+                    new DrawDrillOreTop()
+            );
+
+            consumePower(1.5f);
+        }};
+        beamMiningFacility = new AdaptDrill("beam-mining-facility") {{
+            requirements(Category.production, with(
+                    NHItems.juniorProcessor, 50,
+                    NHItems.surgeAlloy, 50,
+                    NHItems.multipleSteel, 50
+            ));
+
+            size = 4;
+            tier = 8;
+
+            drawRim = false;
+            hasPower = true;
+
+            maxModules = 3;
+
+            drillTime = 160f;
+            itemCapacity = 40;
+            warmupSpeed = 0.035f;
+
+            drillEffect = Fx.mineHuge;
+            updateEffect = new Effect(30f, e -> {
+                Draw.color(e.color, Color.white, e.fout() * 0.66f);
+                Draw.alpha(0.55f * e.fout() + 0.5f);
+                Angles.randLenVectors(e.id, 2, 4f + e.finpow() * 17f, (x, y) -> {
+                    Fill.square(e.x + x, e.y + y, e.fout() * rand(e.id).random(2.5f, 4), 45);
+                });
+            });
+            updateEffectChance = 0.06f;
+
+            drawer = new DrawMulti(
+                    new DrawBaseRegion("-4x4"),
+                    new DrawDrillMineBeam(),
+                    new DrawRegion("-top"),
+                    new DrawTeamTop(),
+                    new DrawDrillOreTop()
+            );
+
+            consumePower(5f);
+        }};
+        implosionMiningFacility = new AdaptDrill("implosion-mining-facility") {{
+            requirements(Category.production, with(
+                    NHItems.seniorProcessor, 100,
+                    NHItems.setonAlloy, 150,
+                    NHItems.zeta, 400
+            ));
+
+            size = 4;
+            tier = 8;
+
+            drawRim = false;
+            hasPower = true;
+
+            maxModules = 4;
+
+            drillTime = 120f;
+            itemCapacity = 300;
+            warmupSpeed = 0.035f;
+
+            drillEffect = Fx.mineHuge;
+            updateEffect = new Effect(30f, e -> {
+                Draw.color(e.color, Color.white, e.fout() * 0.66f);
+                Draw.alpha(0.55f * e.fout() + 0.5f);
+                Angles.randLenVectors(e.id, 4, 4f + e.finpow() * 17f, (x, y) -> {
+                    Fill.poly(e.x + x, e.y + y, 3, e.fout() * rand(e.id).random(2.5f, 4), rand(e.id).random(360f));
+                });
+            });
+            updateEffectChance = 0.04f;
+
+            drawer = new DrawMulti(
+                    new DrawRegion("-bottom"),
+                    new DrawBlock() {
+                        @Override
+                        public void draw(Building build) {
+                            if (!(build instanceof AdaptDrill.AdaptDrillBuild drill)
+                                    || drill.dominantItem == null
+                                    || drill.warmup <= 0.001f) return;
+
+                            float base = Time.time / 25f;
+                            Tmp.c1.set(drill.dominantItem.color).lerp(Color.white, 0.2f).a(drill.warmup);
+                            Draw.color(Tmp.c1);
+                            Lines.stroke(1.2f);
+
+                            for (int i = 0; i < 32; i++) {
+                                rand.setSeed(build.id + i);
+                                float fin = (rand.random(1f) + base) % 1f;
+                                float angle = rand.random(360f);
+                                float len = 13.5f * Interp.pow2.apply(1f - fin);
+                                Lines.lineAngle(
+                                        build.x + Angles.trnsx(angle, len),
+                                        build.y + Angles.trnsy(angle, len),
+                                        angle, 6f * fin
+                                );
+                            }
+
+                            float pulse = Mathf.sinDeg(Time.time * 1.2f);
+                            Tmp.c1.set(build.team.color).lerp(Color.white, 0.4f).a(drill.warmup / 1.1f);
+                            Draw.color(Tmp.c1);
+                            Fill.circle(build.x, build.y, 3f + pulse);
+                            Lines.stroke(1.3f);
+                            Lines.circle(build.x, build.y, 6f + pulse);
+                            Fill.light(build.x, build.y, Lines.circleVertices(15f), 15f, Color.clear, Tmp.c1);
+
+                            Lines.stroke(1f);
+                            Draw.reset();
+                        }
+                    },
+                    new DrawRegion("-top"),
+                    new DrawTeamTop(),
+                    new DrawDrillOreTop()
+            );
+
+            consumePower(10f);
+        }};
+
+        airRadiator = new DrillModule("air-radiator") {{
+            requirements(Category.production, with(
+                    NHItems.presstanium, 25,
+                    NHItems.juniorProcessor, 25
+            ));
+
+            size = 2;
+
+            consumePower(1.5f);
+
+            drawer = new DrawMulti(
+                    new DrawRegion("-base"),
+                    new DrawRotator() {{
+                        suffix = "-rotator";
+                        rotateSpeed = 3f;
+                    }},
+                    new DrawRegion("-top"),
+                    new DrawTeamTop(),
+                    new DrawRotation() {
+                        {
+                            suffix = "-rot";
+                            layer = Layer.blockOver;
+                            drawType = DrawRotation.DRAW_Y_MIRROR;
+                        }
+
+                        @Override
+                        public void draw(Building build) {
+                            if (build instanceof DrillModule.DrillModuleBuild b && b.drillBuild != null) {
+                                super.draw(b);
+                            }
+                        }
+                    }
+            );
+
+            buildType = () -> new DrillModuleBuild() {
+                @Override
+                public void updateDrill(AdaptDrill.AdaptDrillBuild drill) {
+                    drill.moduleBoost += 0.6f * efficiency;
+                }
+            };
+        }};
+
+        liquidRadiator = new LiquidRadiator("liquid-radiator") {{
+            requirements(Category.production, with(
+                    NHItems.multipleSteel, 25,
+                    NHItems.plastanium, 25
+            ));
+
+            size = 2;
+            drawer = new DrawMulti(
+                    new DrawBaseRegion("-2x2"),
+                    new DrawLiquidTile(),
+                    new DrawRegion("-top"),
+                    new DrawTeamTop(),
+                    new DrawRotation() {
+                        {
+                            suffix = "-rot";
+                            layer = Layer.blockOver;
+                            drawType = DrawRotation.DRAW_Y_MIRROR;
+                        }
+
+                        @Override
+                        public void draw(Building build) {
+                            if (build instanceof DrillModule.DrillModuleBuild b && b.drillBuild != null) {
+                                super.draw(b);
+                            }
+                        }
+                    }
+            );
+
+        }};
+
+        /*
+        beamMiningFacility = new AdaptDrill("beam-mining-facility") {{
+            requirements(Category.production, with(NHItems.metalOxhydrigen, 60, Items.tungsten, 90, Items.surgeAlloy, 80, Items.phaseFabric, 60, NHItems.zeta, 60));
+            mineOres.add(new Item[]{Items.sand, Items.scrap, Items.copper, Items.lead, Items.coal, Items.titanium, Items.beryllium, Items.thorium, Items.tungsten, NHItems.zeta});
+
+            health = 1200;
+            armor = 8f;
+
+            mineSpeed = 10f;
+            mineCount = 20;
+            mineTier = 5;
+            itemCapacity = 75;
+
+            maxModules = 4;
+
+            updateEffect = new Effect(30f, e -> {
+                Rand rand = rand(e.id);
+                Draw.color(e.color, Color.white, e.fout() * 0.66f);
+                Draw.alpha(0.55f * e.fout() + 0.5f);
+                Angles.randLenVectors(e.id, 2, 4f + e.finpow() * 17f, (x, y) -> {
+                    Fill.square(e.x + x, e.y + y, e.fout() * rand.random(2.5f, 4), 45);
+                });
+            });
+            updateEffectChance = 0.06f;
+
+            drawer = b -> {
+                float shooterOffset = 12f;
+                float shooterExtendOffset = 1.8f;
+                float shooterMoveRange = 5.2f;
+                float shootY = 1.55f;
+                float moveScale = 60f;
+                float moveScaleRand = 20f;
+                float laserScl = 0.2f;
+                Color laserColor = Color.valueOf("f58349");
+                float laserAlpha = 0.75f;
+                float laserAlphaSine = 0.2f;
+                int particles = 25;
+                float particleLife = 40f, particleRad = 9.75f, particleLen = 4f;
+
+                float timeDrilled = Time.time / 2.5f;
+                float
+                        moveX = Mathf.sin(timeDrilled, moveScale + Mathf.randomSeed(b.id, -moveScaleRand, moveScaleRand), shooterMoveRange) + b.x,
+                        moveY = Mathf.sin(timeDrilled + Mathf.randomSeed(b.id >> 1, moveScale), moveScale + Mathf.randomSeed(b.id >> 2, -moveScaleRand, moveScaleRand), shooterMoveRange) + b.y;
+
+                float stroke = laserScl * b.warmup;
+                Draw.mixcol(laserColor, Mathf.absin(4f, 0.6f));
+                Draw.alpha(laserAlpha + Mathf.absin(8f, laserAlphaSine));
+                Draw.blend(Blending.additive);
+                Drawf.laser(Core.atlas.find("minelaser"), Core.atlas.find("minelaser-end"), b.x + (-shooterOffset + b.warmup * shooterExtendOffset + shootY), moveY, b.x - (-shooterOffset + b.warmup * shooterExtendOffset + shootY), moveY, stroke);
+                Drawf.laser(Core.atlas.find("minelaser"), Core.atlas.find("minelaser-end"), moveX, b.y + (-shooterOffset + b.warmup * shooterExtendOffset + shootY), moveX, b.y - (-shooterOffset + b.warmup * shooterExtendOffset + shootY), stroke);
+
+                Draw.color(b.dominantItem.color);
+
+                float sine = 1f + Mathf.sin(6f, 0.1f);
+
+                Lines.stroke(stroke / laserScl / 2f);
+                Lines.circle(moveX, moveY, stroke * 12f * sine);
+                Fill.circle(moveX, moveY, stroke * 8f * sine);
+
+                rand.setSeed(id);
+                float base = (Time.time / particleLife);
+                for (int i = 0; i < particles; i++) {
+                    float fin = (rand.random(1f) + base) % 1f, fout = 1f - fin;
+                    float angle = rand.random(360f);
+                    float len = Mathf.randomSeed(rand.nextLong(), particleRad * 0.8f, particleRad * 1.1f) * Interp.pow2Out.apply(fin);
+                    Lines.lineAngle(moveX + Angles.trnsx(angle, len), moveY + Angles.trnsy(angle, len), angle, particleLen * fout * stroke / laserScl);
+                }
+
+                Draw.blend();
+                Draw.reset();
+            };
+        }};
+        implosionMiningFacility = new AdaptDrill("implosion-mining-facility") {{
+            requirements(Category.production, with(NHItems.multipleSteel, 60, NHItems.setonAlloy, 80, NHItems.irayrondPanel, 60, NHItems.zeta, 150));
+            mineOres.add(new Item[]{Items.sand, Items.scrap, Items.copper, Items.lead, Items.coal, Items.titanium, Items.beryllium, Items.thorium, Items.tungsten, NHItems.zeta});
+            size = 4;
+
+            health = 1500;
+            armor = 10f;
+
+            mineSpeed = 12f;
+            mineCount = 30;
+            mineTier = 100;
+
+            itemCapacity = 120;
+
+            maxModules = 8;
+
+            updateEffectChance = 0.04f;
+
+            updateEffect = new Effect(30f, e -> {
+                Rand rand = rand(e.id);
+                Draw.color(e.color, Color.white, e.fout() * 0.66f);
+                Draw.alpha(0.55f * e.fout() + 0.5f);
+                Angles.randLenVectors(e.id, 4, 4f + e.finpow() * 17f, (x, y) -> {
+                    Fill.poly(e.x + x, e.y + y, 3, e.fout() * rand.random(2.5f, 4), rand.random(360));
+                });
+            });
+
+            drawer = b -> {
+                rand.setSeed(b.id);
+
+                float base = (Time.time / 25);
+                Tmp.c1.set(b.dominantItem.color).lerp(Color.white, 0.2f).a(b.warmup);
+                Draw.color(Tmp.c1);
+                Lines.stroke(1.2f);
+                for (int i = 0; i < 32; i++) {
+                    rand.setSeed(id + hashCode() + i);
+                    float fin = (rand.random(1f) + base) % 1f, fout = 1f - fin;
+                    float angle = rand.random(360f);
+                    float len = 13.5f * Interp.pow2.apply(fout);
+                    Lines.lineAngle(
+                            b.x + Angles.trnsx(angle, len),
+                            b.y + Angles.trnsy(angle, len),
+                            angle, 6 * fin
+                    );
+                }
+
+                Tmp.c1.set(b.team.color).lerp(Color.white, 0.4f).a(b.warmup / 1.1f);
+                Draw.color(Tmp.c1);
+                Fill.circle(b.x, b.y, 3 + Mathf.sinDeg(Time.time * 1.2f));
+                Lines.stroke(1.3f);
+                Lines.circle(b.x, b.y, 6 + Mathf.sinDeg(Time.time * 1.2f));
+                Fill.light(b.x, b.y, circleVertices(15f), 15f, Color.clear, Tmp.c1);
+
+                Draw.color();
+            };
+        }};
+
+        speedModule = new DrillModule("speed-module") {{
+            requirements(Category.production, with(NHItems.juniorProcessor, 30, NHItems.presstanium, 25, NHItems.metalOxhydrigen, 20));
+            health = 600;
+            armor = 4;
+            size = 2;
+            boostSpeed = 1f;
+            powerMul = 0.4f;
+            powerExtra = 80f;
+
+            drawer = module -> {
+                for (int i = 0; i < 3; i++) {
+                    float scl = (Mathf.sinDeg(-Time.time * 3 + 120 * i) * 1.2f + (Mathf.sinDeg(-Time.time * 3 + 120 * i + 120)) * 0.6f) * module.smoothWarmup;
+                    Draw.alpha(scl);
+                    Draw.rect(name + "-arrow-" + i, module.x, module.y, module.rotdeg());
+                }
+            };
+        }};
+        speedModuleMk2 = new DrillModule("speed-module-mk2") {{
+            requirements(Category.production, with(NHItems.seniorProcessor, 30, Items.phaseFabric, 25, NHItems.zeta, 40));
+            health = 900;
+            armor = 6;
+            size = 2;
+            boostSpeed = 2f;
+            powerMul = 0.8f;
+            powerExtra = 150f;
+
+            drawer = module -> {
+                for (int i = 0; i < 3; i++) {
+                    float scl = (Mathf.sinDeg(-Time.time * 3 + 120 * i) * 1.2f + (Mathf.sinDeg(-Time.time * 3 + 120 * i + 120)) * 0.6f) * module.smoothWarmup;
+                    Draw.alpha(scl);
+                    Draw.rect(name + "-arrow-" + i, module.x, module.y, module.rotdeg());
+                }
+            };
+        }};
+        refineModule = new DrillModule("refine-module") {{
+            requirements(Category.production, with(Items.titanium, 35, Items.tungsten, 40));
+            health = 600;
+            armor = 4;
+            size = 2;
+            boostFinalMul = -0.25f;
+            powerMul = 1f;
+            powerExtra = 180f;
+            convertList.add(
+                    new Item[]{Items.sand, Items.silicon},
+                    new Item[]{Items.coal, Items.graphite},
+                    new Item[]{Items.beryllium, Items.oxide},
+                    new Item[]{Items.thorium, NHItems.zeta}
+            );
+            convertMul.put(Items.sand, -0.6f);
+            convertMul.put(Items.coal, -0.4f);
+            convertMul.put(Items.beryllium, -0.25f);
+            convertMul.put(Items.thorium, -0.5f);
+
+
+            Color flameColor = Color.valueOf("f58349"), midColor = Color.valueOf("f2d585");
+            float flameRad = 1f, circleSpace = 2f, flameRadiusScl = 8f, flameRadiusMag = 0.6f, circleStroke = 1.5f;
+
+            float alpha = 0.5f;
+            int particles = 12;
+            float particleLife = 70f, particleRad = 7f, particleSize = 3f, fadeMargin = 0.4f, rotateScl = 1.5f;
+            Interp particleInterp = new Interp.PowIn(1.5f);
+
+            drawer = module -> {
+                Lines.stroke(circleStroke * module.smoothWarmup);
+
+                float si = Mathf.absin(flameRadiusScl, flameRadiusMag);
+                float a = alpha * module.smoothWarmup;
+                Draw.blend(Blending.additive);
+
+                Draw.color(midColor, a);
+                Fill.circle(module.x, module.y, flameRad + si);
+
+                Draw.color(flameColor, a);
+                Lines.circle(module.x, module.y, (flameRad + circleSpace + si) * module.smoothWarmup);
+
+                rand.setSeed(id);
+                float base = (Time.time / particleLife);
+                for (int i = 0; i < particles; i++) {
+                    float fin = (rand.random(1f) + base) % 1f, fout = 1f - fin;
+                    float angle = rand.random(360f) + (Time.time / rotateScl) % 360f;
+                    float len = particleRad * particleInterp.apply(fout);
+                    Draw.alpha(a * (1f - Mathf.curve(fin, 1f - fadeMargin)));
+                    Fill.circle(
+                            module.x + Angles.trnsx(angle, len),
+                            module.y + Angles.trnsy(angle, len),
+                            particleSize * fin * module.smoothWarmup
+                    );
+                }
+
+                Draw.blend();
+                Draw.reset();
+            };
+        }};
+        convertorModule = new DrillModule("convertor-module") {{
+            requirements(Category.production, with(Items.carbide, 25, NHItems.juniorProcessor, 30, NHItems.presstanium, 20));
+            health = 600;
+            armor = 4;
+            size = 2;
+            convertList.add(
+                    new Item[]{Items.titanium, Items.tungsten},
+                    new Item[]{Items.copper, Items.tungsten},
+                    new Item[]{Items.lead, Items.tungsten}
+            );
+            convertList.add(
+                    new Item[]{Items.tungsten, Items.titanium},
+                    new Item[]{Items.beryllium, Items.titanium}
+            );
+            convertMul.put(Items.titanium, -0.33f);
+            convertMul.put(Items.copper, -0.6f);
+            convertMul.put(Items.lead, -0.6f);
+            convertMul.put(Items.tungsten, 0.5f);
+            convertMul.put(Items.beryllium, 0f);
+
+
+            Color flameColor = NHColor.darkEnrFront, midColor = NHColor.darkEnr;
+            float flameRad = 1f, circleSpace = 2f, flameRadiusScl = 8f, flameRadiusMag = 0.6f, circleStroke = 1.5f;
+
+            float alpha = 0.5f;
+            int particles = 12;
+            float particleLife = 70f, particleRad = 7f, particleSize = 3f, fadeMargin = 0.4f, rotateScl = 1.5f;
+            Interp particleInterp = new Interp.PowIn(1.5f);
+
+            drawer = module -> {
+                Lines.stroke(circleStroke * module.smoothWarmup);
+
+                float si = Mathf.absin(flameRadiusScl, flameRadiusMag);
+                float a = alpha * module.smoothWarmup;
+                Draw.blend(Blending.additive);
+
+                Draw.color(midColor, a);
+                Fill.circle(module.x, module.y, flameRad + si);
+
+                Draw.color(flameColor, a);
+                Lines.circle(module.x, module.y, (flameRad + circleSpace + si) * module.smoothWarmup);
+
+                rand.setSeed(id);
+                float base = (Time.time / particleLife);
+                for (int i = 0; i < particles; i++) {
+                    float fin = (rand.random(1f) + base) % 1f, fout = 1f - fin;
+                    float angle = rand.random(360f) - (Time.time / rotateScl) % 360f;
+                    float len = particleRad * particleInterp.apply(fout);
+                    Draw.alpha(a * (1f - Mathf.curve(fin, 1f - fadeMargin)));
+                    Fill.circle(
+                            module.x - Angles.trnsx(angle, len),
+                            module.y - Angles.trnsy(angle, len),
+                            particleSize * fin * module.smoothWarmup
+                    );
+                }
+
+                Draw.blend();
+                Draw.reset();
+            };
+        }};
+        deliveryModule = new DrillModule("delivery-module") {{
+            requirements(Category.production, with(NHItems.irayrondPanel, 25, NHItems.seniorProcessor, 50, NHItems.multipleSteel, 50, NHItems.setonAlloy, 10));
+            health = 900;
+            armor = 6;
+            size = 2;
+            powerMul = 1.2f;
+            powerExtra = 300f;
+            coreSend = true;
+
+            drawer = module -> {
+                Draw.z(Layer.effect);
+                Draw.color(module.team.color, Color.white, 0.2f);
+                Lines.stroke(1.2f * module.smoothWarmup);
+
+
+                float ang1 = DrawFunc.rotator_90(DrawFunc.cycle(Time.time / 4f, 0, 45), 0.15f);
+                float ang2 = DrawFunc.rotator_90(DrawFunc.cycle(Time.time / 3f, 0, 120), 0.15f);
+
+                Lines.spikes(module.x, module.y, 8 + 4 * Mathf.sinDeg(Time.time * 3f + 20), 3 + Mathf.sinDeg(Time.time * 2.5f), 4, ang1 + 45);
+                Lines.spikes(module.x, module.y, 7 + 3 * Mathf.sinDeg(Time.time * 3.2f), 4 + 1.2f * Mathf.sinDeg(Time.time * 2.2f), 4, ang2);
+
+                Lines.square(module.x, module.y, 8, Time.time / 8f);
+                Lines.square(module.x, module.y, 8, -Time.time / 8f);
+            };
+        }};
+
+         */
+    }
+}

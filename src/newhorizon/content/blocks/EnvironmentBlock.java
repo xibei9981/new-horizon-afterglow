@@ -1,0 +1,406 @@
+package newhorizon.content.blocks;
+
+import arc.func.Prov;
+import arc.util.Log;
+import mindustry.content.Blocks;
+import mindustry.content.StatusEffects;
+import mindustry.gen.Building;
+import mindustry.graphics.CacheLayer;
+import mindustry.graphics.MultiPacker;
+import mindustry.world.Block;
+import mindustry.world.Tile;
+import mindustry.world.blocks.environment.*;
+import newhorizon.content.NHContent;
+import newhorizon.content.NHItems;
+import newhorizon.content.NHLiquids;
+import newhorizon.expand.block.environment.PlateFloor;
+import newhorizon.expand.block.environment.TiledFloor;
+
+public class EnvironmentBlock {
+    public static Block metalFloorPlain, labFloorLight, labFloorDark;
+
+    public static Floor armorClear;
+
+    public static Block
+            oreCopperDense, oreLeadDense, oreScrapDense, oreCoalDense, oreTitaniumDense, oreThoriumDense,
+            oreBerylliumDense, oreTungstenDense, oreCrystalThoriumDense,
+            oreZeta, oreSilicar,
+            oreZetaDense, oreSilicarDense,
+            oreClusterSlicar,oreClusterTitanium, oreClusterZeta,
+            oreWallTitanium, oreWallZeta,
+
+    armorFloor0, armorFloor1, armorFloor2, armorFloor3, armorFloor4, armorFloor5, armorFloor6, armorFloor7,
+            platingFloor1, platingFloor2, platingFloor3, platingFloor4,
+
+    plateFloor, labFloor,
+
+    conglomerateWall, darkConglomerateWall, thoriumStoneWall,
+            conglomerateBoulder, darkConglomerateBoulder,
+
+    conglomerateSparse, conglomerate, conglomerateDense,
+            darkConglomerateSparse, darkConglomerate, darkConglomerateDense,
+            cryoniteSparse, cryonite,
+            erodeRock, erodeRockDense,
+            siliceoustone,
+            thoriumStoneSparse, thoriumStone, thoriumStoneDense,
+            ammoniaWater, ammoniaWaterDeep, ammoniaWaterShallow,
+            zetaCrystalFloor;
+
+    public static void load() {
+        oreCopperDense = new OreBlock("ore-copper-dense", NHItems.copper) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+        oreLeadDense = new OreBlock("ore-lead-dense", NHItems.lead) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+        oreCoalDense = new OreBlock("ore-coal-dense", NHItems.coal) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+        oreTitaniumDense = new OreBlock("ore-titanium-dense", NHItems.titanium) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+        oreThoriumDense = new OreBlock("ore-thorium-dense", NHItems.thorium) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+        oreBerylliumDense = new OreBlock("ore-beryllium-dense", NHItems.beryllium) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+        oreTungstenDense = new OreBlock("ore-tungsten-dense", NHItems.tungsten) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+        oreCrystalThoriumDense = new OreBlock("ore-crystal-thorium-dense", NHItems.thorium) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+
+        oreZeta = new OreBlock("ore-zeta", NHItems.zeta) {{
+            oreDefault = true;
+            oreThreshold = 0.95f;
+            oreScale = 20.380953f;
+        }};
+        oreSilicar = new OreBlock("ore-silicar", NHItems.silicar) {{
+            oreDefault = true;
+            oreThreshold = 0.95f;
+            oreScale = 20.380953f;
+        }};
+
+        oreZetaDense = new OreBlock("ore-zeta-dense", NHItems.zeta) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+        oreSilicarDense = new OreBlock("ore-silicar-dense", NHItems.silicar) {{
+            attributes.set(NHContent.density, 1f);
+        }};
+
+        oreClusterSlicar = new TallBlock("ore-cluster-silicar") {{
+            itemDrop = NHItems.silicar;
+            shadowOffset = -1f;
+
+            attributes.set(NHContent.density, 1f);
+        }};
+
+        oreClusterTitanium = new TallBlock("ore-cluster-titanium") {{
+            itemDrop = NHItems.titanium;
+            shadowOffset = -1f;
+            variants = 3;
+
+            attributes.set(NHContent.density, 1f);
+        }};
+
+        oreClusterZeta = new TallBlock("ore-cluster-zeta") {{
+            itemDrop = NHItems.zeta;
+            shadowOffset = -1f;
+            variants = 3;
+
+            attributes.set(NHContent.density, 1f);
+        }};
+
+        oreWallTitanium = new StaticWall("ore-wall-titanium") {{
+            itemDrop = NHItems.titanium;
+            attributes.set(NHContent.density, 0.5f);
+            variants = 3;
+        }};
+
+        oreWallZeta = new StaticWall("ore-wall-zeta") {{
+            itemDrop = NHItems.zeta;
+            attributes.set(NHContent.density, 0.5f);
+            variants = 3;
+        }};
+
+        conglomerateWall = new StaticWall("conglomerate-wall") {{
+            variants = 3;
+        }};
+        darkConglomerateWall = new StaticWall("dark-conglomerate-wall") {{
+            variants = 3;
+        }};
+        thoriumStoneWall = new StaticWall("thorium-stone-wall") {{
+            variants = 3;
+        }};
+
+        conglomerateBoulder = new Prop("conglomerate-boulder") {{
+            variants = 4;
+        }};
+        darkConglomerateBoulder = new Prop("dark-conglomerate-boulder") {{
+            variants = 4;
+        }};
+
+        conglomerateSparse = new Floor("conglomerate-sparse") {{
+            variants = 6;
+            wall = conglomerateWall;
+            decoration = conglomerateBoulder;
+        }};
+        conglomerate = new Floor("conglomerate") {
+            {
+                variants = 6;
+                wall = conglomerateWall;
+                decoration = conglomerateBoulder;
+            }
+
+            @Override
+            public void createIcons(MultiPacker packer) {
+                super.createIcons(packer);
+                mapColor.set(conglomerateSparse.mapColor).mul(1.05f);
+            }
+        };
+        conglomerateDense = new Floor("conglomerate-dense") {
+            {
+                variants = 6;
+                wall = conglomerateWall;
+                decoration = conglomerateBoulder;
+            }
+
+            @Override
+            public void createIcons(MultiPacker packer) {
+                super.createIcons(packer);
+                mapColor.set(conglomerateSparse.mapColor).mul(1.10f);
+            }
+        };
+        darkConglomerateSparse = new Floor("dark-conglomerate-sparse") {{
+            variants = 6;
+            wall = darkConglomerateWall;
+            decoration = darkConglomerateBoulder;
+        }};
+        darkConglomerate = new Floor("dark-conglomerate") {
+            {
+                variants = 6;
+                wall = darkConglomerateWall;
+                decoration = darkConglomerateBoulder;
+            }
+
+            @Override
+            public void createIcons(MultiPacker packer) {
+                super.createIcons(packer);
+                mapColor.set(darkConglomerateSparse.mapColor).mul(1.05f);
+            }
+        };
+        darkConglomerateDense = new Floor("dark-conglomerate-dense") {
+            {
+                variants = 6;
+                wall = darkConglomerateWall;
+                decoration = darkConglomerateBoulder;
+            }
+
+            @Override
+            public void createIcons(MultiPacker packer) {
+                super.createIcons(packer);
+                mapColor.set(darkConglomerateSparse.mapColor).mul(1.10f);
+            }
+        };
+
+        cryoniteSparse = new Floor("cryonite-sparse") {{
+            variants = 3;
+        }};
+        cryonite = new Floor("cryonite") {{
+            variants = 3;
+        }};
+
+        erodeRock = new Floor("erode-rock") {{
+            variants = 3;
+        }};
+        erodeRockDense = new Floor("erode-rock-dense") {{
+            variants = 3;
+        }};
+
+        siliceoustone = new Floor("siliceoustone") {{
+            variants = 4;
+        }};
+
+        thoriumStoneSparse = new Floor("thorium-stone-sparse") {{
+            variants = 4;
+            wall = thoriumStoneWall;
+        }};
+        thoriumStone = new Floor("thorium-stone") {
+            {
+                variants = 4;
+                wall = thoriumStoneWall;
+            }
+
+            @Override
+            public void createIcons(MultiPacker packer) {
+                super.createIcons(packer);
+                mapColor.set(thoriumStoneSparse.mapColor).mul(1.05f);
+            }
+        };
+        thoriumStoneDense = new Floor("thorium-stone-dense") {
+            {
+                variants = 4;
+                wall = thoriumStoneWall;
+            }
+
+            @Override
+            public void createIcons(MultiPacker packer) {
+                super.createIcons(packer);
+                mapColor.set(thoriumStoneSparse.mapColor).mul(1.10f);
+            }
+        };
+
+        zetaCrystalFloor = new Floor("zeta-crystal-floor") {{
+            variants = 3;
+        }};
+        ammoniaWater = new Floor("ammonia-water") {{
+            variants = 0;
+            albedo = 0.9f;
+            isLiquid = true;
+            speedMultiplier = 0.75f;
+            status = StatusEffects.wet;
+            cacheLayer = CacheLayer.water;
+            liquidDrop = NHLiquids.ammonia;
+        }};
+
+        ammoniaWaterDeep = new Floor("ammonia-water-deep") {{
+            variants = 0;
+            albedo = 0.9f;
+            isLiquid = true;
+            drownTime = 300f;
+            speedMultiplier = 0.6f;
+            liquidMultiplier = 1.5f;
+            status = StatusEffects.wet;
+            cacheLayer = CacheLayer.water;
+            liquidDrop = NHLiquids.ammonia;
+        }};
+
+        ammoniaWaterShallow = new Floor("ammonia-water-shallow") {{
+            variants = 3;
+            albedo = 0.9f;
+            isLiquid = true;
+            speedMultiplier = 0.9f;
+            status = StatusEffects.wet;
+            cacheLayer = CacheLayer.water;
+            liquidDrop = NHLiquids.ammonia;
+        }};
+
+        /*
+        metalFloorGroove = new Atlas_4_12_Floor("metal-floor-groove", true);
+        metalFloorGrooveDeep = new Atlas_4_12_Floor("metal-floor-deep-groove", true);
+        metalFloorRidge = new Atlas_4_12_Floor("metal-floor-ridge");
+        metalFloorRidgeHigh = new Atlas_4_12_Floor("metal-floor-high-ridge");
+
+         */
+
+        armorFloor0 = new Floor("armor-floor-0", 0) {{
+            drawEdgeOut = false;
+        }};
+        armorFloor1 = new Floor("armor-floor-1", 0) {{
+            drawEdgeOut = false;
+        }};
+        armorFloor2 = new Floor("armor-floor-2", 0) {{
+            drawEdgeOut = false;
+        }};
+        armorFloor3 = new Floor("armor-floor-3", 0) {{
+            drawEdgeOut = false;
+        }};
+        armorFloor4 = new Floor("armor-floor-4", 0) {{
+            drawEdgeOut = false;
+        }};
+        armorFloor5 = new Floor("armor-floor-5", 0) {{
+            drawEdgeOut = false;
+        }};
+        armorFloor6 = new Floor("armor-floor-6", 0) {{
+            drawEdgeOut = false;
+        }};
+        armorFloor7 = new Floor("armor-floor-7", 0) {{
+            drawEdgeOut = false;
+        }};
+
+        platingFloor1 = new TiledFloor("plating-floor-1") {{
+            //useTiles = false;
+            tileName = "plating-floor";
+
+            autotile = true;
+            drawEdgeOut = false;
+            drawEdgeIn = false;
+        }};
+
+        //platingFloor2 = new TiledFloor("plating-block") {{
+        //    useTiles = false;
+        //    //tileName = "plating-floor";
+        //    autotile = true;
+        //    drawEdgeOut = false;
+        //    drawEdgeIn = false;
+        //}};
+
+        platingFloor3 = new TiledFloor("plating-floor-3") {
+            {
+                useTiles = false;
+                autotileVariants = 2;
+                cacheLayer = NHContent.quantumLayer;
+
+                autotile = true;
+                drawEdgeOut = false;
+                drawEdgeIn = false;
+            }
+
+            @Override
+            public int variant(int x, int y, int max) {
+                return (x + y) % 2;
+            }
+        };
+
+        platingFloor4 = new TiledFloor("plating-floor-4") {{
+            useTiles = false;
+            cacheLayer = NHContent.quantumLayer;
+
+            autotile = true;
+            drawEdgeOut = false;
+            drawEdgeIn = false;
+        }};
+
+        plateFloor = new PlateFloor("plate-floor") {{
+            addVariant(1, 2);
+            addVariant(2, 2);
+            addVariant(3, 3);
+        }};
+
+        labFloor = new PlateFloor("lab-floor") {{
+            addVariant(4, 2);
+            addVariant(8, 2);
+        }};
+
+        ((PlateFloor) plateFloor).loadBlocks();
+        ((PlateFloor) labFloor).loadBlocks();
+
+
+        metalFloorPlain = new TiledFloor("plating-metal-floor") {{
+            tileName = "plating-floor";
+
+            autotile = true;
+            drawEdgeOut = false;
+            drawEdgeIn = false;
+        }};
+
+        Blocks.vibrantCrystalCluster.itemDrop = NHItems.thorium;
+        Blocks.crystalCluster.itemDrop = NHItems.thorium;
+        Blocks.crystalOrbs.itemDrop = NHItems.beryllium;
+        Blocks.whiteTree.itemDrop = NHItems.sporePod;
+        Blocks.crystalBlocks.itemDrop = NHItems.sand;
+
+        Blocks.vibrantCrystalCluster.attributes.set(NHContent.density, 1f);
+        Blocks.crystalCluster.attributes.set(NHContent.density, 1f);
+        Blocks.crystalOrbs.attributes.set(NHContent.density, 0.75f);
+        Blocks.whiteTree.attributes.set(NHContent.density, 0.25f);
+        Blocks.crystalBlocks.attributes.set(NHContent.density, 0.5f);
+
+        Blocks.graphiticWall.attributes.set(NHContent.density, 1f);
+
+
+
+    }
+}

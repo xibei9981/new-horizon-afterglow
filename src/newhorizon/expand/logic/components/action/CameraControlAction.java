@@ -1,0 +1,33 @@
+package newhorizon.expand.logic.components.action;
+
+import arc.util.Time;
+import newhorizon.expand.logic.ParseUtil;
+import newhorizon.expand.logic.components.Action;
+
+import static mindustry.Vars.control;
+import static mindustry.Vars.headless;
+import static mindustry.Vars.tilesize;
+
+public class CameraControlAction extends Action {
+    public float worldX, worldY;
+
+    @Override
+    public String actionName() {
+        return "camera_control";
+    }
+
+    @Override
+    public void parseTokens(String[] tokens) {
+        duration = ParseUtil.getFirstFloat(tokens) * Time.toSeconds;
+        worldX = ParseUtil.getNextFloat(tokens) * tilesize;
+        worldY = ParseUtil.getNextFloat(tokens) * tilesize;
+    }
+
+    @Override
+    public void act() {
+        if (headless) return;
+
+        control.input.logicCutscene = true;
+        control.input.logicCamPan.set(worldX, worldY);
+    }
+}

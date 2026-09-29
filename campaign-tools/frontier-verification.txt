@@ -1,0 +1,46 @@
+PASS new-horizon-afterglow-supply 256x288 | connected paths, 3 powered consumers, events, saved game, victory
+PASS new-horizon-afterglow-ridges 320x320 | connected paths, 3 powered consumers, events, saved game, victory
+PASS new-horizon-afterglow-citadel 384x352 | connected paths, 3 powered consumers, events, saved game, victory
+PASS: all chapter unlock links, maps, paths, power, waves, save/load and capture conditions.
+PASS research costs: explicit 30 -> 6; standard building research 5x -> 1x construction; prerequisites intact
+GEOLOGY forge significant floors=5 cliff tiles=92754 water tiles=370 props=850 ruins=6
+PASS restoration 0 resources, power, pause, save/load, completion, one-time reward
+PASS forge 420x420 | waves=60 max/wave=89 sampled total=2093 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY isles significant floors=7 cliff tiles=11476 water tiles=97815 props=237 ruins=1
+PASS restoration 1 resources, power, pause, save/load, completion, one-time reward
+PASS isles 448x384 | waves=attack max/wave=16 sampled total=457 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY trident significant floors=4 cliff tiles=35159 water tiles=348 props=1775 ruins=6
+PASS restoration 2 resources, power, pause, save/load, completion, one-time reward
+PASS trident 448x448 | waves=72 max/wave=105 sampled total=3274 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY hunt significant floors=5 cliff tiles=32423 water tiles=223 props=1273 ruins=12
+PASS restoration 3 resources, power, pause, save/load, completion, one-time reward
+PASS hunt 416x416 | waves=attack max/wave=28 sampled total=924 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY storm significant floors=8 cliff tiles=12412 water tiles=21457 props=1472 ruins=6
+PASS restoration 4 resources, power, pause, save/load, completion, one-time reward
+PASS storm 416x416 | waves=80 max/wave=47 sampled total=1378 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY march significant floors=6 cliff tiles=17273 water tiles=14272 props=2156 ruins=6
+PASS restoration 5 resources, power, pause, save/load, completion, one-time reward
+PASS march 448x576 | waves=attack max/wave=18 sampled total=599 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY bastion significant floors=7 cliff tiles=16107 water tiles=15428 props=1954 ruins=6
+PASS restoration 6 resources, power, pause, save/load, completion, one-time reward
+PASS bastion 480x448 | waves=90 max/wave=82 sampled total=3027 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY arsenal significant floors=5 cliff tiles=28818 water tiles=253 props=2082 ruins=20
+PASS restoration 7 resources, power, pause, save/load, completion, one-time reward
+PASS arsenal 512x512 | waves=attack max/wave=17 sampled total=465 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY blackout significant floors=6 cliff tiles=31639 water tiles=7354 props=1598 ruins=12
+PASS restoration 8 resources, power, pause, save/load, completion, one-time reward
+PASS blackout 480x448 | waves=attack max/wave=33 sampled total=1269 | paths, power, production, logistics, mechanics, save, victory
+GEOLOGY daybreak significant floors=6 cliff tiles=42901 water tiles=269 props=2308 ruins=6
+PASS restoration 9 resources, power, pause, save/load, completion, one-time reward
+PASS daybreak 512x544 | waves=100 max/wave=133 sampled total=5967 | paths, power, production, logistics, mechanics, save, victory
+PASS enemy grid 1 powered after reload; destroying solar arrays cuts energy weapons
+PASS enemy grid 3 powered after reload; destroying solar arrays cuts energy weapons
+PASS enemy grid 5 powered after reload; destroying solar arrays cuts energy weapons
+PASS enemy grid 7 powered after reload; destroying solar arrays cuts energy weapons
+PASS enemy grid 8 powered after reload; destroying solar arrays cuts energy weapons
+PASS enemy grid 9 powered after reload; destroying solar arrays cuts energy weapons
+PASS double-core loss condition
+PASS hunt deadline, heavy pursuers and counterplay
+PASS custom-game finale defense, counterattack and victory
+PASS actual wave 100: 115 enemies, heavy boss, no premature counterattack
+PASS 10 new authored maps, pacing, logistics, forward bases, storm, finale, save/load, unlocks.

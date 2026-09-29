@@ -1,0 +1,4 @@
+Afterglow 0.4.0 / official Mindustry 160.4 headless
+20 consecutive isles mission checks passed.
+Includes planetary irradiance, active enemy power, finite logistics, real repair, partial repair save/load, completion and unlocks.
+No native Windows performance or full human playthrough claimed.

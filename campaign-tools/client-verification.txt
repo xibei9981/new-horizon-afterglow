@@ -1,0 +1,16 @@
+Afterglow 0.4.0 / Mindustry 160.4 / macOS client
+CLIENT_ZH_OK 余烬航线 I · 断流峡谷
+CLIENT_RESEARCH_OK explicit cost = 6
+CLIENT_OK mission=4
+CLIENT_OK mission=5
+CLIENT_OK mission=6
+CLIENT_OK mission=7
+CLIENT_OK mission=8
+CLIENT_OK mission=9
+CLIENT_OK mission=10
+CLIENT_OK mission=11
+CLIENT_OK mission=12
+CLIENT_OK mission=13
+All 10 new maps: version tag 0.4.0, restoration-site tag and post-planet irradiance verified.
+Native screenshots and map previews generated from this build.
+Native Windows and full human playthrough not tested.

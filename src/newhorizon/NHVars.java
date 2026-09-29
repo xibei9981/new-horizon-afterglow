@@ -1,0 +1,47 @@
+package newhorizon;
+
+import arc.Core;
+import mindustry.Vars;
+import newhorizon.expand.game.NHWorldData;
+import newhorizon.expand.logic.components.CutsceneControl;
+import newhorizon.expand.logic.components.CutsceneUI;
+import newhorizon.util.game.UpdateProxy;
+import newhorizon.util.graphic.ScreenShaderDrawer;
+import newhorizon.util.graphic.VortexHitRenderer;
+import newhorizon.util.ui.TableFunc;
+
+public class NHVars {
+    public static NHModCore core;
+    public static NHWorldData worldData;
+    public static NHRenderer renderer;
+    public static VortexHitRenderer vortexRenderer;
+
+    public static CutsceneControl cutscene;
+    public static CutsceneUI cutsceneUI;
+
+    public static void init() {
+        if (core != null) return;
+
+        worldData = new NHWorldData();
+
+        UpdateProxy.init();
+
+        cutscene = new CutsceneControl();
+        cutsceneUI = new CutsceneUI();
+
+        core = new NHModCore();
+        Core.app.addListener(core);
+
+        if (Vars.headless) return;
+        initHeadless();
+    }
+
+    public static void initHeadless() {
+        renderer = new NHRenderer();
+        vortexRenderer = new VortexHitRenderer();
+        ScreenShaderDrawer.init();
+
+        NHSetting.loadUI();
+        if (NHSetting.getBool(NHSetting.DEBUG_PANEL)) TableFunc.tableMain();
+    }
+}
