@@ -43,7 +43,7 @@ public class ResourceChecks extends CampaignChecks {
             var core=state.rules.defaultTeam.core();var start=world.tile(core.tileX(),core.tileY()+4);reachable[start.array()]=true;queue.add(start);
             while(!queue.isEmpty()){
                 var t=queue.remove();for(int[]d:new int[][]{{1,0},{-1,0},{0,1},{0,-1}}){var next=world.tile(t.x+d[0],t.y+d[1]);
-                    if(next==null||reachable[next.array()]||next.floor().isDeep()||(next.solid()&&(next.block().isStatic()||next.team()==state.rules.defaultTeam)))continue;
+                    if(next==null||reachable[next.array()]||next.floor().isDeep()||(next.solid()&&(next.block().isStatic()||(next.team()==state.rules.defaultTeam&&!next.block().teamPassable))))continue;
                     reachable[next.array()]=true;queue.add(next);
                 }
             }

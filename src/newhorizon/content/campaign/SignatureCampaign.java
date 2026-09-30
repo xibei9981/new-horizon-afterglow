@@ -92,7 +92,7 @@ public final class SignatureCampaign {
                 var b=world.build(x+dx,y+dy);
                 if(b!=null&&b.block==Blocks.largeSolarPanel&&b.team==state.rules.waveTeam){b.changeTeam(state.rules.defaultTeam,false);b.enabled=true;b.noSleep();fixtures.add(b);}
             }
-            for(int[]d:new int[][]{{0,-9},{0,9},{0,19},{-13,0},{13,0},{-25,9},{25,9}}){
+            for(int[]d:new int[][]{{0,-9},{0,9},{0,19},{-10,0},{10,0},{-10,16},{13,16}}){
                 var b=world.build(x+d[0],y+d[1]);
                 if(b!=null&&b.block==Blocks.powerNodeLarge&&b.team==state.rules.waveTeam){b.changeTeam(state.rules.defaultTeam,false);b.enabled=true;b.noSleep();fixtures.add(b);}
             }

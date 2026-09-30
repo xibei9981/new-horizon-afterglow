@@ -46,7 +46,7 @@ public final class AfterglowTech {
         tier(4,CraftingBlock.zetaFactory);
         tier(5,CraftingBlock.processorEtchingFacility);
         tier(8,CraftingBlock.processorCompactor);
-        tier(10,CraftingBlock.nodexFactory,CraftingBlock.positivePhaseDecayer,CraftingBlock.negativePhaseDecayer);
+        tier(10,CraftingBlock.tandemFactory,CraftingBlock.nodexFactory,CraftingBlock.positivePhaseDecayer,CraftingBlock.negativePhaseDecayer);
         tier(1,mindustry.content.Blocks.laserDrill);
         // Recipe-audited gates: construction, operating input and at least one ammunition chain.
         supplyTier(1, "new-horizon-crucible-foundry", "new-horizon-fire-extinguisher", "new-horizon-heavy-liquid-storage", "new-horizon-heavy-storage", "new-horizon-histone", "new-horizon-multiple-launcher", "new-horizon-refactoring-multi-wall", "new-horizon-standard-liquid-storage", "new-horizon-xen-separator");

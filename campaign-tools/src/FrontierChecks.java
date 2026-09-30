@@ -97,10 +97,13 @@ public class FrontierChecks extends CampaignChecks {
         if(i==2){
             check(lanes(1)==1&&lanes(25)==2&&lanes(49)==3,"trident staged fronts");
         }
+        // Verify delivery before manufacturers start drawing from the core. Net titanium
+        // after 20s is not a production invariant; WorkshopChecks proves empty-stock recovery.
+        for(var stack:state.rules.loadout)check(Team.sharded.core().items.get(stack.item)>=Math.min(stack.amount,Team.sharded.core().storageCapacity),"initial loadout delivered "+m.id+" "+stack.item);
         ticks(1200);
         check(!state.gameOver,"startup survived "+m.id);
-        check(Team.sharded.core().items.get(Items.titanium)>5000,"titanium production "+m.id);
-        int powered=0;for(var b:Groups.build)if(b.team==Team.sharded&&b.power!=null&&b.block.consumesPower){
+        log("STARTUP "+m.id+" titanium after 20s="+Team.sharded.core().items.get(Items.titanium)+" (working factories consume inventory)");
+        int powered=0;for(var b:Groups.build)if(b.team==Team.sharded&&b.power!=null&&b.block.consPower!=null){
             check(b.power.status>.90f,"unpowered starter: "+m.id+" "+b.block.name+" "+b.tile.x+","+b.tile.y+" "+b.power.status);powered++;
         }
         check(powered>=3,"powered base "+m.id);
@@ -121,15 +124,8 @@ public class FrontierChecks extends CampaignChecks {
             int depot=state.rules.tags.getInt("frontier.depot.0",-1);
             var gun=(ItemTurret.ItemTurretBuild)world.build(state.rules.tags.getInt("frontier.test-gun.0",-1));
             var warehouse=world.build(depot);
-            int reserve=warehouse.items.get(Items.titanium);
-            gun.ammo.clear();gun.totalAmmo=0;FrontierCampaign.refillDepots();
-            check(gun.totalAmmo>0,"living logistics hub resupplies guns "+m.id);
-            check(warehouse.items.get(Items.titanium)<reserve,"refill consumes finite stock "+m.id);
-            warehouse.items.set(Items.titanium,0);gun.ammo.clear();gun.totalAmmo=0;FrontierCampaign.refillDepots();
-            check(gun.totalAmmo==0,"empty warehouse cannot fabricate ammunition "+m.id);
-            warehouse.items.set(Items.titanium,100);
-            world.tile(depot).remove();gun.ammo.clear();gun.totalAmmo=0;FrontierCampaign.refillDepots();
-            check(gun.totalAmmo==0,"destroyed hub stops resupply "+m.id);ticks(65);
+            WorkshopChecks.physicalFeed(0);
+            world.tile(depot).remove();ticks(65);
         }
         switch(i){
             case 0 -> {
@@ -188,29 +184,34 @@ public class FrontierChecks extends CampaignChecks {
             load(i);ticks(180);
             Fi save=new Fi("campaign-tools/run/network-"+i+".msav");SaveIO.write(save);SaveIO.load(save);state.set(State.playing);ticks(180);
             int powered=0;
-            for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.build.team==Team.blue&&t.block()==TurretBlock.thermo){
+            for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.build.team==Team.blue&&t.block() instanceof mindustry.world.blocks.defense.turrets.PowerTurret){
                 check(t.build.power.status>.9f,"enemy network survives save/load "+i+" "+t.x+","+t.y);powered++;
             }
             check(powered>0,"real energy defense present");
-            for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.build.team==Team.blue&&t.block()==Blocks.largeSolarPanel)t.remove();
+            for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.build.team==Team.blue&&(t.block() instanceof mindustry.world.blocks.power.PowerGenerator||t.block() instanceof mindustry.world.blocks.power.Battery))t.remove();
             ticks(180);
-            for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.build.team==Team.blue&&t.block()==TurretBlock.thermo)
+            for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.build.team==Team.blue&&t.block() instanceof mindustry.world.blocks.defense.turrets.PowerTurret)
                 check(t.build.power.status<.05f,"destroying generation disables energy defense "+i);
-            log("PASS enemy grid "+i+" powered after reload; destroying solar arrays cuts energy weapons");
+            log("PASS enemy grid "+i+" powered after reload; destroying generators and storage cuts energy weapons");
         }
     }
     static void verifyRestoration(int i) throws Exception {
+        // Verify the repair contract after the player secures the site. Upgraded
+        // enemy artillery can cover these optional sites and legitimately destroy a repairer.
+        var targets=new arc.struct.ObjectMap<mindustry.world.blocks.defense.turrets.Turret,Boolean>();
+        for(var block:content.blocks())if(block instanceof mindustry.world.blocks.defense.turrets.Turret t){targets.put(t,t.targetBlocks);t.targetBlocks=false;}
         int pos=state.rules.tags.getInt("frontier.relay",-1);check(pos!=-1,"authored restoration site");
         var tile=world.tile(pos);int x=tile.x,y=tile.y;
         check(tile.block()==Blocks.air,"restoration build pad unobstructed "+i);
         tile.setBlock(Blocks.mendProjector,Team.sharded);
         world.tile(x+4,y).setBlock(Blocks.powerSource,Team.sharded);
         world.build(x+4,y).configureAny(pos);
-        var core=Team.sharded.core();int savedSilicon=core.items.get(Items.silicon);core.items.set(Items.silicon,299);
-        ticks(180);check(!state.rules.tags.containsKey("afterglow.relay-funded"),"insufficient repair resources cannot start");
-        core.items.set(Items.silicon,savedSilicon);ticks(360);
+        var core=Team.sharded.core();int savedSilicon=core.items.get(Items.silicon);core.items.set(Items.silicon,0);
+        ticks(180);core.items.set(Items.silicon,299);FrontierCampaign.restoreSite(i);check(!state.rules.tags.containsKey("afterglow.relay-funded"),"insufficient repair resources cannot start");
+        core.items.set(Items.silicon,savedSilicon);System.out.println("RESTORE_INPUT chapter="+i+" silicon="+core.items.get(Items.silicon)+" graphite="+core.items.get(Items.graphite)+" titanium="+core.items.get(Items.titanium)+" repair="+world.build(pos)+" power="+(world.build(pos)==null?-1:world.build(pos).power.status));FrontierCampaign.restoreSite(i);
         check(state.rules.tags.containsKey("afterglow.relay-funded"),"powered repair consumes material once");
         check(core.items.get(Items.silicon)==savedSilicon-300,"exact repair silicon charge");
+        FrontierCampaign.restoreSite(i);check(core.items.get(Items.silicon)==savedSilicon-300,"repair cannot debit twice before factory updates");ticks(360);
         int progress=state.rules.tags.getInt("afterglow.relay-time",0);check(progress>0&&progress<30,"repair in progress");
         tile.remove();ticks(180);
         check(state.rules.tags.getInt("afterglow.relay-time",0)==progress,"destroyed projector pauses repair");
@@ -232,7 +233,8 @@ public class FrontierChecks extends CampaignChecks {
         check(stock==Team.sharded.core().items.get(Items.silicon)&&units==Groups.unit.size(),"restoration reward is single-use");
         world.tile(x+4,y).remove();
         world.tile(pos).remove(); // Test fixture; leave restored assets and progress intact.
-        log("PASS restoration "+i+" resources, power, pause, save/load, completion, one-time reward");
+        for(var entry:targets)entry.key.targetBlocks=entry.value;
+        log("PASS restoration "+i+" resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)");
     }
     public static void lateFinale(){
         arc.util.Time.setDeltaProvider(()->1f);load(9);

@@ -56,7 +56,7 @@ public class SignatureMaps extends CampaignMaps {
     static Rules rules(){
         Rules r=new Rules();r.defaultTeam=playerTeam;r.waveTeam=enemyTeam;r.waves=true;r.waveTimer=true;r.waitEnemies=true;r.wavesSpawnAtCores=false;
         r.attackMode=false;r.winWave=op==0?73:0;r.waveSpacing=(op==0?42:op==1?48:65)*60;r.initialWaveSpacing=(op==0?480:op==1?600:240)*60;
-        r.unitCap=260;r.coreDestroyClear=true;r.enemyCoreBuildRadius=80;r.canGameOver=true;r.env=Env.terrestrial|NHContent.radioactive;r.planet=NHPlanets.midantha;
+        r.unitCap=260;r.coreDestroyClear=true;r.enemyCoreBuildRadius=80;r.canGameOver=true;r.env=Env.terrestrial|Env.groundWater|NHContent.radioactive;r.planet=NHPlanets.midantha;
         r.placeRangeCheck=false;r.buildSpeedMultiplier=1.5f;r.teams.get(enemyTeam).rtsAi=false;r.teams.get(enemyTeam).buildAi=false;
         r.tags.put(newhorizon.content.campaign.AfterglowCampaign.tag,""+chapter);r.tags.put("signature.authored","0.5.0");r.tags.put("frontier.stable-solar","true");r.attributes.set(Attribute.light,1);
         r.tags.put("nh-raid-scale","0");r.tags.put("nh-intervention-scale","0");r.tags.put("nh-special-event-enabled","false");
@@ -67,26 +67,26 @@ public class SignatureMaps extends CampaignMaps {
         if(op==0)for(int wave=1;wave<=72;wave++){
             boolean split=wave%6==0,rest=wave%12==1&&wave>1;int phase=(wave-1)/24;
             for(int lane=0;lane<(split?2:1);lane++){
-                add(r,GroundUnitTypes.origin,wave,wave,1,rest?7:10+phase*12+wave%6*2,1,80,lane);
-                if(wave>=17&&!rest)add(r,phase<2?GroundUnitTypes.thynomo:NHUnitTypes.aliotiat,wave,wave,1,3+phase*3,1,20,lane);
-                if(wave%12==0)add(r,NHUnitTypes.tarlidor,wave,wave,1,phase+1,1,3,lane);
+                add(r,phase<2?NHUnitTypes.aliotiat:NHUnitTypes.tarlidor,wave,wave,1,rest?3:6+phase*4+wave%6,1,24,lane);
+                if(wave>=17&&!rest)add(r,phase<2?NHUnitTypes.tarlidor:NHUnitTypes.longinus,wave,wave,1,3+phase*3,1,20,lane);
+                if(wave%12==0)add(r,wave<48?NHUnitTypes.longinus:NHUnitTypes.hurricane,wave,wave,1,phase+1,1,3,lane);
             }
-            if(wave%4==0)add(r,wave<40?NHUnitTypes.sharp:NHUnitTypes.branch,wave,wave,1,5+phase*4,1,20,1);
+            if(wave%4==0)add(r,wave<40?NHUnitTypes.warper:NHUnitTypes.striker,wave,wave,1,5+phase*4,1,20,1);
         }
         if(op==1){
             for(int lane=0;lane<2;lane++){
-                add(r,GroundUnitTypes.origin,1+lane,Integer.MAX_VALUE,2,14,3,50,lane);
-                add(r,GroundUnitTypes.thynomo,13+lane,Integer.MAX_VALUE,4,4,8,12,lane);
-                add(r,NHUnitTypes.branch,18+lane,Integer.MAX_VALUE,8,6,9,14,lane);
+                add(r,NHUnitTypes.aliotiat,1+lane,Integer.MAX_VALUE,2,9,6,24,lane);
+                add(r,NHUnitTypes.tarlidor,13+lane,Integer.MAX_VALUE,4,3,12,8,lane);
+                add(r,NHUnitTypes.striker,18+lane,Integer.MAX_VALUE,8,6,9,14,lane);
                 add(r,NHUnitTypes.aliotiat,33+lane,Integer.MAX_VALUE,6,5,9,12,lane);
-                add(r,NHUnitTypes.tarlidor,48+lane,Integer.MAX_VALUE,12,1,40,2,lane);
+                add(r,NHUnitTypes.hurricane,48+lane,Integer.MAX_VALUE,12,1,40,2,lane);
             }
         }
         if(op==2)for(int lane=0;lane<3;lane++){
-            add(r,GroundUnitTypes.thynomo,1+lane,Integer.MAX_VALUE,3,8,2,28,lane);
-            add(r,NHUnitTypes.branch,9+lane,Integer.MAX_VALUE,6,5,4,16,lane);
-            add(r,NHUnitTypes.aliotiat,18+lane,Integer.MAX_VALUE,6,6,4,18,lane);
-            add(r,NHUnitTypes.tarlidor,30+lane,Integer.MAX_VALUE,12,2,10,4,lane);
+            add(r,NHUnitTypes.tarlidor,1+lane,Integer.MAX_VALUE,3,4,8,14,lane);
+            add(r,NHUnitTypes.striker,9+lane,Integer.MAX_VALUE,6,5,4,16,lane);
+            add(r,NHUnitTypes.longinus,18+lane,Integer.MAX_VALUE,6,6,4,18,lane);
+            add(r,NHUnitTypes.hurricane,30+lane,Integer.MAX_VALUE,12,1,24,3,lane);
         }
         return r;
     }
@@ -196,20 +196,7 @@ public class SignatureMaps extends CampaignMaps {
         for(int dx=-2;dx<=2;dx++)for(int dy=-2;dy<=2;dy++)world.tile(x-32+dx,y+dy).setOverlay(EnvironmentBlock.oreTitaniumDense);
     }
     static void starter(){
-        place(SpecialBlock.coreConflux,sx,sy,playerTeam).items.add(state.rules.loadout);
-        place(ProductionBlock.interlockingDrill,sx-32,sy,playerTeam);
-        for(int x=sx-30;x<sx-1;x++)world.tile(x,sy).setBlock(Blocks.titaniumConveyor,playerTeam,0);
-        place(UnitBlock.jumpGateStandard,sx+9,sy+13,playerTeam);
-        solar(sx,sy-24,playerTeam,8);place(Blocks.batteryLarge,sx-9,sy+12,playerTeam);
-        for(int[]d:new int[][]{{0,-9},{0,-15},{-12,-15},{12,-15},{-12,-5},{-12,5},{0,8},{0,25},{-15,22},{15,22},{-30,22},{30,22}})place(Blocks.powerNodeLarge,sx+d[0],sy+d[1],playerTeam);
-        for(int dx:new int[]{-28,28}){
-            ammo(place(TurretBlock.pulse,sx+dx,sy+31,playerTeam),Items.titanium,150);
-            place(TurretBlock.thermo,sx+dx,sy+24,playerTeam);
-            ammo(place(Blocks.scatter,sx+dx,sy+17,playerTeam),Items.lead,100);
-            for(int xx=-6;xx<=6;xx++)place(Blocks.titaniumWall,sx+dx+xx,sy+38,playerTeam);
-        }
-        message(sx+7,sy-7,playerTeam,SignatureCampaign.briefs[op]);
-        for(int dx=-4;dx<=4;dx++)for(int dy=-5;dy<=5;dy++)world.tile(sx+dx,sy+dy).setFloor(EnvironmentBlock.platingFloor1.asFloor());
+        BaseWorkshop.player(sx,sy,chapter,false);
     }
     static void solar(int x,int y,Team team,int columns){
         for(int k=0;k<columns;k++)for(int dy:new int[]{0,5})place(Blocks.largeSolarPanel,x+(k-columns/2)*5,y+dy,team);
@@ -227,24 +214,17 @@ public class SignatureMaps extends CampaignMaps {
         }
         solar(x,y-30,playerTeam,10);place(Blocks.batteryLarge,x,y-14,playerTeam);
         for(int[]d:new int[][]{{0,-23},{-12,-23},{12,-23},{0,-8},{-12,-8},{12,-8},{-24,-8},{24,-8},{-36,-8},{36,-8}})place(Blocks.powerNodeLarge,x+d[0],y+d[1],playerTeam);
-        for(int dx:new int[]{-23,23}){ammo(place(TurretBlock.pulse,x+dx,y+22,playerTeam),Items.titanium,150);ammo(place(Blocks.scatter,x+dx,y+15,playerTeam),Items.lead,100);}
+        BaseWorkshop.quarryGuard(x,y);
+        for(int dy:new int[]{7,20,30})place(Blocks.powerNodeLarge,x,y+dy,playerTeam);
     }
     static void citadel(){
         state.rules.tags.put("frontier.depots","4");state.rules.tags.put("frontier.finite-depots","true");
         for(int n=0;n<3;n++){
             int x=SignatureCampaign.terminals[n][0],y=SignatureCampaign.terminals[n][1];
-            place(Blocks.batteryLarge,x,y,enemyTeam);solar(x,y+23,enemyTeam,8);
-            for(int[]d:new int[][]{{0,-9},{0,9},{0,19},{-13,0},{13,0},{-25,9},{25,9}})place(Blocks.powerNodeLarge,x+d[0],y+d[1],enemyTeam);
-            for(int dx:new int[]{-25,25}){
-                place(TurretBlock.thermo,x+dx,y+3,enemyTeam);ammo(place(TurretBlock.pulse,x+dx,y-11,enemyTeam),Items.titanium,100);
-                ammo(place(Blocks.scatter,x+dx,y+15,enemyTeam),Items.lead,100);
-            }
-            var depot=place(Blocks.vault,x-12,y+12,enemyTeam);depot.items.add(Items.titanium,900);depot.items.add(Items.lead,800);
-            state.rules.tags.put("frontier.depot."+n,""+depot.pos());
-            for(int dx=-33;dx<=33;dx++)if(Math.abs(dx)>7)place(Blocks.thoriumWall,x+dx,y-24,enemyTeam);
-            message(x+7,y-5,playerTeam,"能源终端 "+(n+1)+"：清除敌军电池，在中心三格金属标记上重建大型电池并接电。每秒消耗 600 储能，三处都满足才能同步；断供则同步倒退。北侧太阳能阵列可切断敌人供电，也可留待接管。");
+            BaseWorkshop.terminal(x,y,n);
+            message(x+41,y-5,playerTeam,"能源终端 "+(n+1)+"：清除敌军电池，在中心三格金属标记上重建大型电池并接电。每秒消耗 600 储能，三处都满足才能同步；断供则同步倒退。北侧太阳能阵列可切断敌人供电，也可留待接管。");
             for(int a=-1;a<=1;a++)for(int b=-1;b<=1;b++)world.tile(x+a,y+b).setFloor(Blocks.metalFloor5.asFloor());
         }
-        FrontierMaps.mission=9;FrontierMaps.fortress(256,482,3);
+        FrontierMaps.mission=9;BaseWorkshop.enemy(256,510,15,3);
     }
 }

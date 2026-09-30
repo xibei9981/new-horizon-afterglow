@@ -46,7 +46,8 @@ public class SignatureChecks extends CampaignChecks {
             if(i==1)check(water>30000,"salt lake remains a lake, not a recolored open plain");
             int peak=0;for(int wave=0;wave<72;wave++){int count=0;for(var g:state.rules.spawns)count+=g.getSpawned(wave);check(count>0,"nonempty wave "+i+"/"+wave);peak=Math.max(count,peak);}
             check(peak<200,"bounded wave peak "+peak);log("MAP "+SignatureCampaign.ids[i]+" surfaces="+surfaces.size()+" walls="+walls+" water="+water+" metal="+metal+" wave peak="+peak);
-            ticks(1800);check(!state.gameOver,"starter survived");check(Team.sharded.core().items.get(Items.titanium)>5000,"starter drill delivers to core");
+            for(var stack:state.rules.loadout)check(Team.sharded.core().items.get(stack.item)>=Math.min(stack.amount,Team.sharded.core().storageCapacity),"initial signature loadout delivered "+stack.item);
+            ticks(1800);check(!state.gameOver,"starter survived"); // Net production is checked by WorkshopChecks with empty stocks.
             for(var b:Groups.build)if(b.team==Team.sharded&&b.block.consumesPower&&b.block.consPower!=null&&!b.block.consPower.buffered){
                 if(b.power.status<=.9f)for(var tile:world.tiles){var q=tile.build;if(q!=null&&tile.isCenter()&&q.team==Team.sharded&&q.power!=null)System.out.println("POWER "+q.block.name+" "+q.tileX()+","+q.tileY()+" graph="+q.power.graph.getID()+" produced="+q.power.graph.getPowerProduced()+" status="+q.power.status+" links="+q.power.links);}
                 check(b.power.status>.9f,"powered starter "+b.block.name+" "+b.tileX()+","+b.tileY()+" "+b.power.status);
@@ -106,6 +107,11 @@ public class SignatureChecks extends CampaignChecks {
     }
     static void grid(){
         SignatureCampaign.synchronize();check(SignatureCampaign.charge()==0,"enemy terminals cannot synchronize");
+        // This is the post-assault capture fixture. Real play must clear the courtyard
+        // weapons before replacing a battery; otherwise they correctly shoot captured equipment.
+        clear();
+        for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.team()==Team.blue&&t.block() instanceof mindustry.world.blocks.defense.turrets.BaseTurret)
+            for(var center:SignatureCampaign.terminals)if(t.build!=null&&t.build.within(center[0]*tilesize,center[1]*tilesize,70*tilesize)){t.remove();break;}
         var first=SignatureCampaign.terminals[0];world.tile(first[0],first[1]).setBlock(Blocks.batteryLarge,Team.sharded,0);
         SignatureCampaign.captureGrids();ticks(600);
         check(world.build(first[0],first[1]+23).team==Team.sharded,"live solar field captured with terminal");

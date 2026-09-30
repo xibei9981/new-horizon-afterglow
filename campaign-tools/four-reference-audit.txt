@@ -1,0 +1,413 @@
+MAP 迫降区.msav 267x267 default=sharded wave=crux damage=1.0 health=1.0
+WAVE_TEAM_BLOCK_COUNTS {additive-reconstructor=1, air-factory=1, armored-conveyor=102, battery=84, battery-large=25, blast-drill=40, bridge-conduit=33, bridge-conveyor=50, container=5, core-nucleus=2, cyclone=4, door-large=37, force-projector=22, foreshadow=3, impulse-pump=3, inverted-sorter=17, junction=51, kiln=4, lancer=2, liquid-container=12, liquid-junction=67, liquid-router=33, liquid-tank=18, mass-driver=2, mechanical-pump=6, meltdown=4, mend-projector=41, multi-press=4, overdrive-dome=1, overflow-gate=12, parallax=10, phase-conduit=2, phase-conveyor=6, phase-weaver=8, plastanium-conveyor=125, plastanium-wall-large=40, power-node=22, power-node-large=60, pulse-conduit=375, ripple=7, rotary-pump=1, router=3, rtg-generator=18, segment=14, sorter=17, spectre=2, surge-tower=3, surge-wall=209, surge-wall-large=170, thorium-wall=126, thorium-wall-large=537, titanium-conveyor=762, titanium-wall-large=51, underflow-gate=145, unloader=30, vault=14, water-extractor=16, world-processor=2, 饱和火力-B6机炮=20, 饱和火力-F2机炮=24, 饱和火力-丁达尔=3, 饱和火力-光阴=2, 饱和火力-冰风暴=12, 饱和火力-凌汛=5, 饱和火力-刺剑=2, 饱和火力-前哨基地=1, 饱和火力-前沿实验室=2, 饱和火力-励磁抽水机=26, 饱和火力-区块=1, 饱和火力-原子破碎机=12, 饱和火力-垂发=17, 饱和火力-塑钢厂=4, 饱和火力-增压发电站=20, 饱和火力-复合装甲传送带=193, 饱和火力-复合装甲导管=36, 饱和火力-大地热=57, 饱和火力-大型波能墙=8, 饱和火力-大型硅厂=8, 饱和火力-大型硅钢墙=10, 饱和火力-大硫=3, 饱和火力-大镄墙=14, 饱和火力-天罚=6, 饱和火力-天际=4, 饱和火力-实验室=4, 饱和火力-强化裂位池=8, 饱和火力-折跃=13, 饱和火力-挫刀=54, 饱和火力-死诏=2, 饱和火力-气压钻机=10, 饱和火力-波能墙=55, 饱和火力-泰勒厂=2, 饱和火力-泰勒合金储存块=3, 饱和火力-流冲=2, 饱和火力-涡流=14, 饱和火力-清宁=1, 饱和火力-漫游=6, 饱和火力-潮汐泵=5, 饱和火力-激发器=5, 饱和火力-灾灵=7, 饱和火力-电光箭=8, 饱和火力-电极=4, 饱和火力-电磁合金冶炼炉=2, 饱和火力-瘫痪器=5, 饱和火力-瘫痪地雷=71, 饱和火力-短波雷达=1, 饱和火力-硅钢传送带=112, 饱和火力-硅钢储液罐=4, 饱和火力-硅钢冶炼厂=2, 饱和火力-硅钢墙=178, 饱和火力-硅钢导管=11, 饱和火力-磁能传送带=255, 饱和火力-离子要塞炮=7, 饱和火力-穿云=16, 饱和火力-米尼=12, 饱和火力-纳米修=4, 饱和火力-裂位传送塔=5, 饱和火力-裂位收容块=7, 饱和火力-裂位超速穹顶=1, 饱和火力-裂位转化池=1, 饱和火力-裂梅=1, 饱和火力-裂爆=9, 饱和火力-装甲容器=1, 饱和火力-装甲收容块=7, 饱和火力-金属风暴=1, 饱和火力-铁幕=1, 饱和火力-铁流=5, 饱和火力-铁穹=7, 饱和火力-错位=1, 饱和火力-镄墙=10, 饱和火力-长枪=8, 饱和火力-阔刀=1, 饱和火力-阳离子炮=1, 饱和火力-雷阵雨=14, 饱和火力-高压电=1, 饱和火力-高速卸载器=20, 饱和火力-龙卷=14}
+REPAIR mend-projector count=41 rangeTiles=10.625 heal=11.0 reload=250.0
+GUN lancer count=2 size=2 rangeTiles=28.125 reload=130.0 shots=1 air=false ground=true ammoPerShot=1
+GUN ripple count=7 size=3 rangeTiles=42.5 reload=120.0 shots=5 air=false ground=true ammoPerShot=2
+ AMMO Silisteel damage=30.0 splash=80.0 radius=36.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=20.0 splash=60.0 radius=20.0 multiplier=6.0 reloadMult=1.0 rangeChange=30.0 fragments=5
+ AMMO pyratite damage=27.0 splash=90.0 radius=18.75 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=40.0 splash=110.0 radius=33.75 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO silicon damage=40.0 splash=66.0 radius=18.75 multiplier=3.0 reloadMult=1.2 rangeChange=0.0 fragments=9
+ AMMO graphite damage=40.0 splash=66.0 radius=18.75 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=40.0 splash=90.0 radius=26.25 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=10
+GUN cyclone count=4 size=3 rangeTiles=28.5 reload=8.0 shots=1 air=true ground=true ammoPerShot=1
+ AMMO Silisteel damage=6.0 splash=48.0 radius=30.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=11.0 splash=48.0 radius=25.0 multiplier=6.0 reloadMult=0.85 rangeChange=32.0 fragments=5
+ AMMO blast-compound damage=8.0 splash=60.0 radius=60.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=8.0 splash=54.0 radius=40.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=6
+ AMMO Discordance Core damage=54.0 splash=92.0 radius=28.0 multiplier=6.0 reloadMult=1.0 rangeChange=32.0 fragments=9
+ AMMO metaglass damage=6.0 splash=48.0 radius=25.0 multiplier=2.0 reloadMult=0.8 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=13.0 splash=84.0 radius=38.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN foreshadow count=3 size=4 rangeTiles=90.0 reload=200.0 shots=1 air=true ground=true ammoPerShot=5
+ AMMO Tayrium Alloy damage=300.0 splash=2400.0 radius=53.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=3
+ AMMO Discordance Core damage=550.0 splash=100.0 radius=50.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO surge-alloy damage=1450.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN spectre count=2 size=4 rangeTiles=35.0 reload=8.28 shots=1 air=true ground=true ammoPerShot=1
+ AMMO Silisteel damage=80.0 splash=0.0 radius=-1.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO thorium damage=122.24 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=79.2 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.6 rangeChange=0.0 fragments=9
+ AMMO pyratite damage=106.96 splash=38.2 radius=28.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN meltdown count=4 size=4 rangeTiles=27.0 reload=240.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-B6机炮 count=20 size=2 rangeTiles=25.0 reload=20.0 shots=6 air=true ground=true ammoPerShot=6
+ AMMO lead damage=7.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=3
+ AMMO pyratite damage=25.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO titanium damage=21.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.25 rangeChange=20.0 fragments=9
+ AMMO silicon damage=18.0 splash=0.0 radius=-1.0 multiplier=5.0 reloadMult=1.4 rangeChange=0.0 fragments=9
+ AMMO graphite damage=22.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=20.0 fragments=9
+ AMMO thorium damage=27.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.0 rangeChange=20.0 fragments=9
+ AMMO copper damage=11.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-F2机炮 count=24 size=2 rangeTiles=25.0 reload=3.0 shots=1 air=true ground=true ammoPerShot=1
+ AMMO lead damage=7.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=3
+ AMMO pyratite damage=25.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO titanium damage=21.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.25 rangeChange=20.0 fragments=9
+ AMMO silicon damage=18.0 splash=0.0 radius=-1.0 multiplier=5.0 reloadMult=1.4 rangeChange=0.0 fragments=9
+ AMMO graphite damage=22.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=20.0 fragments=9
+ AMMO thorium damage=27.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.0 rangeChange=20.0 fragments=9
+ AMMO copper damage=11.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-丁达尔 count=3 size=6 rangeTiles=62.0 reload=12.0 shots=12 air=true ground=false ammoPerShot=1
+GUN 饱和火力-光阴 count=2 size=6 rangeTiles=84.0 reload=82.0 shots=6 air=true ground=true ammoPerShot=1
+GUN 饱和火力-冰风暴 count=12 size=2 rangeTiles=25.0 reload=5.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-凌汛 count=5 size=5 rangeTiles=52.0 reload=40.0 shots=3 air=true ground=true ammoPerShot=1
+ AMMO Cryofluid Canister damage=64.0 splash=32.0 radius=18.0 multiplier=30.0 reloadMult=4.0 rangeChange=30.0 fragments=9
+ AMMO titanium damage=72.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=5.0 rangeChange=0.0 fragments=9
+ AMMO surge-alloy damage=108.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=3.0 rangeChange=40.0 fragments=9
+GUN 饱和火力-刺剑 count=2 size=3 rangeTiles=20.0 reload=28.0 shots=6 air=true ground=true ammoPerShot=6
+ AMMO Fermium damage=180.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=0.95 rangeChange=40.0 fragments=9
+ AMMO thorium damage=150.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=10.0 fragments=9
+ AMMO titanium damage=125.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.2 rangeChange=0.0 fragments=9
+GUN 饱和火力-垂发 count=17 size=3 rangeTiles=95.0 reload=150.0 shots=8 air=true ground=true ammoPerShot=8
+ AMMO Oil Canister damage=3.0 splash=10.0 radius=24.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=60
+ AMMO Silisteel damage=15.0 splash=32.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO pyratite damage=14.0 splash=39.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=17.0 splash=55.0 radius=45.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=22.0 splash=28.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=16.0 splash=85.0 radius=48.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+ AMMO surge-alloy damage=18.0 splash=75.0 radius=45.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-天际 count=4 size=3 rangeTiles=62.5 reload=180.0 shots=1 air=true ground=false ammoPerShot=1
+GUN 饱和火力-挫刀 count=54 size=2 rangeTiles=25.0 reload=20.0 shots=1 air=true ground=false ammoPerShot=1
+GUN 饱和火力-死诏 count=2 size=5 rangeTiles=112.5 reload=300.0 shots=1 air=true ground=true ammoPerShot=8
+ AMMO Tayrium Alloy damage=7200.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=2960.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=100.0 fragments=9
+GUN 饱和火力-流冲 count=2 size=4 rangeTiles=36.25 reload=60.0 shots=1 air=true ground=true ammoPerShot=2
+ AMMO Oil Canister damage=33.0 splash=33.0 radius=30.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=120
+ AMMO Cryofluid Canister damage=33.0 splash=33.0 radius=30.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=120
+ AMMO Slag Canister damage=33.0 splash=33.0 radius=30.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=120
+ AMMO Water Canister damage=33.0 splash=33.0 radius=30.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=120
+ AMMO Nanofluid Canister damage=33.0 splash=33.0 radius=30.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=120
+GUN 饱和火力-涡流 count=14 size=3 rangeTiles=31.25 reload=0.6 shots=4 air=true ground=true ammoPerShot=1
+GUN 饱和火力-清宁 count=1 size=4 rangeTiles=59.375 reload=186.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-漫游 count=6 size=3 rangeTiles=45.0 reload=20.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-灾灵 count=7 size=4 rangeTiles=38.85 reload=18.0 shots=9 air=true ground=true ammoPerShot=2
+ AMMO thorium damage=135.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=44.0 splash=128.0 radius=47.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=91.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.7 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=116.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=0.7 rangeChange=45.2 fragments=2
+ AMMO pyratite damage=118.0 splash=34.0 radius=30.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-电光箭 count=8 size=2 rangeTiles=25.0 reload=35.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-电极 count=4 size=4 rangeTiles=38.75 reload=70.0 shots=1 air=true ground=true ammoPerShot=2
+ AMMO lead damage=1.0 splash=23.0 radius=35.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO copper damage=1.0 splash=23.0 radius=35.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-瘫痪器 count=5 size=2 rangeTiles=8.125 reload=60.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-短波雷达 count=1 size=4 rangeTiles=100.0 reload=180.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-离子要塞炮 count=7 size=5 rangeTiles=76.125 reload=660.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-穿云 count=16 size=3 rangeTiles=35.0 reload=80.0 shots=1 air=true ground=true ammoPerShot=6
+ AMMO Fermium damage=420.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=120.0 fragments=9
+ AMMO thorium damage=288.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=70.0 fragments=9
+ AMMO Chromium damage=378.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=120.0 fragments=9
+ AMMO titanium damage=202.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.2 rangeChange=0.0 fragments=9
+GUN 饱和火力-米尼 count=12 size=3 rangeTiles=35.0 reload=4.5 shots=1 air=true ground=true ammoPerShot=1
+ AMMO Fermium damage=68.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.0 rangeChange=40.0 fragments=9
+ AMMO pyratite damage=22.0 splash=36.0 radius=21.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Chromium damage=61.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.0 rangeChange=40.0 fragments=9
+ AMMO silicon damage=26.0 splash=0.0 radius=-1.0 multiplier=5.0 reloadMult=1.5 rangeChange=0.0 fragments=9
+ AMMO graphite damage=33.0 splash=13.0 radius=15.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO thorium damage=49.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+REPAIR 饱和火力-纳米修 count=4 rangeTiles=35.0 heal=5.0 reload=60.0
+GUN 饱和火力-裂梅 count=1 size=5 rangeTiles=77.5 reload=138.0 shots=8 air=false ground=true ammoPerShot=8
+ AMMO Silisteel damage=42.0 splash=80.0 radius=52.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=6
+ AMMO Cluster Explosive damage=18.0 splash=80.0 radius=60.0 multiplier=2.0 reloadMult=1.0 rangeChange=46.0 fragments=10
+ AMMO blast-compound damage=44.0 splash=122.0 radius=72.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO plastanium damage=40.0 splash=82.0 radius=55.0 multiplier=3.0 reloadMult=1.2 rangeChange=0.0 fragments=9
+ AMMO surge-alloy damage=76.0 splash=76.0 radius=48.0 multiplier=3.0 reloadMult=1.0 rangeChange=46.0 fragments=9
+GUN 饱和火力-裂爆 count=9 size=2 rangeTiles=28.125 reload=100.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-金属风暴 count=1 size=2 rangeTiles=30.0 reload=900.0 shots=600 air=true ground=true ammoPerShot=1
+ AMMO lead damage=4.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=2
+ AMMO thorium damage=22.0 splash=0.0 radius=-1.0 multiplier=8.0 reloadMult=1.0 rangeChange=48.0 fragments=9
+ AMMO titanium damage=17.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.2 rangeChange=35.0 fragments=9
+ AMMO copper damage=9.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-铁流 count=5 size=3 rangeTiles=26.0 reload=24.0 shots=3 air=true ground=true ammoPerShot=1
+GUN 饱和火力-错位 count=1 size=5 rangeTiles=43.25 reload=260.0 shots=1 air=true ground=true ammoPerShot=5
+ AMMO phase-fabric damage=1.0 splash=160.0 radius=64.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=240.0 splash=170.0 radius=80.0 multiplier=3.0 reloadMult=1.0 rangeChange=45.0 fragments=1
+GUN 饱和火力-长枪 count=8 size=3 rangeTiles=37.5 reload=35.0 shots=3 air=true ground=true ammoPerShot=4
+ AMMO Silisteel damage=30.0 splash=64.0 radius=40.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=35.0 splash=65.0 radius=20.0 multiplier=4.0 reloadMult=0.75 rangeChange=60.0 fragments=5
+ AMMO pyratite damage=45.0 splash=85.0 radius=36.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=40.0 splash=155.0 radius=76.0 multiplier=2.0 reloadMult=0.75 rangeChange=60.0 fragments=9
+GUN 饱和火力-阔刀 count=1 size=3 rangeTiles=16.25 reload=22.0 shots=35 air=true ground=true ammoPerShot=6
+ AMMO sand damage=0.2 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=2.3 rangeChange=-17.0 fragments=9
+ AMMO pyratite damage=12.0 splash=24.0 radius=17.6 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO titanium damage=12.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO thorium damage=18.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-阳离子炮 count=1 size=3 rangeTiles=30.0 reload=3.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-雷阵雨 count=14 size=3 rangeTiles=80.0 reload=130.0 shots=6 air=false ground=true ammoPerShot=6
+ AMMO Silisteel damage=1.0 splash=36.0 radius=32.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=1.0 splash=40.0 radius=20.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO pyratite damage=1.0 splash=42.0 radius=32.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=1.0 splash=55.0 radius=45.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=1.0 splash=28.0 radius=32.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=1.0 splash=43.0 radius=45.0 multiplier=2.0 reloadMult=2.25 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=1.0 splash=75.0 radius=45.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-龙卷 count=14 size=3 rangeTiles=37.875 reload=160.0 shots=1 air=true ground=true ammoPerShot=8
+ AMMO Tayrium Alloy damage=114.0 splash=80.0 radius=69.6 multiplier=6.0 reloadMult=1.0 rangeChange=101.0 fragments=9
+ AMMO Silisteel damage=48.0 splash=48.0 radius=50.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=40.0 splash=96.0 radius=55.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=65.0 splash=55.0 radius=56.0 multiplier=3.0 reloadMult=1.25 rangeChange=0.0 fragments=9
+ AMMO metaglass damage=54.0 splash=36.0 radius=45.0 multiplier=2.0 reloadMult=0.88 rangeChange=0.0 fragments=9
+ AMMO surge-alloy damage=75.0 splash=65.0 radius=65.0 multiplier=5.0 reloadMult=1.0 rangeChange=60.0 fragments=9
+MAP 雷鸣裂谷.msav 150x500 default=sharded wave=crux damage=1.0 health=1.0
+WAVE_TEAM_BLOCK_COUNTS {battery=135, battery-large=7, blast-drill=11, bridge-conduit=53, bridge-conveyor=99, coal-centrifuge=27, container=1, core-nucleus=3, cultivator=1, cyclone=27, differential-generator=12, distributor=14, foreshadow=15, impulse-pump=27, incinerator=1, inverted-sorter=1, item-source=12, junction=6, kiln=4, liquid-junction=7, liquid-router=31, liquid-tank=38, mass-driver=15, mechanical-pump=45, mend-projector=76, mender=2, micro-processor=3, multi-press=2, oil-extractor=3, overflow-gate=9, phase-conveyor=2, plastanium-conveyor=303, pneumatic-drill=2, power-node=47, power-node-large=34, pulse-conduit=233, router=7, rtg-generator=8, solar-panel-large=10, sorter=1, surge-smelter=10, surge-tower=11, surge-wall=63, surge-wall-large=103, swarmer=10, titanium-conveyor=264, tsunami=16, underflow-gate=83, unloader=77, vault=20, world-processor=1, 饱和火力-丁达尔=1, 饱和火力-侵蚀=1, 饱和火力-储备油桶=3, 饱和火力-储备油桶组=1, 饱和火力-光阴=1, 饱和火力-励磁抽水机=33, 饱和火力-区块2=1, 饱和火力-垂发=50, 饱和火力-增压发电站=19, 饱和火力-复合装甲传送带=252, 饱和火力-复合装甲导管=6, 饱和火力-大冷冻=8, 饱和火力-大地热=11, 饱和火力-大型波能墙=247, 饱和火力-大型硅厂=12, 饱和火力-大型镄门=34, 饱和火力-大炸混=1, 饱和火力-大镄墙=10, 饱和火力-天际=2, 饱和火力-孢子冲压机=1, 饱和火力-小钻=5, 饱和火力-方天=3, 饱和火力-无0=3, 饱和火力-无2=2, 饱和火力-无4=4, 饱和火力-无5=2, 饱和火力-死诏=1, 饱和火力-波能墙=194, 饱和火力-涡流=7, 饱和火力-液体倾倒站=2, 饱和火力-清宁=1, 饱和火力-漫游=2, 饱和火力-潮汐泵=1, 饱和火力-爆破钻井=4, 饱和火力-特种工厂=3, 饱和火力-疆土防御平台=1, 饱和火力-破晓=1, 饱和火力-硅钢传送带=380, 饱和火力-硅钢储液罐=3, 饱和火力-硅钢墙=4, 饱和火力-硅钢导管=76, 饱和火力-硝化反应器=2, 饱和火力-磁能传送带=110, 饱和火力-离子要塞炮=1, 饱和火力-离子钻头=25, 饱和火力-竹林=1, 饱和火力-纳米修=9, 饱和火力-细胞培养机=1, 饱和火力-终极合金厂=12, 饱和火力-莱普合金墙=38, 饱和火力-菊花=4, 饱和火力-裂位传送塔=7, 饱和火力-裂位墙=12, 饱和火力-裂位导管塔=3, 饱和火力-裂位转化池=4, 饱和火力-裂位驱动器=2, 饱和火力-重油沉淀池=1, 饱和火力-量子提取机=1, 饱和火力-铁幕=5, 饱和火力-铁穹=7, 饱和火力-集束捆合器=1, 饱和火力-雷阵雨=9, 饱和火力-高压电=2, 饱和火力-高速卸载器=22, 饱和火力-龙卷=31}
+REPAIR mender count=2 rangeTiles=5.0 heal=4.0 reload=200.0
+REPAIR mend-projector count=76 rangeTiles=10.625 heal=11.0 reload=250.0
+GUN swarmer count=10 size=2 rangeTiles=32.5 reload=32.0 shots=8 air=true ground=true ammoPerShot=1
+ AMMO Silisteel damage=15.0 splash=42.0 radius=32.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=9.0 splash=44.0 radius=32.0 multiplier=6.0 reloadMult=1.0 rangeChange=70.0 fragments=4
+ AMMO pyratite damage=12.0 splash=45.0 radius=20.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=10.0 splash=50.0 radius=30.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=14.0 splash=22.0 radius=16.0 multiplier=5.0 reloadMult=0.667 rangeChange=70.0 fragments=1
+ AMMO surge-alloy damage=20.0 splash=48.0 radius=25.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN tsunami count=16 size=3 rangeTiles=23.75 reload=3.0 shots=2 air=true ground=true ammoPerShot=1
+GUN cyclone count=27 size=3 rangeTiles=28.5 reload=8.0 shots=1 air=true ground=true ammoPerShot=1
+ AMMO Silisteel damage=6.0 splash=48.0 radius=30.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=11.0 splash=48.0 radius=25.0 multiplier=6.0 reloadMult=0.85 rangeChange=32.0 fragments=5
+ AMMO blast-compound damage=8.0 splash=60.0 radius=60.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=8.0 splash=54.0 radius=40.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=6
+ AMMO Discordance Core damage=54.0 splash=92.0 radius=28.0 multiplier=6.0 reloadMult=1.0 rangeChange=32.0 fragments=9
+ AMMO metaglass damage=6.0 splash=48.0 radius=25.0 multiplier=2.0 reloadMult=0.8 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=13.0 splash=84.0 radius=38.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN foreshadow count=15 size=4 rangeTiles=90.0 reload=200.0 shots=1 air=true ground=true ammoPerShot=5
+ AMMO Tayrium Alloy damage=300.0 splash=2400.0 radius=53.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=3
+ AMMO Discordance Core damage=550.0 splash=100.0 radius=50.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO surge-alloy damage=1450.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-丁达尔 count=1 size=6 rangeTiles=62.0 reload=12.0 shots=12 air=true ground=false ammoPerShot=1
+GUN 饱和火力-侵蚀 count=1 size=4 rangeTiles=36.0 reload=330.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-光阴 count=1 size=6 rangeTiles=84.0 reload=82.0 shots=6 air=true ground=true ammoPerShot=1
+GUN 饱和火力-垂发 count=50 size=3 rangeTiles=95.0 reload=150.0 shots=8 air=true ground=true ammoPerShot=8
+ AMMO Oil Canister damage=3.0 splash=10.0 radius=24.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=60
+ AMMO Silisteel damage=15.0 splash=32.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO pyratite damage=14.0 splash=39.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=17.0 splash=55.0 radius=45.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=22.0 splash=28.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=16.0 splash=85.0 radius=48.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+ AMMO surge-alloy damage=18.0 splash=75.0 radius=45.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-天际 count=2 size=3 rangeTiles=62.5 reload=180.0 shots=1 air=true ground=false ammoPerShot=1
+GUN 饱和火力-方天 count=3 size=4 rangeTiles=80.0 reload=26.0 shots=1 air=true ground=false ammoPerShot=2
+ AMMO Fermium damage=340.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=33.0 splash=255.0 radius=64.0 multiplier=4.0 reloadMult=1.7 rangeChange=0.0 fragments=9
+ AMMO surge-alloy damage=50.0 splash=250.0 radius=40.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-死诏 count=1 size=5 rangeTiles=112.5 reload=300.0 shots=1 air=true ground=true ammoPerShot=8
+ AMMO Tayrium Alloy damage=7200.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=2960.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=100.0 fragments=9
+GUN 饱和火力-涡流 count=7 size=3 rangeTiles=31.25 reload=0.6 shots=4 air=true ground=true ammoPerShot=1
+GUN 饱和火力-清宁 count=1 size=4 rangeTiles=59.375 reload=186.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-漫游 count=2 size=3 rangeTiles=45.0 reload=20.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-疆土防御平台 count=1 size=6 rangeTiles=137.5 reload=88.0 shots=3 air=false ground=true ammoPerShot=8
+ AMMO Cluster Explosive damage=1.0 splash=110.0 radius=95.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=20
+ AMMO Discordance Core damage=310.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.33 rangeChange=0.0 fragments=9
+GUN 饱和火力-破晓 count=1 size=8 rangeTiles=218.75 reload=600.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-离子要塞炮 count=1 size=5 rangeTiles=76.125 reload=660.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-竹林 count=1 size=8 rangeTiles=100.0 reload=350.0 shots=160 air=true ground=true ammoPerShot=1
+ AMMO Tayrium Alloy damage=50.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=0.6 rangeChange=0.0 fragments=1
+ AMMO Cluster Explosive damage=30.0 splash=105.0 radius=36.0 multiplier=8.0 reloadMult=1.25 rangeChange=0.0 fragments=5
+ AMMO blast-compound damage=36.0 splash=235.0 radius=50.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=46.0 splash=95.0 radius=75.0 multiplier=2.0 reloadMult=1.0 rangeChange=73.0 fragments=5
+ AMMO surge-alloy damage=195.0 splash=86.0 radius=85.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+REPAIR 饱和火力-纳米修 count=9 rangeTiles=35.0 heal=5.0 reload=60.0
+GUN 饱和火力-菊花 count=4 size=4 rangeTiles=75.0 reload=30.0 shots=4 air=true ground=true ammoPerShot=3
+ AMMO Tayrium Alloy damage=10.0 splash=94.0 radius=69.6 multiplier=4.0 reloadMult=1.0 rangeChange=160.0 fragments=9
+ AMMO Silisteel damage=28.0 splash=44.0 radius=30.0 multiplier=2.0 reloadMult=1.3 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=28.0 splash=45.0 radius=60.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO Nanocore damage=1.0 splash=8.0 radius=35.0 multiplier=15.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+ AMMO Discordance Core damage=30.0 splash=36.0 radius=45.0 multiplier=3.0 reloadMult=1.0 rangeChange=160.0 fragments=2
+ AMMO surge-alloy damage=36.0 splash=76.0 radius=50.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-雷阵雨 count=9 size=3 rangeTiles=80.0 reload=130.0 shots=6 air=false ground=true ammoPerShot=6
+ AMMO Silisteel damage=1.0 splash=36.0 radius=32.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=1.0 splash=40.0 radius=20.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO pyratite damage=1.0 splash=42.0 radius=32.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=1.0 splash=55.0 radius=45.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=1.0 splash=28.0 radius=32.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=1.0 splash=43.0 radius=45.0 multiplier=2.0 reloadMult=2.25 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=1.0 splash=75.0 radius=45.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-龙卷 count=31 size=3 rangeTiles=37.875 reload=160.0 shots=1 air=true ground=true ammoPerShot=8
+ AMMO Tayrium Alloy damage=114.0 splash=80.0 radius=69.6 multiplier=6.0 reloadMult=1.0 rangeChange=101.0 fragments=9
+ AMMO Silisteel damage=48.0 splash=48.0 radius=50.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=40.0 splash=96.0 radius=55.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=65.0 splash=55.0 radius=56.0 multiplier=3.0 reloadMult=1.25 rangeChange=0.0 fragments=9
+ AMMO metaglass damage=54.0 splash=36.0 radius=45.0 multiplier=2.0 reloadMult=0.88 rangeChange=0.0 fragments=9
+ AMMO surge-alloy damage=75.0 splash=65.0 radius=65.0 multiplier=5.0 reloadMult=1.0 rangeChange=60.0 fragments=9
+MAP 灭绝.msav 800x400 default=sharded wave=crux damage=1.0 health=2.0
+WAVE_TEAM_BLOCK_COUNTS {additive-reconstructor=25, air-factory=31, arc=4, battery=1228, blast-drill=108, blast-mixer=4, bridge-conduit=925, bridge-conveyor=1035, conduit=1, container=16, core-foundation=2, core-nucleus=9, cultivator=34, diode=4, distributor=1, door-large=32, exponential-reconstructor=31, ground-factory=4, hyper-processor=6, impact-reactor=16, impulse-pump=36, incinerator=1, inverted-sorter=144, item-source=18, item-void=1, junction=76, kiln=59, liquid-container=194, liquid-junction=132, liquid-router=202, liquid-source=6, liquid-tank=133, logic-processor=20, mass-driver=187, mend-projector=2, message=18, micro-processor=28, multi-press=67, multiplicative-reconstructor=22, naval-factory=3, overdrive-projector=35, overflow-gate=75, payload-conveyor=135, payload-router=12, phase-conduit=38, phase-conveyor=76, phase-weaver=42, plastanium-conveyor=40, power-node=473, power-node-large=267, power-source=19, pulse-conduit=7, rotary-pump=20, sorter=102, spore-press=28, surge-tower=1, switch=7, tetrative-reconstructor=12, titanium-conveyor=132, underflow-gate=935, unloader=431, vault=40, water-extractor=6, world-processor=56, 饱和火力-T6单位重构厂=3, 饱和火力-丁达尔=32, 饱和火力-侵蚀=4, 饱和火力-储备油桶=81, 饱和火力-储备油桶组=45, 饱和火力-储存器=1, 饱和火力-光阴=22, 饱和火力-分子数据库=83, 饱和火力-刺剑=21, 饱和火力-前沿实验室=43, 饱和火力-前狼=34, 饱和火力-励磁抽水机=387, 饱和火力-区块=7, 饱和火力-区块2=21, 饱和火力-垂发=4, 饱和火力-塑钢厂=37, 饱和火力-增压发电站=12, 饱和火力-复合装甲传送带=1259, 饱和火力-复合装甲导管=3312, 饱和火力-大冷冻=480, 饱和火力-大型波能墙=347, 饱和火力-大型硅厂=229, 饱和火力-大炸混=8, 饱和火力-大硫=11, 饱和火力-大莱普合金墙=4268, 饱和火力-大裂位墙=120, 饱和火力-大镄墙=1710, 饱和火力-天罚=7, 饱和火力-孢子冲压机=8, 饱和火力-实验室=32, 饱和火力-实验工厂=13, 饱和火力-屠龙宝刀=1, 饱和火力-归中编织器=21, 饱和火力-怨灵=33, 饱和火力-战研=2, 饱和火力-扩散轨道炮=13, 饱和火力-折跃=206, 饱和火力-方天=6, 饱和火力-无0=49, 饱和火力-无2=32, 饱和火力-无4=72, 饱和火力-无5=54, 饱和火力-无6=6, 饱和火力-最高指挥中心=5, 饱和火力-机械卸载器=31, 饱和火力-死诏=58, 饱和火力-气溶胶扩散塔=3, 饱和火力-水面防御平台=82, 饱和火力-油井=13, 饱和火力-波能墙=535, 饱和火力-泰勒厂=46, 饱和火力-泰勒合金储存块=16, 饱和火力-泰勒堆=3, 饱和火力-消去=4, 饱和火力-涡流=6, 饱和火力-清宁=7, 饱和火力-漫游=13, 饱和火力-潮汐泵=21, 饱和火力-激发器=113, 饱和火力-激活器=70, 饱和火力-灾灵=23, 饱和火力-爆破冲压炉=8, 饱和火力-爆破钻井=126, 饱和火力-特种工厂=47, 饱和火力-疆土防御平台=15, 饱和火力-监测站=3, 饱和火力-短波雷达=10, 饱和火力-破晓=12, 饱和火力-硅钢传送带=2481, 饱和火力-硅钢储液罐=190, 饱和火力-硅钢冶炼炉=4, 饱和火力-硅钢墙=113, 饱和火力-硅钢导管=778, 饱和火力-硝化反应器=6, 饱和火力-磁能传送带=89, 饱和火力-离子要塞炮=20, 饱和火力-离子钻头=11, 饱和火力-穿云=9, 饱和火力-竹林=11, 饱和火力-纳米修=247, 饱和火力-纳米组装机=12, 饱和火力-纳米风暴=28, 饱和火力-细胞培养机=23, 饱和火力-终极合金厂=6, 饱和火力-莱普合金墙=826, 饱和火力-菊花=82, 饱和火力-裂位传送塔=175, 饱和火力-裂位发射台=18, 饱和火力-裂位墙=259, 饱和火力-裂位导管塔=538, 饱和火力-裂位收容块=16, 饱和火力-裂位超速穹顶=35, 饱和火力-裂位转化池=33, 饱和火力-裂位雷达=14, 饱和火力-裂位驱动器=24, 饱和火力-装甲收容块=25, 饱和火力-装甲节点=5, 饱和火力-重油沉淀池=2, 饱和火力-量子提取机=7, 饱和火力-铁幕=293, 饱和火力-铁穹=180, 饱和火力-错位=4, 饱和火力-镄反应堆=102, 饱和火力-镄合成器=24, 饱和火力-镄墙=640, 饱和火力-阔野管理中心=2, 饱和火力-集束捆合器=1, 饱和火力-雷阵雨=6, 饱和火力-飞轮离心机=14, 饱和火力-高压电=8, 饱和火力-高速卸载器=643, 饱和火力-龙卷=4}
+REPAIR mend-projector count=2 rangeTiles=10.625 heal=11.0 reload=250.0
+GUN arc count=4 size=1 rangeTiles=11.25 reload=35.0 shots=1 air=false ground=true ammoPerShot=1
+GUN 饱和火力-丁达尔 count=32 size=6 rangeTiles=62.0 reload=12.0 shots=12 air=true ground=false ammoPerShot=1
+GUN 饱和火力-侵蚀 count=4 size=4 rangeTiles=36.0 reload=330.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-光阴 count=22 size=6 rangeTiles=84.0 reload=82.0 shots=6 air=true ground=true ammoPerShot=1
+GUN 饱和火力-刺剑 count=21 size=3 rangeTiles=20.0 reload=28.0 shots=6 air=true ground=true ammoPerShot=6
+ AMMO Fermium damage=180.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=0.95 rangeChange=40.0 fragments=9
+ AMMO thorium damage=150.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=10.0 fragments=9
+ AMMO titanium damage=125.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.2 rangeChange=0.0 fragments=9
+GUN 饱和火力-前狼 count=34 size=6 rangeTiles=0.0 reload=60.0 shots=3 air=true ground=false ammoPerShot=2
+ AMMO Fermium damage=860.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=188.0 splash=188.0 radius=85.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=15
+ AMMO blast-compound damage=225.0 splash=550.0 radius=135.0 multiplier=2.0 reloadMult=1.25 rangeChange=0.0 fragments=9
+GUN 饱和火力-垂发 count=4 size=3 rangeTiles=95.0 reload=150.0 shots=8 air=true ground=true ammoPerShot=8
+ AMMO Oil Canister damage=3.0 splash=10.0 radius=24.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=60
+ AMMO Silisteel damage=15.0 splash=32.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO pyratite damage=14.0 splash=39.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=17.0 splash=55.0 radius=45.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=22.0 splash=28.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=16.0 splash=85.0 radius=48.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+ AMMO surge-alloy damage=18.0 splash=75.0 radius=45.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-屠龙宝刀 count=1 size=16 rangeTiles=700.0 reload=1800.0 shots=1 air=true ground=false ammoPerShot=1
+GUN 饱和火力-怨灵 count=33 size=8 rangeTiles=65.0 reload=7.5 shots=1 air=true ground=true ammoPerShot=5
+ AMMO Fermium damage=628.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO thorium damage=547.55 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Chromium damage=462.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO Discordance Core damage=126.0 splash=288.0 radius=48.0 multiplier=3.0 reloadMult=0.75 rangeChange=88.0 fragments=2
+GUN 饱和火力-扩散轨道炮 count=13 size=8 rangeTiles=100.0 reload=600.0 shots=1 air=true ground=true ammoPerShot=40
+ AMMO Tayrium Alloy damage=500.0 splash=2200.0 radius=240.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=35
+ AMMO Discordance Core damage=2600.0 splash=800.0 radius=80.0 multiplier=1.0 reloadMult=0.8 rangeChange=-112.0 fragments=46
+GUN 饱和火力-方天 count=6 size=4 rangeTiles=80.0 reload=26.0 shots=1 air=true ground=false ammoPerShot=2
+ AMMO Fermium damage=340.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=33.0 splash=255.0 radius=64.0 multiplier=4.0 reloadMult=1.7 rangeChange=0.0 fragments=9
+ AMMO surge-alloy damage=50.0 splash=250.0 radius=40.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-死诏 count=58 size=5 rangeTiles=112.5 reload=300.0 shots=1 air=true ground=true ammoPerShot=8
+ AMMO Tayrium Alloy damage=7200.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=2960.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=100.0 fragments=9
+GUN 饱和火力-气溶胶扩散塔 count=3 size=6 rangeTiles=26.0 reload=180.0 shots=720 air=true ground=true ammoPerShot=6
+ AMMO Oil Canister damage=0.4 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=296.0 fragments=9
+ AMMO Cryofluid Canister damage=0.4 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=296.0 fragments=9
+ AMMO Slag Canister damage=9.5 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=296.0 fragments=9
+ AMMO Water Canister damage=0.4 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=296.0 fragments=9
+ AMMO Nanofluid Canister damage=1.5 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=296.0 fragments=9
+GUN 饱和火力-水面防御平台 count=82 size=4 rangeTiles=77.5 reload=120.0 shots=1 air=false ground=true ammoPerShot=1
+GUN 饱和火力-涡流 count=6 size=3 rangeTiles=31.25 reload=0.6 shots=4 air=true ground=true ammoPerShot=1
+GUN 饱和火力-清宁 count=7 size=4 rangeTiles=59.375 reload=186.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-漫游 count=13 size=3 rangeTiles=45.0 reload=20.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-灾灵 count=23 size=4 rangeTiles=38.85 reload=18.0 shots=9 air=true ground=true ammoPerShot=2
+ AMMO thorium damage=135.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=44.0 splash=128.0 radius=47.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=91.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.7 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=116.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=0.7 rangeChange=45.2 fragments=2
+ AMMO pyratite damage=118.0 splash=34.0 radius=30.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-疆土防御平台 count=15 size=6 rangeTiles=137.5 reload=88.0 shots=3 air=false ground=true ammoPerShot=8
+ AMMO Cluster Explosive damage=1.0 splash=110.0 radius=95.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=20
+ AMMO Discordance Core damage=310.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.33 rangeChange=0.0 fragments=9
+GUN 饱和火力-短波雷达 count=10 size=4 rangeTiles=100.0 reload=180.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-破晓 count=12 size=8 rangeTiles=218.75 reload=600.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-离子要塞炮 count=20 size=5 rangeTiles=76.125 reload=660.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-穿云 count=9 size=3 rangeTiles=35.0 reload=80.0 shots=1 air=true ground=true ammoPerShot=6
+ AMMO Fermium damage=420.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=120.0 fragments=9
+ AMMO thorium damage=288.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=70.0 fragments=9
+ AMMO Chromium damage=378.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=120.0 fragments=9
+ AMMO titanium damage=202.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.2 rangeChange=0.0 fragments=9
+GUN 饱和火力-竹林 count=11 size=8 rangeTiles=100.0 reload=350.0 shots=160 air=true ground=true ammoPerShot=1
+ AMMO Tayrium Alloy damage=50.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=0.6 rangeChange=0.0 fragments=1
+ AMMO Cluster Explosive damage=30.0 splash=105.0 radius=36.0 multiplier=8.0 reloadMult=1.25 rangeChange=0.0 fragments=5
+ AMMO blast-compound damage=36.0 splash=235.0 radius=50.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=46.0 splash=95.0 radius=75.0 multiplier=2.0 reloadMult=1.0 rangeChange=73.0 fragments=5
+ AMMO surge-alloy damage=195.0 splash=86.0 radius=85.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+REPAIR 饱和火力-纳米修 count=247 rangeTiles=35.0 heal=5.0 reload=60.0
+GUN 饱和火力-纳米风暴 count=28 size=3 rangeTiles=50.0 reload=360.0 shots=1 air=true ground=true ammoPerShot=4
+ AMMO Nanocore damage=18.0 splash=15.0 radius=160.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+GUN 饱和火力-菊花 count=82 size=4 rangeTiles=75.0 reload=30.0 shots=4 air=true ground=true ammoPerShot=3
+ AMMO Tayrium Alloy damage=10.0 splash=94.0 radius=69.6 multiplier=4.0 reloadMult=1.0 rangeChange=160.0 fragments=9
+ AMMO Silisteel damage=28.0 splash=44.0 radius=30.0 multiplier=2.0 reloadMult=1.3 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=28.0 splash=45.0 radius=60.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO Nanocore damage=1.0 splash=8.0 radius=35.0 multiplier=15.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+ AMMO Discordance Core damage=30.0 splash=36.0 radius=45.0 multiplier=3.0 reloadMult=1.0 rangeChange=160.0 fragments=2
+ AMMO surge-alloy damage=36.0 splash=76.0 radius=50.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-裂位雷达 count=14 size=5 rangeTiles=200.0 reload=120.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-错位 count=4 size=5 rangeTiles=43.25 reload=260.0 shots=1 air=true ground=true ammoPerShot=5
+ AMMO phase-fabric damage=1.0 splash=160.0 radius=64.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=240.0 splash=170.0 radius=80.0 multiplier=3.0 reloadMult=1.0 rangeChange=45.0 fragments=1
+GUN 饱和火力-雷阵雨 count=6 size=3 rangeTiles=80.0 reload=130.0 shots=6 air=false ground=true ammoPerShot=6
+ AMMO Silisteel damage=1.0 splash=36.0 radius=32.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=1.0 splash=40.0 radius=20.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO pyratite damage=1.0 splash=42.0 radius=32.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=1.0 splash=55.0 radius=45.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=1.0 splash=28.0 radius=32.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=1.0 splash=43.0 radius=45.0 multiplier=2.0 reloadMult=2.25 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=1.0 splash=75.0 radius=45.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-龙卷 count=4 size=3 rangeTiles=37.875 reload=160.0 shots=1 air=true ground=true ammoPerShot=8
+ AMMO Tayrium Alloy damage=114.0 splash=80.0 radius=69.6 multiplier=6.0 reloadMult=1.0 rangeChange=101.0 fragments=9
+ AMMO Silisteel damage=48.0 splash=48.0 radius=50.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=40.0 splash=96.0 radius=55.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=65.0 splash=55.0 radius=56.0 multiplier=3.0 reloadMult=1.25 rangeChange=0.0 fragments=9
+ AMMO metaglass damage=54.0 splash=36.0 radius=45.0 multiplier=2.0 reloadMult=0.88 rangeChange=0.0 fragments=9
+ AMMO surge-alloy damage=75.0 splash=65.0 radius=65.0 multiplier=5.0 reloadMult=1.0 rangeChange=60.0 fragments=9
+MAP 溢裂要塞.msav 800x800 default=sharded wave=crux damage=1.5 health=1.5
+WAVE_TEAM_BLOCK_COUNTS {additive-reconstructor=7, air-factory=13, battery=163, battery-large=35, blast-drill=1, blast-mixer=4, bridge-conduit=106, bridge-conveyor=356, canvas=1074, container=21, copper-wall=118, core-foundation=3, core-nucleus=30, core-shard=4, cultivator=1, diode=16, door=193, door-large=266, exponential-reconstructor=1, force-projector=42, foreshadow=16, ground-factory=1, hyper-processor=7, impulse-pump=286, inverted-sorter=72, junction=72, large-logic-display=1, launch-pad=2, liquid-container=136, liquid-junction=133, liquid-router=117, liquid-tank=55, logic-display=24, logic-processor=17, mass-driver=52, mechanical-pump=6, memory-bank=19, memory-cell=105, mend-projector=12, message=19, micro-processor=185, multiplicative-reconstructor=2, overdrive-projector=1, overflow-gate=44, payload-conveyor=38, payload-router=5, phase-weaver=48, plastanium-compressor=80, plastanium-wall=206, plastanium-wall-large=94, power-node=356, power-node-large=175, power-source=4, reinforced-surge-wall-large=1, repair-turret=18, rotary-pump=48, router=33, sorter=47, surge-tower=90, surge-wall-large=73, tetrative-reconstructor=1, thorium-reactor=30, thorium-wall-large=63, titanium-conveyor=181, titanium-wall-large=29, underflow-gate=338, unloader=200, vault=140, world-processor=28, 饱和火力-T6单位重构厂=3, 饱和火力-丁达尔=39, 饱和火力-侵蚀=8, 饱和火力-光阴=42, 饱和火力-分子数据库=86, 饱和火力-刺剑=16, 饱和火力-前沿实验室=64, 饱和火力-前狼=40, 饱和火力-励磁抽水机=5, 饱和火力-垂发=16, 饱和火力-复合装甲传送带=999, 饱和火力-复合装甲导管=11347, 饱和火力-大型波能墙=128, 饱和火力-大型硅钢墙=164, 饱和火力-大炸混=12, 饱和火力-大硫=13, 饱和火力-大莱普合金墙=184, 饱和火力-大裂位墙=64, 饱和火力-大镄墙=3625, 饱和火力-天际=1, 饱和火力-实验室=376, 饱和火力-实验工厂=2, 饱和火力-归中编织器=66, 饱和火力-怨灵=11, 饱和火力-战研=8, 饱和火力-手段=96, 饱和火力-扩散轨道炮=35, 饱和火力-方天=47, 饱和火力-最高指挥中心=4, 饱和火力-机械卸载器=1, 饱和火力-死诏=65, 饱和火力-油井=1, 饱和火力-泰勒厂=125, 饱和火力-泰勒合金储存块=100, 饱和火力-泰勒堆=52, 饱和火力-涡流=4, 饱和火力-温压冶炼炉=18, 饱和火力-漫游=41, 饱和火力-潮汐泵=60, 饱和火力-激发器=226, 饱和火力-激活器=84, 饱和火力-灾灵=16, 饱和火力-爆破冲压炉=26, 饱和火力-爆破钻井=13, 饱和火力-特种工厂=6, 饱和火力-疆土防御平台=10, 饱和火力-短波雷达=20, 饱和火力-破晓=8, 饱和火力-硅钢传送带=2578, 饱和火力-硅钢储液罐=348, 饱和火力-硅钢冶炼炉=226, 饱和火力-硅钢墙=224, 饱和火力-硅钢导管=1136, 饱和火力-磁能传送带=90, 饱和火力-离子要塞炮=15, 饱和火力-竹林=52, 饱和火力-纳米修=157, 饱和火力-纳米组装机=60, 饱和火力-纳米风暴=46, 饱和火力-细胞培养机=1, 饱和火力-终极合金厂=16, 饱和火力-莱普合金厂=40, 饱和火力-莱普合金墙=156, 饱和火力-菊花=162, 饱和火力-裂位传送塔=83, 饱和火力-裂位发射台=13, 饱和火力-裂位墙=239, 饱和火力-裂位导管塔=188, 饱和火力-裂位超速穹顶=29, 饱和火力-裂位转化池=438, 饱和火力-裂位雷达=3, 饱和火力-裂位驱动器=39, 饱和火力-量子提取机=124, 饱和火力-铁穹=59, 饱和火力-错位=60, 饱和火力-镄反应堆=144, 饱和火力-镄墙=5993, 饱和火力-阔野管理中心=1, 饱和火力-集束捆合器=68, 饱和火力-雷阵雨=85, 饱和火力-飞轮离心机=1, 饱和火力-高压电=56, 饱和火力-高速卸载器=304}
+REPAIR mend-projector count=12 rangeTiles=10.625 heal=11.0 reload=250.0
+GUN foreshadow count=16 size=4 rangeTiles=90.0 reload=200.0 shots=1 air=true ground=true ammoPerShot=5
+ AMMO Tayrium Alloy damage=300.0 splash=2400.0 radius=53.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=3
+ AMMO Discordance Core damage=550.0 splash=100.0 radius=50.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO surge-alloy damage=1450.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-丁达尔 count=39 size=6 rangeTiles=62.0 reload=12.0 shots=12 air=true ground=false ammoPerShot=1
+GUN 饱和火力-侵蚀 count=8 size=4 rangeTiles=36.0 reload=330.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-光阴 count=42 size=6 rangeTiles=84.0 reload=82.0 shots=6 air=true ground=true ammoPerShot=1
+GUN 饱和火力-刺剑 count=16 size=3 rangeTiles=20.0 reload=28.0 shots=6 air=true ground=true ammoPerShot=6
+ AMMO Fermium damage=180.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=0.95 rangeChange=40.0 fragments=9
+ AMMO thorium damage=150.0 splash=0.0 radius=-1.0 multiplier=4.0 reloadMult=1.0 rangeChange=10.0 fragments=9
+ AMMO titanium damage=125.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.2 rangeChange=0.0 fragments=9
+GUN 饱和火力-前狼 count=40 size=6 rangeTiles=0.0 reload=60.0 shots=3 air=true ground=false ammoPerShot=2
+ AMMO Fermium damage=860.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=188.0 splash=188.0 radius=85.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=15
+ AMMO blast-compound damage=225.0 splash=550.0 radius=135.0 multiplier=2.0 reloadMult=1.25 rangeChange=0.0 fragments=9
+GUN 饱和火力-垂发 count=16 size=3 rangeTiles=95.0 reload=150.0 shots=8 air=true ground=true ammoPerShot=8
+ AMMO Oil Canister damage=3.0 splash=10.0 radius=24.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=60
+ AMMO Silisteel damage=15.0 splash=32.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO pyratite damage=14.0 splash=39.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=17.0 splash=55.0 radius=45.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=22.0 splash=28.0 radius=32.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=16.0 splash=85.0 radius=48.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+ AMMO surge-alloy damage=18.0 splash=75.0 radius=45.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-天际 count=1 size=3 rangeTiles=62.5 reload=180.0 shots=1 air=true ground=false ammoPerShot=1
+GUN 饱和火力-怨灵 count=11 size=8 rangeTiles=65.0 reload=7.5 shots=1 air=true ground=true ammoPerShot=5
+ AMMO Fermium damage=628.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO thorium damage=547.55 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Chromium damage=462.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO Discordance Core damage=126.0 splash=288.0 radius=48.0 multiplier=3.0 reloadMult=0.75 rangeChange=88.0 fragments=2
+GUN 饱和火力-手段 count=96 size=2 rangeTiles=20.0 reload=280.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-扩散轨道炮 count=35 size=8 rangeTiles=100.0 reload=600.0 shots=1 air=true ground=true ammoPerShot=40
+ AMMO Tayrium Alloy damage=500.0 splash=2200.0 radius=240.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=35
+ AMMO Discordance Core damage=2600.0 splash=800.0 radius=80.0 multiplier=1.0 reloadMult=0.8 rangeChange=-112.0 fragments=46
+GUN 饱和火力-方天 count=47 size=4 rangeTiles=80.0 reload=26.0 shots=1 air=true ground=false ammoPerShot=2
+ AMMO Fermium damage=340.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=33.0 splash=255.0 radius=64.0 multiplier=4.0 reloadMult=1.7 rangeChange=0.0 fragments=9
+ AMMO surge-alloy damage=50.0 splash=250.0 radius=40.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-死诏 count=65 size=5 rangeTiles=112.5 reload=300.0 shots=1 air=true ground=true ammoPerShot=8
+ AMMO Tayrium Alloy damage=7200.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=2960.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=100.0 fragments=9
+GUN 饱和火力-涡流 count=4 size=3 rangeTiles=31.25 reload=0.6 shots=4 air=true ground=true ammoPerShot=1
+GUN 饱和火力-漫游 count=41 size=3 rangeTiles=45.0 reload=20.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-灾灵 count=16 size=4 rangeTiles=38.85 reload=18.0 shots=9 air=true ground=true ammoPerShot=2
+ AMMO thorium damage=135.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=44.0 splash=128.0 radius=47.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=91.0 splash=0.0 radius=-1.0 multiplier=3.0 reloadMult=1.7 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=116.0 splash=0.0 radius=-1.0 multiplier=6.0 reloadMult=0.7 rangeChange=45.2 fragments=2
+ AMMO pyratite damage=118.0 splash=34.0 radius=30.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-疆土防御平台 count=10 size=6 rangeTiles=137.5 reload=88.0 shots=3 air=false ground=true ammoPerShot=8
+ AMMO Cluster Explosive damage=1.0 splash=110.0 radius=95.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=20
+ AMMO Discordance Core damage=310.0 splash=0.0 radius=-1.0 multiplier=1.0 reloadMult=1.33 rangeChange=0.0 fragments=9
+GUN 饱和火力-短波雷达 count=20 size=4 rangeTiles=100.0 reload=180.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-破晓 count=8 size=8 rangeTiles=218.75 reload=600.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-离子要塞炮 count=15 size=5 rangeTiles=76.125 reload=660.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-竹林 count=52 size=8 rangeTiles=100.0 reload=350.0 shots=160 air=true ground=true ammoPerShot=1
+ AMMO Tayrium Alloy damage=50.0 splash=0.0 radius=-1.0 multiplier=2.0 reloadMult=0.6 rangeChange=0.0 fragments=1
+ AMMO Cluster Explosive damage=30.0 splash=105.0 radius=36.0 multiplier=8.0 reloadMult=1.25 rangeChange=0.0 fragments=5
+ AMMO blast-compound damage=36.0 splash=235.0 radius=50.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=46.0 splash=95.0 radius=75.0 multiplier=2.0 reloadMult=1.0 rangeChange=73.0 fragments=5
+ AMMO surge-alloy damage=195.0 splash=86.0 radius=85.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+REPAIR 饱和火力-纳米修 count=157 rangeTiles=35.0 heal=5.0 reload=60.0
+GUN 饱和火力-纳米风暴 count=46 size=3 rangeTiles=50.0 reload=360.0 shots=1 air=true ground=true ammoPerShot=4
+ AMMO Nanocore damage=18.0 splash=15.0 radius=160.0 multiplier=1.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+GUN 饱和火力-菊花 count=162 size=4 rangeTiles=75.0 reload=30.0 shots=4 air=true ground=true ammoPerShot=3
+ AMMO Tayrium Alloy damage=10.0 splash=94.0 radius=69.6 multiplier=4.0 reloadMult=1.0 rangeChange=160.0 fragments=9
+ AMMO Silisteel damage=28.0 splash=44.0 radius=30.0 multiplier=2.0 reloadMult=1.3 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=28.0 splash=45.0 radius=60.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO Nanocore damage=1.0 splash=8.0 radius=35.0 multiplier=15.0 reloadMult=1.0 rangeChange=0.0 fragments=1
+ AMMO Discordance Core damage=30.0 splash=36.0 radius=45.0 multiplier=3.0 reloadMult=1.0 rangeChange=160.0 fragments=2
+ AMMO surge-alloy damage=36.0 splash=76.0 radius=50.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+GUN 饱和火力-裂位雷达 count=3 size=5 rangeTiles=200.0 reload=120.0 shots=1 air=true ground=true ammoPerShot=1
+GUN 饱和火力-错位 count=60 size=5 rangeTiles=43.25 reload=260.0 shots=1 air=true ground=true ammoPerShot=5
+ AMMO phase-fabric damage=1.0 splash=160.0 radius=64.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Discordance Core damage=240.0 splash=170.0 radius=80.0 multiplier=3.0 reloadMult=1.0 rangeChange=45.0 fragments=1
+GUN 饱和火力-雷阵雨 count=85 size=3 rangeTiles=80.0 reload=130.0 shots=6 air=false ground=true ammoPerShot=6
+ AMMO Silisteel damage=1.0 splash=36.0 radius=32.0 multiplier=3.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO Cluster Explosive damage=1.0 splash=40.0 radius=20.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=5
+ AMMO pyratite damage=1.0 splash=42.0 radius=32.0 multiplier=4.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO blast-compound damage=1.0 splash=55.0 radius=45.0 multiplier=5.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO graphite damage=1.0 splash=28.0 radius=32.0 multiplier=2.0 reloadMult=1.0 rangeChange=0.0 fragments=9
+ AMMO plastanium damage=1.0 splash=43.0 radius=45.0 multiplier=2.0 reloadMult=2.25 rangeChange=0.0 fragments=4
+ AMMO surge-alloy damage=1.0 splash=75.0 radius=45.0 multiplier=6.0 reloadMult=1.0 rangeChange=0.0 fragments=9

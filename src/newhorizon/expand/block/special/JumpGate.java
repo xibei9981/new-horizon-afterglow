@@ -469,7 +469,7 @@ public class JumpGate extends Block {
             super.created();
             buildQueue.removeAll(e -> {
                 UnitRecipe set = getRecipe(e[0]);
-                return set == null || hideRecipe(set.unitType);
+                return set == null || hiddenRecipe(set.unitType);
             });
         }
 
@@ -478,7 +478,27 @@ public class JumpGate extends Block {
             return IntSeq.with(0, selectID, spawnNum);
         }
 
+        /** Authored enemy yards use destructible local magazines and the normal recipe cost. */
+        public boolean physicalCampaignYard() {
+            return team == state.rules.waveTeam && "true".equals(state.rules.tags.get("afterglow.physical-logistics"));
+        }
+
+        private boolean hiddenRecipe(UnitType type) {
+            return physicalCampaignYard() ? state.rules.bannedUnits.contains(type) : hideRecipe(type);
+        }
+
+        @Override
+        public int getMaximumAccepted(Item item) {
+            if (!physicalCampaignYard()) return super.getMaximumAccepted(item);
+            int capacity = 0;
+            for (UnitRecipe recipe : recipeList) for (ItemStack stack : recipe.baseRequirements()) {
+                if (stack.item == item) capacity = Math.max(capacity, (int)Math.ceil(stack.amount * state.rules.unitCost(team)));
+            }
+            return capacity;
+        }
+
         public boolean usesCoreItems() {
+            if (physicalCampaignYard()) return false;
             return NHVars.worldData.worldData.jumpGateUsesCoreItems;
         }
 
@@ -530,7 +550,8 @@ public class JumpGate extends Block {
         }
 
         public boolean hasConsume(UnitRecipe set, int num) {
-            if (set == null || cheating() || (!state.rules.pvp && team == state.rules.waveTeam)) return true;
+            if (set == null) return false;
+            if (!physicalCampaignYard() && (cheating() || (!state.rules.pvp && team == state.rules.waveTeam))) return true;
             float mult = num * state.rules.unitCost(team);
             if (!realItems().has(ItemStack.mult(set.baseRequirements(), mult))) return false;
             for (PayloadStack stack : set.recipe.inputPayload) {
@@ -540,7 +561,7 @@ public class JumpGate extends Block {
         }
 
         public void consumeItems() {
-            if (cheating() || getRecipe() == null) return;
+            if (getRecipe() == null || (!physicalCampaignYard() && cheating())) return;
             float mult = buildingSpawnNum * state.rules.unitCost(team);
             realItems().remove(ItemStack.mult(getRecipe().baseRequirements(), mult));
             for (PayloadStack stack : getRecipe().recipe.inputPayload) {
@@ -554,7 +575,7 @@ public class JumpGate extends Block {
 
         public void enqueueBuild(int id, int num, boolean loop) {
             UnitRecipe set = getRecipe(id);
-            if (set == null || num < 1 || hideRecipe(set.unitType)) return;
+            if (set == null || num < 1 || hiddenRecipe(set.unitType)) return;
             buildQueue.add(new int[]{id, num, loop ? 1 : 0});
             tryStartQueue();
         }

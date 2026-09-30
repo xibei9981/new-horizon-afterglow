@@ -8,12 +8,12 @@ def java_tool(name):
 subprocess.run([java_tool('javac'),'-encoding','UTF-8','--release','17','-sourcepath','campaign-tools/src','-cp',os.pathsep.join(['campaign-tools/lib/server-v160.4.jar','campaign-tools/classes']),'-d','campaign-tools/test-classes','campaign-tools/src/CampaignMaps.java','campaign-tools/src/FrontierMaps.java','campaign-tools/src/SignatureMaps.java','campaign-tools/src/CampaignHarness.java'],check=True)
 Path('campaign-tools/launcher').mkdir(exist_ok=True)
 for p in Path('campaign-tools/test-classes').glob('CampaignHarness*.class'): shutil.copy2(p,'campaign-tools/launcher')
-shutil.copy2('dist/NewHorizon-Afterglow-0.5.0-Windows160.4.jar','campaign-tools/run/mods/afterglow.jar')
+shutil.copy2('dist/NewHorizon-Afterglow-0.6.0-Windows160.4.jar','campaign-tools/run/mods/afterglow.jar')
 with zipfile.ZipFile('campaign-tools/run/mods/afterglow.jar','a') as z:
  # Content registration needs map headers before generation. Bootstrap only this disposable harness JAR.
  for name in ['redgate','saltworks','triune']:
   target='maps/afterglow-'+name+'.msav'
   if target not in z.namelist():z.write('assets/maps/afterglow-supply.msav',target)
- for pattern in ['CampaignMaps*.class','FrontierMaps*.class','SignatureMaps*.class']:
+ for pattern in ['CampaignMaps*.class','FrontierMaps*.class','SignatureMaps*.class','BaseWorkshop*.class']:
   for p in Path('campaign-tools/test-classes').glob(pattern):z.write(p,p.name)
 subprocess.run([java_tool('java'),'-Dcampaign.generate=true','-Dcampaign.frontier=true','-Dcampaign.signature=true','-cp',os.pathsep.join(['campaign-tools/launcher','campaign-tools/lib/server-v160.4.jar']),'CampaignHarness'],check=True)

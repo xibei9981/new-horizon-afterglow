@@ -83,7 +83,7 @@ public class CampaignMaps {
         r.attackMode=c>0;r.winWave=c==0?25:0;
         r.waveSpacing=(c==0?65:95)*60f;r.initialWaveSpacing=240*60f;
         r.unitCap=120+c*40;r.coreDestroyClear=true;r.enemyCoreBuildRadius=120;
-        r.canGameOver=true;r.env=Env.terrestrial|NHContent.radioactive;
+        r.canGameOver=true;r.env=Env.terrestrial|Env.groundWater|NHContent.radioactive;
         r.planet=NHPlanets.midantha;
         r.placeRangeCheck=false;r.buildSpeedMultiplier=1.25f;
         r.teams.get(enemyTeam).rtsAi=false;
@@ -175,43 +175,13 @@ public class CampaignMaps {
         world.tile(x,y).setBlock(b,team,0);return world.tile(x,y).build;
     }
     static void playerBase(){
-        Building core=place(SpecialBlock.coreConflux,sx,sy,playerTeam);core.items.add(state.rules.loadout);
-        place(ProductionBlock.interlockingDrill,sx-26,sy,playerTeam);
-        for(int x=sx-24;x<sx-1;x++)world.tile(x,sy).setBlock(Blocks.titaniumConveyor,playerTeam,0);
-        place(UnitBlock.jumpGateBasic,sx+10,sy+9,playerTeam);
-        for(int y=sy-14;y<=sy-9;y+=5)for(int x=sx-12;x<=sx+3;x+=5)place(Blocks.largeSolarPanel,x,y,playerTeam);
-        place(Blocks.batteryLarge,sx-7,sy+12,playerTeam);
-        place(Blocks.powerNodeLarge,sx-3,sy-4,playerTeam);
-        place(Blocks.powerNodeLarge,sx,sy+11,playerTeam);
-        for(int x:new int[]{sx-18,sx+18}){
-            Building gun=place(TurretBlock.pulse,x,sy+21,playerTeam);ammo(gun,Items.titanium,150);
-            place(TurretBlock.thermo,x,sy+15,playerTeam);
-            place(Blocks.scatter,x,sy+9,playerTeam);ammo(world.tile(x,sy+9).build,Items.lead,50);
-            for(int dx=-5;dx<=5;dx++)place(Blocks.titaniumWall,x+dx,sy+25,playerTeam);
-        }
-        place(Blocks.powerNodeLarge,sx-8,sy+15,playerTeam);
-        place(Blocks.powerNodeLarge,sx+8,sy+15,playerTeam);
-        message(sx+6,sy-6,playerTeam,briefs[chapter]+"\n开局已配备钛矿输送、太阳能、脉冲炮和基础跃迁门。炮塔弹药需要持续补充。\n本章固定增援取代随机空袭。保存并退出后可继续。\n资源扩张区：基地西侧煤矿，东北铜矿，北方钍矿与 Zeta 晶体矿。\n初始物资有限，优先扩大供电、采矿与弹药生产。");
+        BaseWorkshop.player(sx,sy,chapter,false);
     }
     static void ammo(Building b,Item item,int n){
         if(b instanceof ItemTurret.ItemTurretBuild turret)for(int i=0;i<n;i++)turret.handleItem(null,item);
     }
     static void enemyBase(int x,int y,int index){
-        place(Blocks.coreFoundation,x,y,enemyTeam);
-        Building source=place(Blocks.powerSource,x+8,y+5,enemyTeam);
-        place(Blocks.powerNodeLarge,x,y-5,enemyTeam);
-        for(int dx:new int[]{-14,14}){
-            Building gun=place(TurretBlock.pulse,x+dx,y-13,enemyTeam);ammo(gun,Items.titanium,100);
-            place(TurretBlock.thermo,x+dx,y-7,enemyTeam);
-            Building aa=place(Blocks.scatter,x+dx,y+9,enemyTeam);ammo(aa,Items.lead,100);
-        }
-        if(chapter==2){Building artillery=place(Blocks.ripple,x,y+12,enemyTeam);ammo(artillery,Items.graphite,100);}
-        for(int dx=-22;dx<=22;dx++){
-            if(Math.abs(dx)>4)place(chapter==2?Blocks.thoriumWall:Blocks.titaniumWall,x+dx,y-21,enemyTeam);
-            place(Blocks.titaniumWall,x+dx,y+23,enemyTeam);
-        }
-        for(int dy=-20;dy<23;dy++)for(int dx:new int[]{-22,22})if(Math.abs(dy)>4)place(Blocks.titaniumWall,x+dx,y+dy,enemyTeam);
-        message(x-7,y+5,enemyTeam,"寂光防御网 / 节点 "+(index+1));
+        BaseWorkshop.enemy(x,y,chapter,index);
     }
     static void ruins(int x,int y){
         clearCircle(x,y,10);

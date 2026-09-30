@@ -42,6 +42,7 @@ public class CampaignHarness implements ApplicationListener {
             if(System.getProperty("campaign.signature") != null) mods.getMod("new-horizon").loader.loadClass("SignatureMaps").getMethod("generateAll").invoke(null);
             if(System.getProperty("campaign.signatureVerify") != null) mods.getMod("new-horizon").loader.loadClass("SignatureChecks").getMethod("run").invoke(null);
             if(System.getProperty("campaign.resources") != null) mods.getMod("new-horizon").loader.loadClass("ResourceChecks").getMethod("run").invoke(null);
+            if(System.getProperty("campaign.workshop") != null) mods.getMod("new-horizon").loader.loadClass("WorkshopChecks").getMethod("run").invoke(null);
             System.exit(0);
         } catch(Throwable t) {t.printStackTrace(); System.exit(1);}
     }

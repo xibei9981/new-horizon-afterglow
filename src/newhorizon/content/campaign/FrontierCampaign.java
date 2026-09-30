@@ -169,6 +169,7 @@ public final class FrontierCampaign {
         }
     }
     public static void refillDepots(){
+        if("true".equals(state.rules.tags.get("afterglow.physical-logistics")))return;
         int count=state.rules.tags.getInt("frontier.depots",0);
         for(int n=0;n<count;n++)if(depotAlive(n)){
             var depot=world.build(state.rules.tags.getInt("frontier.depot."+n,-1));

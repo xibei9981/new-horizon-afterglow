@@ -457,7 +457,7 @@ public class NHPostProcess {
                 }
 
                 //do not spawn bosses
-                curTier = Math.min(curTier, 6);
+                curTier = Math.min(curTier, scaling.length - 1);
 
                 //small chance to switch species
                 if (rand.chance(0.3)) {

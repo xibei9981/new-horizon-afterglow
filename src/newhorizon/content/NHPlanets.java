@@ -250,6 +250,8 @@ public class NHPlanets {
             super.applyRules(rules, customGame);
             // Planet.applyRules clears map attributes after the rule setter. Restore the authored
             // chapter irradiance here so night + quantum weather cannot silently zero starter grids.
+            if("true".equals(rules.tags.get("afterglow.physical-logistics")))
+                rules.env |= Env.groundWater;
             if("true".equals(rules.tags.get("frontier.stable-solar")))
                 rules.attributes.set(mindustry.world.meta.Attribute.light, 1f);
         }

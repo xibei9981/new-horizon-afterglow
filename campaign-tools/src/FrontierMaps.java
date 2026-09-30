@@ -61,7 +61,7 @@ public class FrontierMaps extends CampaignMaps {
         r.waveSpacing=m.spacing*60f;r.initialWaveSpacing=m.grace*60f;
         r.unitCap=mission==7||mission==9?300:240;
         r.coreDestroyClear=true;r.enemyCoreBuildRadius=96;r.canGameOver=true;
-        r.env=Env.terrestrial|NHContent.radioactive;r.planet=NHPlanets.midantha;
+        r.env=Env.terrestrial|Env.groundWater|NHContent.radioactive;r.planet=NHPlanets.midantha;
         r.placeRangeCheck=false;r.buildSpeedMultiplier=1.5f;
         r.teams.get(enemyTeam).rtsAi=false;r.teams.get(enemyTeam).buildAi=false;
         r.fog=false;r.staticFog=false;
@@ -141,13 +141,22 @@ public class FrontierMaps extends CampaignMaps {
                 }
             }
             case 9 -> {
-                wave(r,origin,1,30,1,10,2,30,1);wave(r,sharp,8,30,4,7,5,12,1);
-                for(int n:new int[]{0,2}){wave(r,origin,31,60,1,18,3,34,n);wave(r,thy,33,60,3,5,5,12,n);}
+                // Three military phases: combined-arms screening, heavy penetration, final siege.
                 for(int n=0;n<3;n++){
-                    wave(r,origin,61,100,1,24,3,40,n);wave(r,ali,63,100,3,5,6,12,n);
-                    wave(r,branch,41+n,99,6,6,7,16,n);wave(r,tar,80,100,10,1,10,3,n);
+                    wave(r,tar,1+n,30,3,8,4,15,n);wave(r,NHUnitTypes.striker,1+n,30,3,4,8,6,n);wave(r,warper,8+n,30,6,3,8,6,n);
+                    wave(r,tar,31+n,60,3,10,8,16,n);wave(r,NHUnitTypes.striker,31+n,60,6,4,8,8,n);
+                    wave(r,NHUnitTypes.longinus,43+n,99,8,2,12,5,n);
+                    wave(r,tar,61+n,99,3,14,8,20,n);wave(r,NHUnitTypes.hurricane,67+n,99,12,1,20,2,n);
+                    wave(r,GroundUnitTypes.annihilation,80+n,99,12,1,20,2,n);
                 }
-                wave(r,GroundUnitTypes.annihilation,100,100,1,1,1,1,1);
+                wave(r,NHUnitTypes.longinus,1,30,5,2,20,3,1);wave(r,NHUnitTypes.hurricane,10,30,10,2,20,3,2);
+                for(int n=0;n<3;n++){
+                    wave(r,tar,100,100,1,16,1,16,n);wave(r,NHUnitTypes.striker,100,100,1,12,1,12,n);wave(r,NHUnitTypes.longinus,100,100,1,4,1,4,n);
+                }
+                wave(r,NHUnitTypes.guardian,90,90,1,1,1,1,1);
+                wave(r,GroundUnitTypes.annihilation,100,100,1,4,1,4,1);
+                wave(r,NHUnitTypes.hurricane,100,100,1,3,1,3,0);
+                wave(r,NHUnitTypes.pester,100,100,1,1,1,1,2);
             }
         }
     }
@@ -160,12 +169,18 @@ public class FrontierMaps extends CampaignMaps {
             for(var group:original){
                 int count=group.getSpawned(wave-1);if(count==0)continue;
                 UnitType type=group.type;
-                if(rest){count=Math.max(1,count/3);type=mission==4?NHUnitTypes.sharp:GroundUnitTypes.origin;}
+                if(mission>=5&&mission<9){
+                    if(type==GroundUnitTypes.origin)type=NHUnitTypes.aliotiat;
+                    else if(type==GroundUnitTypes.thynomo)type=NHUnitTypes.tarlidor;
+                    else if(type==NHUnitTypes.branch)type=NHUnitTypes.striker;
+                }
+                if(rest){count=Math.max(1,count/3);if(mission<5)type=mission==4?NHUnitTypes.sharp:GroundUnitTypes.origin;}
                 SpawnGroup g=new SpawnGroup(type);g.begin=g.end=wave-1;g.unitAmount=g.max=count;g.spawn=group.spawn;g.unitScaling=Float.MAX_VALUE;r.spawns.add(g);
             }
             if(assault||siege){
                 int lane=mission==2?(wave<25?0:wave<49?1:2):0;
                 UnitType type=assault?((mission==0||mission==2)?GroundUnitTypes.origin:NHUnitTypes.sharp):mission==4?(wave<30?NHUnitTypes.branch:NHUnitTypes.warper):(wave<30?GroundUnitTypes.thynomo:NHUnitTypes.tarlidor);
+                if(mission>=5)type=assault?NHUnitTypes.striker:(wave<60?NHUnitTypes.longinus:NHUnitTypes.hurricane);
                 wave(r,type,wave,wave,1,assault?((mission==0||mission==2)?18+wave/4:8+wave/10):1+wave/40,Float.MAX_VALUE,30,lane);
             }
         }
@@ -414,42 +429,7 @@ public class FrontierMaps extends CampaignMaps {
         }
     }
     static void base(int x,int y,boolean secondary){
-        var core=place(SpecialBlock.coreConflux,x,y,playerTeam);if(!secondary)core.items.add(state.rules.loadout);
-        int mine=mineOffset(),step=mine<0?1:-1;
-        place(ProductionBlock.interlockingDrill,x+mine,y,playerTeam);
-        for(int dx=mine+step*2;Math.abs(dx)>1;dx+=step)world.tile(x+dx,y).setBlock(Blocks.titaniumConveyor,playerTeam,step==1?0:2);
-        place(mission==7||mission==9?UnitBlock.jumpGateStandard:UnitBlock.jumpGatePrimary,x+8,y+13,playerTeam);
-        if(mission%2==0){
-            for(int dx=-12;dx<=8;dx+=5)for(int dy:new int[]{-19,-24})place(Blocks.largeSolarPanel,x+dx,y+dy,playerTeam);
-        }else{
-            for(int dx:new int[]{-12,12})for(int dy=-13;dy>=-33;dy-=5)place(Blocks.largeSolarPanel,x+dx,y+dy,playerTeam);
-        }
-        for(int dx:new int[]{-8,2})place(Blocks.batteryLarge,x+dx,y+13,playerTeam);
-        for(int[]off:new int[][]{{0,-6},{0,-20},{0,-33},{0,8},{0,23},{-14,10},{14,10},{-14,26},{14,26},{-28,26},{28,26}})
-            place(Blocks.powerNodeLarge,x+off[0],y+off[1],playerTeam);
-        int side=mine<0?-1:1;
-        for(int[]off:new int[][]{{14*side,-6},{26*side,-7},{38*side,-7}})place(Blocks.powerNodeLarge,x+off[0],y+off[1],playerTeam);
-        int[][][] guns={{{-25,30},{25,30}},{{-22,18},{24,31}},{{-30,32},{30,32}},{{-26,24},{12,34}},
-            {{-22,30},{22,30}},{{-25,31},{25,18}},{{-28,30},{28,30}},{{-30,34},{30,22}},{{-22,32},{25,32}},{{-30,31},{30,31}}};
-        for(int n=0;n<2;n++){
-            int dx=guns[mission][n][0],dy=guns[mission][n][1];
-            Block gun=(mission==7||mission==9)&&n==1?Blocks.ripple:TurretBlock.pulse;
-            ammo(place(gun,x+dx,y+dy,playerTeam),gun==Blocks.ripple?Items.graphite:Items.titanium,150);
-            place(TurretBlock.thermo,x+dx,y+dy-7,playerTeam);
-            ammo(place(Blocks.scatter,x+dx,y+dy-14,playerTeam),Items.lead,100);
-            for(int wx=-5;wx<=5;wx++)place(Blocks.titaniumWall,x+dx+wx,y+dy+6,playerTeam);
-        }
-        if(mission==1||mission==4){
-            for(int dx:new int[]{-27,27})ammo(place(Blocks.scatter,x+dx,y-12,playerTeam),Items.lead,120);
-        }
-        if(mission==4){
-            for(int dx:new int[]{-25,25})place(Blocks.combustionGenerator,x+dx,y-23,playerTeam).items.add(Items.coal,10);
-            for(int dx:new int[]{-25,25})place(Blocks.powerNodeLarge,x+dx,y-17,playerTeam);
-            for(int dx:new int[]{-14,14})if(dx!=14*side)place(Blocks.powerNodeLarge,x+dx,y-6,playerTeam);
-        }
-        if(mission==7||mission==9)place(Blocks.mendProjector,x-9,y+27,playerTeam);
-        message(x+7,y-7,playerTeam,m.brief+"\n高级矿区在前方遗迹附近。补给仓弹药有限，摧毁太阳能阵列可切断能量炮供电。\n可选目标：在遗迹中心建造并供电一个修理投影器，投入 300 硅、200 钛、150 石墨，持续修复 30 秒。收益不会重复领取。");
-        for(int xx=x-4;xx<=x+4;xx++)for(int yy=y-5;yy<=y+5;yy++)world.tile(xx,yy).setFloor(EnvironmentBlock.platingFloor1.asFloor());
+        BaseWorkshop.player(x,y,mission+3,secondary);
     }
     static int fx,fy,turn;
     static int rx(int dx,int dy){return turn==0?dx:turn==1?-dy:turn==2?-dx:dy;}
@@ -463,37 +443,7 @@ public class FrontierMaps extends CampaignMaps {
         return place(b,x,y,enemyTeam);
     }
     static void fortress(int x,int y,int index){
-        fx=x;fy=y;turn=index%4;
-        int type=(mission+index)%4;
-        clearCircle(x,y,53);
-        place(Blocks.coreFoundation,x,y,enemyTeam);
-        int[][] depotAt={{-14,12},{16,16},{-14,12},{20,18}};
-        var depot=fort(Blocks.vault,depotAt[type][0],depotAt[type][1]);
-        depot.items.add(Items.titanium,1000);depot.items.add(Items.graphite,1000);depot.items.add(Items.lead,1000);
-        state.rules.tags.put("frontier.depot."+index,String.valueOf(depot.pos()));
-        for(int dx:new int[]{-12,-7,-2,3,8,13})for(int dy:new int[]{28,33})fort(Blocks.largeSolarPanel,dx,dy);
-        for(int[]p:new int[][]{{0,-9},{0,9},{0,22},{0,30},{-12,0},{12,0},{-12,-14},{12,-14}})fort(Blocks.powerNodeLarge,p[0],p[1]);
-        int[][][] guns={{{-23,-16},{18,-15},{0,17}},{{15,-18},{-15,18},{0,-24}},{{-23,-23},{23,-23},{0,17}},{{-20,-20},{20,-8},{-20,12}}};
-        for(int n=0;n<3;n++){
-            Block b=n==2?(type==1?Blocks.scatter:Blocks.ripple):TurretBlock.pulse;
-            var gun=fort(b,guns[type][n][0],guns[type][n][1]);ammo(gun,b==Blocks.ripple?Items.graphite:b==Blocks.scatter?Items.lead:Items.titanium,100);
-            if(n==0)state.rules.tags.put("frontier.test-gun."+index,String.valueOf(gun.pos()));
-        }
-        for(int dx:new int[]{-24,24}){
-            fort(TurretBlock.thermo,dx,3);
-            ammo(fort(Blocks.scatter,dx,-6),Items.lead,120);
-        }
-        int half=type==1?30:type==3?38:34;
-        for(int dx=-half;dx<=half;dx++)if(Math.abs(dx)>7){
-            fort(Blocks.thoriumWall,dx,type==0?-36+Math.abs(dx)/6:-36);
-            if(type!=3||dx<8)fort(Blocks.titaniumWall,dx,39);
-        }
-        for(int dy=type==0?-35+half/6:-35;dy<39;dy++)if(Math.abs(dy)>7){
-            fort(Blocks.titaniumWall,-half,dy);
-            if(type!=3||dy>0)fort(Blocks.titaniumWall,half,dy);
-        }
-        if(type==2)for(int dx=-25;dx<=25;dx++)if(Math.abs(dx)>7)fort(Blocks.titaniumWall,dx,-12);
-        message(x+rx(7,5),y+ry(7,5),enemyTeam,"补给仓 "+(index+1)+"：有限钛、石墨、铅库存。仓库被毁则停止供弹；后方太阳能阵列可被破坏，能量炮依赖这套电网。");
+        BaseWorkshop.enemy(x,y,mission+3,index);
     }
     static void repairSite(){
         int[] at=FrontierSites.positions[mission];int x=at[0],y=at[1];

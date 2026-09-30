@@ -1,4 +1,4 @@
-PASS new-horizon-afterglow-supply 256x288 | connected paths, 3 powered consumers, events, saved game, victory
-PASS new-horizon-afterglow-ridges 320x320 | connected paths, 3 powered consumers, events, saved game, victory
-PASS new-horizon-afterglow-citadel 384x352 | connected paths, 3 powered consumers, events, saved game, victory
+PASS new-horizon-afterglow-supply 256x288 | connected paths, 87 powered consumers, events, saved game, victory
+PASS new-horizon-afterglow-ridges 320x320 | connected paths, 87 powered consumers, events, saved game, victory
+PASS new-horizon-afterglow-citadel 384x352 | connected paths, 87 powered consumers, events, saved game, victory
 PASS: all chapter unlock links, maps, paths, power, waves, save/load and capture conditions.

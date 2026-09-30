@@ -414,6 +414,7 @@ public class NHTechTree {
                                                         ProductionNode.node(CraftingBlock.heavyRollingMill)
                                                 ),
                                                 ProductionNode.node(CraftingBlock.denseFactory,
+                                                        ProductionNode.node(CraftingBlock.tandemFactory),
                                                         ProductionNode.node(CraftingBlock.nodexFactory,
                                                                 ProductionNode.node(CraftingBlock.hadronCompositeBuilder),
                                                                 ProductionNode.node(CraftingBlock.darkEnergyTrap)

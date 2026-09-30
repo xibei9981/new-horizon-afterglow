@@ -65,6 +65,10 @@ public final class AfterglowCampaign {
             r.tags.each((key, value) -> {
                 if (key.startsWith("afterglow.")) progress.put(key, value);
             });
+            // A saved 0.5 map still contains the former depot layout. Do not switch its
+            // supply controller just because current map headers have been upgraded.
+            if(r.tags.containsKey(tag)&&!r.tags.containsKey("afterglow.physical-logistics"))
+                progress.put("afterglow.physical-logistics","false");
             p.generator.map.rules(r);
             r.tags.putAll(progress);
             r.sector = p.sector;
@@ -82,6 +86,7 @@ public final class AfterglowCampaign {
             prepareWorld();
             if (chapter() < 0 || net.client()) return;
             unlockFieldKit();
+            if("true".equals(state.rules.tags.get("afterglow.physical-logistics")))for(var tile:world.tiles)if(tile.isCenter()&&tile.build!=null&&tile.team()==state.rules.defaultTeam&&tile.block().isVanilla())tile.block().quietUnlock();
             if (once("intro")) announce("intro." + chapter());
             if(chapter()>=SignatureCampaign.first)SignatureCampaign.start(chapter()-SignatureCampaign.first);
             else if (chapter()>=3) FrontierCampaign.start(chapter()-3);
@@ -207,6 +212,7 @@ public final class AfterglowCampaign {
         // A mission field kit, not a global all-tech unlock; later research remains intact.
         UnlockableContent[] kit = {
                 ProductionBlock.interlockingDrill, ProductionBlock.resonanceMiningFacility,
+                CraftingBlock.stampingFacility, CraftingBlock.processorManuFactory,
                 ProductionBlock.sandCracker, ProductionBlock.titaniumReconstructor, ProductionBlock.tungstenReconstructor,
                 DistributionBlock.conveyor, DistributionBlock.conveyorBridge, DistributionBlock.logisticsRouter,
                 DistributionBlock.conduit, DistributionBlock.conveyorUnloader,

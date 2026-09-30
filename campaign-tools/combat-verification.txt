@@ -1,0 +1,57 @@
+PASS legacy rule migration: 0.5 layout retains legacy logistics and completed depot state.
+PASS upstream wave progression: 3000 seeded high-difficulty generations, valid tier indices.
+ACTUAL_CORE new-horizon-core-cluster size=6 at=256,72
+WORKSHOP 13 core titanium=224 graphite=111 silicon=763 presstanium=114 processor=96
+INDUSTRY RECOVERY 13: hubs=9 fusion=1920 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 13: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+COMMAND READY ammo=80 antimatter=120.0 power=1.0 graph-output=3087.5364 demand=221.00009
+PASS ENEMY MANUFACTURING: 9 executor magazines and all negative-core stores emptied; native decayers replenish all guns in 120 seconds from finite fissile/zeta feedstock.
+PASS EMPTY MAGAZINES: core, warehouses, in-transit fuel/nodex and heavy magazines emptied; native factories restore every heavy gun in 90 seconds, without inventory injection.
+PASS SUSTAINED FIRE: 180 seconds, six stationary disarmed ground/air targets; damage=7.1331328E7 loaded rapid batteries=0/0 minimum power=1.0; 60-second recovery. This is a supply stress test, not a campaign victory simulation.
+COMMAND BATTLE sec=0 alive=true health=800000.0 ammo=49 coolant=120.0 power=1.0 reload=63.282745 rotation=276.08337 target=Unit#103804:new-horizon-longinus (2112.641, 3307.5046) shots=1
+COMMAND BATTLE sec=10 alive=true health=800000.0 ammo=80 coolant=96.622284 power=1.0 reload=903.28796 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=20 alive=true health=800000.0 ammo=80 coolant=70.56628 power=1.0 reload=1743.3026 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=30 alive=true health=800000.0 ammo=80 coolant=82.71509 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=40 alive=true health=800000.0 ammo=80 coolant=95.89951 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=50 alive=true health=800000.0 ammo=80 coolant=109.233406 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=60 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=70 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=80 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=90 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=100 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=110 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=120 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=130 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=140 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=150 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=160 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+COMMAND BATTLE sec=170 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.7036 rotation=269.86475 target=null shots=1
+FORTRESS FIRE shots={new-horizon-concentration=19, new-horizon-end-of-era=12, new-horizon-eternity=1, new-horizon-executor=0, new-horizon-interferon=0, new-horizon-prism=8, new-horizon-synchro=20} guns surviving={new-horizon-concentration=12, new-horizon-eternity=1, new-horizon-executor=3, new-horizon-interferon=2, new-horizon-prism=1}
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-19940.61 at=207.00122,414.57648
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-19017.268 at=219.77934,409.2157
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-19827.166 at=241.79184,429.66104
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-51058.195 at=243.19455,403.58575
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-31600.955 at=254.95279,435.1126
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-69890.14 at=254.16786,418.56448
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-18814.191 at=266.48257,407.7723
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-78052.02 at=273.32635,420.1292
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-25275.893 at=287.57706,415.8428
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-31779.178 at=302.9457,415.10205
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-3720.144 at=229.54793,423.5546
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-2703.7095 at=228.94002,416.06113
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-11231.076 at=227.2331,384.9809
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-3762.7285 at=242.54347,425.18015
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-5749.8877 at=263.3812,424.47067
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-11720.555 at=282.0756,385.2615
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-14102.003 at=269.5262,424.3203
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-5531.0225 at=279.665,422.34662
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-2805.0 at=320.20895,396.7002
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-4782.3203 at=286.76724,420.85373
+PASS DYNAMIC ASSAULT: 180 seconds, ten NH hurricane + ten NH longinus, armed native unit AI; observed moving=20 lost=20 survivor damage=0.0 enemy structures lost=832 cores remaining=3. One raid fixture, not a full campaign balance verdict.
+YARD OBSERVED: new-horizon-longinus produced=2 stock=1350 -> 0 progress=2404.0 gate items=ItemModule{} queue=0 power=1.0
+PASS ENEMY YARD: native new-horizon-hyper-jump-gate recipe=new-horizon-longinus produced=2; local warehouse -> unloader -> belts -> native recipe; empty supply blocks new production. Reserves are finite, not a complete renewable unit-material industry.
+ACTUAL WAVE 1: spawned=14 roster={new-horizon-longinus=2, new-horizon-striker=4, new-horizon-tarlidor=8}; 300s no construction, accumulated player structure damage=440930.84 structures lost=195 core=300000.0 enemies remaining=5 gameOver=false. Later waves intentionally tested against unchanged starting base, not a developed player economy.
+ACTUAL WAVE 30: spawned=17 roster={new-horizon-hurricane=2, new-horizon-striker=5, new-horizon-tarlidor=10}; 300s no construction, accumulated player structure damage=357666.53 structures lost=293 core=300000.0 enemies remaining=3 gameOver=false. Later waves intentionally tested against unchanged starting base, not a developed player economy.
+ACTUAL WAVE 60: spawned=4 roster={new-horizon-longinus=1, new-horizon-tarlidor=3}; 300s no construction, accumulated player structure damage=290311.8 structures lost=121 core=300000.0 enemies remaining=4 gameOver=false. Later waves intentionally tested against unchanged starting base, not a developed player economy.
+ACTUAL WAVE 90: spawned=16 roster={new-horizon-guardian=1, new-horizon-tarlidor=15}; 300s no construction, accumulated player structure damage=236364.28 structures lost=258 core=300000.0 enemies remaining=3 gameOver=false. Later waves intentionally tested against unchanged starting base, not a developed player economy.
+PASS WORKSHOP 13: guns=39 enemy-guns=118 conveyors=497 repair=35; mining, graphite, silicon, healing and physical ammunition verified.

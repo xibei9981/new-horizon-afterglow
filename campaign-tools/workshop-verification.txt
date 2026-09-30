@@ -1,0 +1,85 @@
+PASS legacy rule migration: 0.5 layout retains legacy logistics and completed depot state.
+PASS upstream wave progression: 3000 seeded high-difficulty generations, valid tier indices.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=128,42
+WORKSHOP 1 core titanium=248 graphite=52 silicon=33 presstanium=104 processor=51
+PASS WALL 1: new-horizon-titanium-wall distributes a real 1000-damage hit to 2 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 1: guns=72 enemy-guns=0 conveyors=902 repair=28; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=160,42
+WORKSHOP 2 core titanium=247 graphite=52 silicon=33 presstanium=104 processor=51
+PASS WALL 2: new-horizon-presstanium-wall distributes a real 1000-damage hit to 2 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 2: guns=72 enemy-guns=98 conveyors=878 repair=28; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=192,42
+WORKSHOP 3 core titanium=248 graphite=52 silicon=33 presstanium=104 processor=51
+PASS WALL 3: new-horizon-presstanium-wall distributes a real 1000-damage hit to 2 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 3: guns=72 enemy-guns=147 conveyors=878 repair=28; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=210,70
+WORKSHOP 4 core titanium=247 graphite=52 silicon=33 presstanium=104 processor=51
+PASS WALL 4: new-horizon-refactoring-multi-wall distributes a real 1000-damage hit to 4 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 4: guns=72 enemy-guns=0 conveyors=878 repair=28; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=96,70
+WORKSHOP 5 core titanium=248 graphite=52 silicon=33 presstanium=104 processor=51
+PASS WALL 5: new-horizon-refactoring-multi-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 5: guns=72 enemy-guns=147 conveyors=854 repair=28; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=224,72
+WORKSHOP 6 core titanium=248 graphite=52 silicon=33 presstanium=104 processor=51
+PASS WALL 6: new-horizon-refactoring-multi-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 6: guns=72 enemy-guns=0 conveyors=854 repair=28; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=208,66
+WORKSHOP 7 core titanium=247 graphite=52 silicon=33 presstanium=104 processor=51
+PASS WALL 7: new-horizon-refactoring-multi-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 7: guns=72 enemy-guns=74 conveyors=854 repair=28; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=208,208
+WORKSHOP 8 core titanium=247 graphite=52 silicon=32 presstanium=104 processor=51
+PASS WALL 8: new-horizon-refactoring-multi-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 8: guns=66 enemy-guns=0 conveyors=830 repair=27; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=112,68
+WORKSHOP 9 core titanium=430 graphite=207 silicon=706 presstanium=114 processor=94
+INDUSTRY RECOVERY 9: hubs=4 fusion=960 senior=120 nodex=0 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 9: new-horizon-seton-phased-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 9: guns=41 enemy-guns=144 conveyors=539 repair=37; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=112,76
+WORKSHOP 10 core titanium=850 graphite=409 silicon=1404 presstanium=228 processor=190
+INDUSTRY RECOVERY 10: hubs=8 fusion=1920 senior=240 nodex=0 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 10: new-horizon-seton-phased-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 10: guns=82 enemy-guns=0 conveyors=1078 repair=74; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=256,70
+WORKSHOP 11 core titanium=409 graphite=491 silicon=691 presstanium=114 processor=94
+INDUSTRY RECOVERY 11: hubs=4 fusion=960 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 11: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 11: guns=41 enemy-guns=175 conveyors=540 repair=37; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-cluster size=6 at=240,68
+WORKSHOP 12 core titanium=156 graphite=114 silicon=696 presstanium=114 processor=96
+INDUSTRY RECOVERY 12: hubs=6 fusion=1920 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 12: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 12: guns=41 enemy-guns=129 conveyors=560 repair=37; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-cluster size=6 at=256,72
+WORKSHOP 13 core titanium=192 graphite=98 silicon=739 presstanium=114 processor=96
+INDUSTRY RECOVERY 13: hubs=9 fusion=1920 senior=120 nodex=119 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 13: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 13: guns=39 enemy-guns=118 conveyors=497 repair=35; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-cluster size=6 at=240,74
+WORKSHOP 14 core titanium=155 graphite=106 silicon=697 presstanium=114 processor=96
+INDUSTRY RECOVERY 14: hubs=9 fusion=1920 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 14: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 14: guns=39 enemy-guns=0 conveyors=497 repair=35; mining, graphite, silicon, healing and physical ammunition verified.
+CARGO_INITIAL vault build=Building#103000[434,214]:vault
+CARGO_AFTER vault build=Building#103000[434,214]:vault
+ACTUAL_CORE new-horizon-core-cluster size=6 at=90,80
+WORKSHOP 15 core titanium=212 graphite=102 silicon=753 presstanium=114 processor=96
+INDUSTRY RECOVERY 15: hubs=10 fusion=1920 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 15: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 15: guns=48 enemy-guns=0 conveyors=603 repair=43; mining, graphite, silicon, healing and physical ammunition verified.
+ACTUAL_CORE new-horizon-core-cluster size=6 at=256,76
+WORKSHOP 16 core titanium=215 graphite=106 silicon=757 presstanium=114 processor=96
+INDUSTRY RECOVERY 16: hubs=9 fusion=1920 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 16: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 16: guns=39 enemy-guns=80 conveyors=497 repair=35; mining, graphite, silicon, healing and physical ammunition verified.
+
+Final arsenal recheck after front-line spacing adjustment:
+PASS legacy rule migration: 0.5 layout retains legacy logistics and completed depot state.
+PASS upstream wave progression: 3000 seeded high-difficulty generations, valid tier indices.
+ACTUAL_CORE new-horizon-core-conflux size=3 at=256,70
+WORKSHOP 11 core titanium=411 graphite=494 silicon=695 presstanium=114 processor=94
+INDUSTRY RECOVERY 11: hubs=4 fusion=960 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 11: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 11: guns=41 enemy-guns=175 conveyors=540 repair=37; mining, graphite, silicon, healing and physical ammunition verified.
