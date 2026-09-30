@@ -34,13 +34,15 @@ public final class AfterglowCampaign {
         supply = sector("afterglow-supply", 43, 3, 25);
         ridges = sector("afterglow-ridges", 44, 5, 0);
         citadel = sector("afterglow-citadel", 45, 7, 0);
-        sectors = new SectorPreset[3 + FrontierMissions.all.length];
+        sectors = new SectorPreset[SignatureCampaign.first + SignatureCampaign.ids.length];
         sectors[0]=supply; sectors[1]=ridges; sectors[2]=citadel;
         for(int i=0;i<FrontierMissions.all.length;i++){
             var m=FrontierMissions.all[i];
             sectors[i+3]=sector("afterglow-"+m.id,46+i,m.difficulty,m.waves==0||i==9?0:m.waves+1);
 
         }
+        for(int i=0;i<SignatureCampaign.ids.length;i++)
+            sectors[SignatureCampaign.first+i]=sector("afterglow-"+SignatureCampaign.ids[i],56+i,8+i,i==0?73:0);
     }
 
     private static SectorPreset sector(String name, int id, int difficulty, int winWave) {
@@ -68,7 +70,8 @@ public final class AfterglowCampaign {
             r.sector = p.sector;
             r.planet = NHPlanets.midantha;
             int c=r.tags.getInt(tag,-1);
-            if(c>=3)FrontierCampaign.restoreRules(r,c-3);
+            if(c>=SignatureCampaign.first)SignatureCampaign.restoreRules(r,c-SignatureCampaign.first);
+            else if(c>=3)FrontierCampaign.restoreRules(r,c-3);
         }
     }
 
@@ -80,12 +83,14 @@ public final class AfterglowCampaign {
             if (chapter() < 0 || net.client()) return;
             unlockFieldKit();
             if (once("intro")) announce("intro." + chapter());
-            if (chapter()>=3) FrontierCampaign.start(chapter()-3);
+            if(chapter()>=SignatureCampaign.first)SignatureCampaign.start(chapter()-SignatureCampaign.first);
+            else if (chapter()>=3) FrontierCampaign.start(chapter()-3);
         });
         Events.on(EventType.WaveEvent.class, e -> onWave());
         Events.run(EventType.Trigger.update, AfterglowCampaign::update);
         Events.on(EventType.ResetEvent.class, e -> clearHud());
         Events.on(EventType.SectorCaptureEvent.class, e -> {
+            if(e.initialCapture)for(int i=0;i<sectors.length;i++)if(e.sector==sectors[i].sector)AfterglowTech.announce(i+1);
             if (e.sector == supply.sector) ridges.quietUnlock();
             if (e.sector == ridges.sector) citadel.quietUnlock();
             if (e.sector == NHSectorPresents.edgeZone.sector) supply.quietUnlock();
@@ -97,7 +102,7 @@ public final class AfterglowCampaign {
     public static int chapter() {
         if (state == null || state.rules == null) return -1;
         String id = state.rules.tags.get(tag, "");
-        try {int c=Integer.parseInt(id);return c>=0&&c<13?c:-1;} catch(NumberFormatException ignored){return -1;}
+        try {int c=Integer.parseInt(id);return c>=0&&c<sectors.length?c:-1;} catch(NumberFormatException ignored){return -1;}
     }
 
     private static void prepareWorld() {
@@ -106,7 +111,8 @@ public final class AfterglowCampaign {
         RaidState.setScale(0);
         InterventionState.setScale(0);
         SpecialEventState.setEnabled(false);
-        if(chapter()>=3) FrontierCampaign.prepare(chapter()-3);
+        if(chapter()>=SignatureCampaign.first)SignatureCampaign.prepare(chapter()-SignatureCampaign.first);
+        else if(chapter()>=3) FrontierCampaign.prepare(chapter()-3);
     }
 
     static boolean once(String key) {
@@ -125,6 +131,7 @@ public final class AfterglowCampaign {
     public static void onWave() {
         int c = chapter(), wave = state.wave - 1;
         if (c < 0 || net.client() || state.gameOver) return;
+        if(c>=SignatureCampaign.first){SignatureCampaign.wave(c-SignatureCampaign.first,wave);return;}
         if (c >= 3) {FrontierCampaign.wave(c-3,wave);return;}
         if (c == 0) {
             if (wave == 7 && once("air-warning")) announce("warning.air");
@@ -164,7 +171,8 @@ public final class AfterglowCampaign {
         hudTimer += Time.delta;
         if (hudTimer < 60f) return;
         hudTimer = 0;
-        if(c>=3 && !net.client()) FrontierCampaign.update(c-3);
+        if(c>=SignatureCampaign.first && !net.client())SignatureCampaign.update(c-SignatureCampaign.first);
+        else if(c>=3 && !net.client()) FrontierCampaign.update(c-3);
         if (!net.client() && c == 2) {
             int remaining = state.rules.waveTeam.cores().size;
             if (remaining < 3 && once("cache-1")) supplyCache();
@@ -173,7 +181,8 @@ public final class AfterglowCampaign {
         if (!headless) {
             String objective = c == 0 ? Core.bundle.format("afterglow.hud.defend", Math.min(24, state.wave - 1))
                     : Core.bundle.format("afterglow.hud.attack", state.rules.waveTeam.cores().size);
-            if(c>=3) objective=FrontierCampaign.objective(c-3);
+            if(c>=SignatureCampaign.first)objective=SignatureCampaign.objective(c-SignatureCampaign.first);
+            else if(c>=3) objective=FrontierCampaign.objective(c-3);
             if (state.isCampaign() && state.rules.sector.info.wasCaptured) objective = Core.bundle.get("afterglow.hud.complete");
             ui.hudfrag.setHudText("[accent]" + Core.bundle.get("afterglow.chapter." + c) + "[]\n" + objective);
             showingHud = true;
@@ -213,7 +222,7 @@ public final class AfterglowCampaign {
         for (UnlockableContent entry : kit) {
             if(chapter()>=3&&(entry==ProductionBlock.resonanceMiningFacility||entry==ProductionBlock.titaniumReconstructor||
                 entry==ProductionBlock.tungstenReconstructor||entry==TurretBlock.beam))continue;
-            entry.quietUnlock();
+            if(AfterglowTech.available(entry))entry.quietUnlock();
         }
     }
 }

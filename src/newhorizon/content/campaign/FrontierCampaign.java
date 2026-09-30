@@ -51,7 +51,7 @@ public final class FrontierCampaign {
         switch(i){
             case 0 -> {
                 if(w==20)announce("frontier.industry-warning");
-                if(w==21&&once("industry")){UnitBlock.jumpGateStandard.quietUnlock();grant(2);announce("frontier.industry");}
+                if(w==21&&once("industry")){grant(2);announce("frontier.industry");}
                 if(w==41&&once("armor")){allies(i,NHUnitTypes.tarlidor,3);grant(1);}
             }
             case 1 -> {

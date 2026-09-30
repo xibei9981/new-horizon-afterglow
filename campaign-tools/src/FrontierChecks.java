@@ -134,7 +134,7 @@ public class FrontierChecks extends CampaignChecks {
         switch(i){
             case 0 -> {
                 Team.sharded.core().items.set(Items.surgeAlloy,0);waveEvent(21);
-                check(UnitBlock.jumpGateStandard.unlocked(),"industrial technology opens");
+                check(UnitBlock.jumpGateStandard.techNode.objectives.contains(o->o instanceof mindustry.game.Objectives.SectorComplete sc&&sc.preset==AfterglowCampaign.sectors[4]),"standard gate requires the fifth chapter, not a wave gift");
                 int stock=Team.sharded.core().items.get(Items.surgeAlloy);waveEvent(21);
                 check(stock==Team.sharded.core().items.get(Items.surgeAlloy),"industrial supply once only");
                 waveEvent(41);

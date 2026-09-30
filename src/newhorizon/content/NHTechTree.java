@@ -72,6 +72,7 @@ public class NHTechTree {
 
         addSerpuloTechTree();
         addErekirTechTree();
+        newhorizon.content.campaign.AfterglowTech.load();
         registerProgressionEvents();
     }
 
@@ -384,11 +385,17 @@ public class NHTechTree {
                                 )
                         ),
                         ProductionNode.node(ProductionBlock.interlockingDrill, ItemStack.with(NHItems.silicar, 30),
+                                ProductionNode.node(Blocks.kiln),
+                                ProductionNode.node(Blocks.cultivator,
+                                        ProductionNode.node(CraftingBlock.chemicalDissociationChamber)),
+                                ProductionNode.node(ProductionBlock.tungstenReconstructor),
+                                ProductionNode.node(ProductionBlock.titaniumReconstructor),
                                 ProductionNode.node(ProductionBlock.sandCracker),
                                 ProductionNode.node(NHBlocks.largeWaterExtractor),
                                 ProductionNode.node(ProductionBlock.decoherenceReverser),
                                 ProductionNode.node(ProductionBlock.scanCollector,
                                         ProductionNode.node(ProductionBlock.resonanceMiningFacility,
+                                                ProductionNode.node(Blocks.laserDrill),
                                                 ProductionNode.node(ProductionBlock.beamMiningFacility,
                                                     ProductionNode.node(ProductionBlock.implosionMiningFacility),
                                                     ProductionNode.node(ProductionBlock.liquidRadiator)

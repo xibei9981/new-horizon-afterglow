@@ -1,0 +1,16 @@
+MAP 01: stage 1, 29 sustainable resources, 76 buildable facilities, 0 gaps
+MAP 02: stage 2, 33 sustainable resources, 90 buildable facilities, 0 gaps
+MAP 03: stage 3, 35 sustainable resources, 98 buildable facilities, 0 gaps
+MAP 04: stage 4, 37 sustainable resources, 115 buildable facilities, 0 gaps
+MAP 05: stage 5, 39 sustainable resources, 125 buildable facilities, 0 gaps
+MAP 06: stage 6, 39 sustainable resources, 130 buildable facilities, 0 gaps
+MAP 07: stage 7, 39 sustainable resources, 132 buildable facilities, 0 gaps
+MAP 08: stage 8, 41 sustainable resources, 141 buildable facilities, 0 gaps
+MAP 09: stage 9, 41 sustainable resources, 146 buildable facilities, 0 gaps
+MAP 10: stage 10, 46 sustainable resources, 162 buildable facilities, 0 gaps
+MAP 11: stage 11, 48 sustainable resources, 168 buildable facilities, 0 gaps
+MAP 12: stage 12, 48 sustainable resources, 173 buildable facilities, 0 gaps
+MAP 13: stage 12, 48 sustainable resources, 173 buildable facilities, 0 gaps
+MAP 14: stage 12, 48 sustainable resources, 173 buildable facilities, 0 gaps
+MAP 15: stage 12, 48 sustainable resources, 173 buildable facilities, 0 gaps
+MAP 16: stage 12, 48 sustainable resources, 173 buildable facilities, 0 gaps

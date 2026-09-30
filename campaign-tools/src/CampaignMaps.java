@@ -178,7 +178,7 @@ public class CampaignMaps {
         Building core=place(SpecialBlock.coreConflux,sx,sy,playerTeam);core.items.add(state.rules.loadout);
         place(ProductionBlock.interlockingDrill,sx-26,sy,playerTeam);
         for(int x=sx-24;x<sx-1;x++)world.tile(x,sy).setBlock(Blocks.titaniumConveyor,playerTeam,0);
-        place(UnitBlock.jumpGatePrimary,sx+10,sy+9,playerTeam);
+        place(UnitBlock.jumpGateBasic,sx+10,sy+9,playerTeam);
         for(int y=sy-14;y<=sy-9;y+=5)for(int x=sx-12;x<=sx+3;x+=5)place(Blocks.largeSolarPanel,x,y,playerTeam);
         place(Blocks.batteryLarge,sx-7,sy+12,playerTeam);
         place(Blocks.powerNodeLarge,sx-3,sy-4,playerTeam);
@@ -191,7 +191,7 @@ public class CampaignMaps {
         }
         place(Blocks.powerNodeLarge,sx-8,sy+15,playerTeam);
         place(Blocks.powerNodeLarge,sx+8,sy+15,playerTeam);
-        message(sx+6,sy-6,playerTeam,briefs[chapter]+"\n开局已配备钛矿输送、太阳能、脉冲炮和初级跃迁门。炮塔弹药需要持续补充。\n本章固定增援取代随机空袭。保存并退出后可继续。\n资源扩张区：基地西侧煤矿，东北铜矿，北方钍矿与 Zeta 晶体矿。\n初始物资有限，优先扩大供电、采矿与弹药生产。");
+        message(sx+6,sy-6,playerTeam,briefs[chapter]+"\n开局已配备钛矿输送、太阳能、脉冲炮和基础跃迁门。炮塔弹药需要持续补充。\n本章固定增援取代随机空袭。保存并退出后可继续。\n资源扩张区：基地西侧煤矿，东北铜矿，北方钍矿与 Zeta 晶体矿。\n初始物资有限，优先扩大供电、采矿与弹药生产。");
     }
     static void ammo(Building b,Item item,int n){
         if(b instanceof ItemTurret.ItemTurretBuild turret)for(int i=0;i<n;i++)turret.handleItem(null,item);

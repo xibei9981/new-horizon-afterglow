@@ -1,0 +1,496 @@
+B	graphite-press	0	copper,lead,	coal,	GenericCrafter	mechanical-drill	false
+R	graphite-press	coal,	graphite,
+B	silicon-smelter	0	copper,lead,	coal,sand,	GenericCrafter	graphite-press	false
+R	silicon-smelter	coal,sand,	silicon,
+B	kiln	0	copper,lead,graphite,	lead,sand,	GenericCrafter	new-horizon-interlocking-drill	true
+R	kiln	lead,sand,	metaglass,
+B	laser-drill	1	copper,graphite,titanium,silicon,		Drill	new-horizon-resonance-mining-facility	true
+D	laser-drill	4	
+B	cultivator	0	copper,lead,silicon,	water,	AttributeCrafter	new-horizon-interlocking-drill	true
+R	cultivator	water,	spore-pod,
+B	new-horizon-blaster	4	new-horizon-presstanium,new-horizon-processor-junior,new-horizon-multiple-steel,	new-horizon-zeta,	ShockwaveGenerator	new-horizon-thermo-turret	true
+B	new-horizon-reinforced-liquid-source	0			LiquidSource		false
+B	new-horizon-reinforced-item-source	0			ItemSource		false
+B	new-horizon-fire-extinguisher	1	new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-metal-oxhydrigen,	FireExtinguisher	new-horizon-titanium-wall	true
+B	new-horizon-air-raider	3	phase-fabric,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-multiple-steel,		AirRaider	new-horizon-bomb-launcher	true
+B	new-horizon-unit-initer	0			Block		false
+B	new-horizon-bomb-launcher	3	surge-alloy,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-multiple-steel,	new-horizon-fusion-core-energy,	BombLauncher	new-horizon-multiple-launcher	true
+B	new-horizon-hyper-space-warper	10	new-horizon-presstanium,new-horizon-zeta,new-horizon-processor-senior,new-horizon-ancimembrane,	new-horizon-fusion-core-energy,new-horizon-quantum-liquid,	HyperSpaceWarper	new-horizon-basic-jump-gate	true
+B	new-horizon-large-water-extractor	0	titanium,tungsten,new-horizon-presstanium,new-horizon-processor-junior,		SolidPump	new-horizon-interlocking-drill	true
+B	new-horizon-hive	5	graphite,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-multiple-steel,new-horizon-processor-senior,	?,	ShootMatchTurret	new-horizon-multiple-launcher	true
+A	new-horizon-hive	new-horizon-processor-junior,new-horizon-processor-senior,
+B	new-horizon-prism	11	tungsten,new-horizon-zeta,new-horizon-processor-senior,new-horizon-irayrond-panel,	?,	ItemTurret	new-horizon-interferon	true
+A	new-horizon-prism	new-horizon-fusion-core-energy,new-horizon-thermo-core-positive,
+B	new-horizon-interferon	4	carbide,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-multiple-steel,		PowerTurret	new-horizon-antibody	true
+B	new-horizon-antibody	4	phase-fabric,tungsten,new-horizon-presstanium,new-horizon-processor-junior,	?,	ItemTurret	new-horizon-thermo-turret	true
+A	new-horizon-antibody	new-horizon-zeta,
+B	new-horizon-webber	6	plastanium,new-horizon-presstanium,new-horizon-multiple-steel,new-horizon-processor-senior,		Webber	new-horizon-anti-bullet-turret	true
+B	new-horizon-gravity	0	tungsten,new-horizon-presstanium,new-horizon-processor-junior,		MultTractorBeamTurret	new-horizon-thermo-turret	true
+B	new-horizon-eternity	12	new-horizon-hadronicomp,new-horizon-processor-hyper,new-horizon-dark-energy,	?,	ItemTurret	new-horizon-end-of-era	true
+A	new-horizon-eternity	new-horizon-dark-energy,
+B	new-horizon-anti-bullet-turret	6	graphite,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-zeta,new-horizon-multiple-steel,		PointDefenseTurret	new-horizon-gravity	true
+B	new-horizon-dendrite	12	new-horizon-metal-oxhydrigen,new-horizon-zeta,new-horizon-processor-senior,new-horizon-ancimembrane,	?,	ShootMatchTurret	new-horizon-executor	true
+A	new-horizon-dendrite	new-horizon-ancimembrane,new-horizon-seton-alloy,
+B	new-horizon-atom-separator	8	new-horizon-presstanium,new-horizon-metal-oxhydrigen,new-horizon-zeta,new-horizon-processor-senior,new-horizon-irayrond-panel,		LaserTurret	new-horizon-thermo-turret	true
+B	new-horizon-blood-star	10	new-horizon-presstanium,new-horizon-zeta,new-horizon-processor-senior,new-horizon-irayrond-panel,	?,	ShootMatchTurret	new-horizon-slavio	true
+A	new-horizon-blood-star	new-horizon-thermo-core-positive,
+B	new-horizon-multiple-launcher	1	new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	?,	ItemTurret	new-horizon-thermo-turret	true
+A	new-horizon-multiple-launcher	titanium,thorium,new-horizon-zeta,graphite,new-horizon-presstanium,
+B	new-horizon-rail-gun	10	phase-fabric,new-horizon-zeta,new-horizon-processor-senior,new-horizon-seton-alloy,	?,	ItemTurret	new-horizon-atom-separator	true
+A	new-horizon-rail-gun	new-horizon-irayrond-panel,new-horizon-seton-alloy,new-horizon-nodex-plate,
+B	new-horizon-end-of-era	12	new-horizon-nodex-plate,	?,	ShootMatchTurret	new-horizon-executor	true
+A	new-horizon-end-of-era	new-horizon-dark-energy,new-horizon-nodex-plate,
+B	new-horizon-executor	12	tungsten,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-irayrond-panel,	?,	ItemTurret	new-horizon-interferon	true
+A	new-horizon-executor	new-horizon-thermo-core-positive,new-horizon-thermo-core-negative,
+B	new-horizon-metal-scrap	0			Prop		false
+B	new-horizon-metal-unit-quantum	0			StaticWall		false
+B	new-horizon-metal-unit	0			StaticWall		false
+B	new-horizon-metal-ground-heat	0			Floor		false
+B	new-horizon-quantum-field	0			Floor		false
+B	new-horizon-quantum-field-deep	0			Floor		false
+B	new-horizon-quantum-field-disturbing	0			Floor		false
+B	new-horizon-quantum-field-luminous	0			Floor		false
+B	new-horizon-metal-tower	0			StaticWall		false
+B	new-horizon-metal-ground	0			Floor		false
+B	new-horizon-metal-vent	0			SteamVent		false
+B	new-horizon-metal-ground-quantum	0			Floor		false
+B	new-horizon-ancient-laser-wall	10	new-horizon-zeta,new-horizon-processor-senior,new-horizon-ancimembrane,		LaserWallBlock	new-horizon-shaped-wall	true
+B	new-horizon-laser-wall	2	graphite,thorium,new-horizon-processor-junior,new-horizon-multiple-steel,		LaserWallBlock	new-horizon-thermo-turret	true
+B	new-horizon-construction-placeholder	0			Block		false
+B	new-horizon-scan-collector	1	graphite,silicon,		OreCollector	new-horizon-interlocking-drill	true
+B	new-horizon-scan-collector-link-entity	0			Block		false
+B	new-horizon-sand-cracker	0	graphite,silicon,	?ConsumeRecipe,	RecipeGenericCrafter	new-horizon-interlocking-drill	true
+R	new-horizon-sand-cracker	scrap,	sand,
+R	new-horizon-sand-cracker	copper,	sand,
+R	new-horizon-sand-cracker	lead,	sand,
+R	new-horizon-sand-cracker	beryllium,	sand,
+R	new-horizon-sand-cracker	titanium,	sand,
+R	new-horizon-sand-cracker	thorium,	sand,
+R	new-horizon-sand-cracker	tungsten,	sand,
+B	new-horizon-sand-cracker-link-entity	0			Block		false
+B	new-horizon-decoherence-reverser	0	titanium,silicon,new-horizon-hard-light,	water,	GenericCrafter	new-horizon-interlocking-drill	true
+R	new-horizon-decoherence-reverser	water,	new-horizon-quantum-liquid,
+B	new-horizon-tungsten-reconstructor	0	titanium,	titanium,	GenericCrafter	separator	true
+R	new-horizon-tungsten-reconstructor	titanium,	tungsten,
+B	new-horizon-titanium-reconstructor	0	tungsten,	tungsten,	GenericCrafter	silicon-arc-furnace	true
+R	new-horizon-titanium-reconstructor	tungsten,	titanium,
+B	new-horizon-oil-refiner	0	graphite,silicon,	sand,	GenericCrafter	new-horizon-interlocking-drill	true
+R	new-horizon-oil-refiner	sand,	oil,
+B	new-horizon-compound-hydrator	0	silicon,beryllium,oxide,new-horizon-presstanium,	nitrogen,hydrogen,oxide,	GenericCrafter	oxidation-chamber	false
+R	new-horizon-compound-hydrator	nitrogen,hydrogen,oxide,	new-horizon-ammonia,
+B	new-horizon-interlocking-drill	0	new-horizon-silicar,		AdaptDrill	new-horizon-core-conflux	true
+D	new-horizon-interlocking-drill	3	
+B	new-horizon-resonance-mining-facility	1	new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,		AdaptDrill	new-horizon-scan-collector	true
+D	new-horizon-resonance-mining-facility	5	thorium
+B	new-horizon-beam-mining-facility	4	surge-alloy,new-horizon-processor-junior,new-horizon-multiple-steel,		AdaptDrill	new-horizon-resonance-mining-facility	true
+D	new-horizon-beam-mining-facility	8	
+B	new-horizon-implosion-mining-facility	10	new-horizon-zeta,new-horizon-processor-senior,new-horizon-seton-alloy,		AdaptDrill	new-horizon-beam-mining-facility	true
+D	new-horizon-implosion-mining-facility	8	
+B	new-horizon-air-radiator	1	new-horizon-presstanium,new-horizon-processor-junior,		DrillModule	new-horizon-scan-collector	true
+B	new-horizon-liquid-radiator	4	plastanium,new-horizon-multiple-steel,	?ConsumeLiquidFilter,	LiquidRadiator	new-horizon-beam-mining-facility	true
+B	new-horizon-ancient-artillery	0	new-horizon-processor-senior,new-horizon-ancimembrane,	?,	CaptureableTurret		false
+A	new-horizon-ancient-artillery	new-horizon-fusion-core-energy,
+B	new-horizon-thermo-turret	0	titanium,silicon,		PowerTurret	new-horizon-core-conflux	true
+B	new-horizon-pulse	0	titanium,silicon,	?,	ItemTurret	new-horizon-thermo-turret	true
+A	new-horizon-pulse	titanium,plastanium,new-horizon-zeta,
+B	new-horizon-beam	1	titanium,new-horizon-processor-junior,	?,	ItemTurret	new-horizon-pulse	true
+A	new-horizon-beam	silicon,
+B	new-horizon-synchro	1	tungsten,new-horizon-presstanium,new-horizon-processor-junior,	?,	AdaptItemTurret	new-horizon-thermo-turret	true
+A	new-horizon-synchro	titanium,tungsten,new-horizon-zeta,new-horizon-fusion-core-energy,
+B	new-horizon-argmot	6	tungsten,new-horizon-presstanium,new-horizon-processor-junior,		SpeedupTurret	new-horizon-synchro	true
+B	new-horizon-slavio	4	carbide,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	?,	ItemTurret	new-horizon-thermo-turret	true
+A	new-horizon-slavio	new-horizon-zeta,new-horizon-metal-oxhydrigen,surge-alloy,
+B	new-horizon-bombard	10	phase-fabric,surge-alloy,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	?,	ShootMatchTurret	new-horizon-argmot	true
+A	new-horizon-bombard	new-horizon-metal-oxhydrigen,carbide,new-horizon-fusion-core-energy,new-horizon-thermo-core-negative,
+B	new-horizon-vortex	7	phase-fabric,new-horizon-presstanium,new-horizon-zeta,new-horizon-multiple-steel,new-horizon-processor-senior,	?,	ShootMatchTurret	new-horizon-thermo-turret	true
+A	new-horizon-vortex	new-horizon-multiple-steel,phase-fabric,new-horizon-irayrond-panel,
+B	new-horizon-electro	4	phase-fabric,surge-alloy,carbide,new-horizon-processor-junior,	?,	ItemTurret	new-horizon-beam	true
+A	new-horizon-electro	new-horizon-processor-junior,new-horizon-processor-senior,
+B	new-horizon-concentration	8	carbide,new-horizon-processor-senior,new-horizon-seton-alloy,	new-horizon-xen-fluid,	ContinuousOverheatTurret	new-horizon-vortex	true
+B	new-horizon-titanium-wall	0	titanium,		AdaptWall	new-horizon-core-conflux	true
+B	new-horizon-presstanium-wall	0	new-horizon-presstanium,new-horizon-processor-junior,		AdaptWall	new-horizon-titanium-wall	true
+B	new-horizon-refactoring-multi-wall	1	carbide,new-horizon-metal-oxhydrigen,		AdaptWall	new-horizon-presstanium-wall	true
+B	new-horizon-seton-phased-wall	8	new-horizon-irayrond-panel,new-horizon-seton-alloy,		AdaptWall	new-horizon-refactoring-multi-wall	true
+B	new-horizon-shaped-wall	10	new-horizon-nodex-plate,new-horizon-ancimembrane,		AdaptWall	new-horizon-seton-phased-wall	true
+B	new-horizon-standard-regen-projector	3	new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-xen-fluid,	AdaptRegenProjector	new-horizon-titanium-wall	true
+B	new-horizon-heavy-regen-projector	7	new-horizon-multiple-steel,new-horizon-processor-senior,	new-horizon-irdryon-fluid,	AdaptRegenProjector	new-horizon-standard-regen-projector	true
+B	new-horizon-standard-shield-generator	6	carbide,new-horizon-presstanium,new-horizon-processor-junior,		ForceProjector	new-horizon-titanium-wall	true
+B	new-horizon-large-shield-generator	9	phase-fabric,new-horizon-presstanium,new-horizon-multiple-steel,new-horizon-processor-senior,		ForceProjector	new-horizon-standard-shield-generator	true
+B	new-horizon-rift-shield	12	new-horizon-processor-senior,new-horizon-seton-alloy,new-horizon-nodex-plate,new-horizon-ancimembrane,	new-horizon-ancimembrane,	ShieldGenerator	new-horizon-large-shield-generator	true
+B	new-horizon-plasma-membrane	11	phase-fabric,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-nodex-plate,		QuantumVortexProjector	new-horizon-large-shield-generator	true
+B	new-horizon-ore-copper-dense	0			OreBlock		false
+B	new-horizon-ore-lead-dense	0			OreBlock		false
+B	new-horizon-ore-coal-dense	0			OreBlock		false
+B	new-horizon-ore-titanium-dense	0			OreBlock		false
+B	new-horizon-ore-thorium-dense	0			OreBlock		false
+B	new-horizon-ore-beryllium-dense	0			OreBlock		false
+B	new-horizon-ore-tungsten-dense	0			OreBlock		false
+B	new-horizon-ore-crystal-thorium-dense	0			OreBlock		false
+B	new-horizon-ore-zeta	0			OreBlock		false
+B	new-horizon-ore-silicar	0			OreBlock		false
+B	new-horizon-ore-zeta-dense	0			OreBlock		false
+B	new-horizon-ore-silicar-dense	0			OreBlock		false
+B	new-horizon-ore-cluster-silicar	0			TallBlock		false
+B	new-horizon-ore-cluster-titanium	0			TallBlock		false
+B	new-horizon-ore-cluster-zeta	0			TallBlock		false
+B	new-horizon-ore-wall-titanium	0			StaticWall		false
+B	new-horizon-ore-wall-zeta	0			StaticWall		false
+B	new-horizon-conglomerate-wall	0			StaticWall		false
+B	new-horizon-dark-conglomerate-wall	0			StaticWall		false
+B	new-horizon-thorium-stone-wall	0			StaticWall		false
+B	new-horizon-conglomerate-boulder	0			Prop		false
+B	new-horizon-dark-conglomerate-boulder	0			Prop		false
+B	new-horizon-conglomerate-sparse	0			Floor		false
+B	new-horizon-conglomerate	0			Floor		false
+B	new-horizon-conglomerate-dense	0			Floor		false
+B	new-horizon-dark-conglomerate-sparse	0			Floor		false
+B	new-horizon-dark-conglomerate	0			Floor		false
+B	new-horizon-dark-conglomerate-dense	0			Floor		false
+B	new-horizon-cryonite-sparse	0			Floor		false
+B	new-horizon-cryonite	0			Floor		false
+B	new-horizon-erode-rock	0			Floor		false
+B	new-horizon-erode-rock-dense	0			Floor		false
+B	new-horizon-siliceoustone	0			Floor		false
+B	new-horizon-thorium-stone-sparse	0			Floor		false
+B	new-horizon-thorium-stone	0			Floor		false
+B	new-horizon-thorium-stone-dense	0			Floor		false
+B	new-horizon-zeta-crystal-floor	0			Floor		false
+B	new-horizon-ammonia-water	0			Floor		false
+B	new-horizon-ammonia-water-deep	0			Floor		false
+B	new-horizon-ammonia-water-shallow	0			Floor		false
+B	new-horizon-armor-floor-0	0			Floor		false
+B	new-horizon-armor-floor-1	0			Floor		false
+B	new-horizon-armor-floor-2	0			Floor		false
+B	new-horizon-armor-floor-3	0			Floor		false
+B	new-horizon-armor-floor-4	0			Floor		false
+B	new-horizon-armor-floor-5	0			Floor		false
+B	new-horizon-armor-floor-6	0			Floor		false
+B	new-horizon-armor-floor-7	0			Floor		false
+B	new-horizon-plating-floor-1	0			TiledFloor		false
+B	new-horizon-plating-floor-3	0			TiledFloor		false
+B	new-horizon-plating-floor-4	0			TiledFloor		false
+B	new-horizon-plate-floor	0			PlateFloor		false
+B	new-horizon-lab-floor	0			PlateFloor		false
+B	new-horizon-plate-floor-1-0	0			Block		false
+B	new-horizon-plate-floor-1-1	0			Block		false
+B	new-horizon-plate-floor-2-0	0			Block		false
+B	new-horizon-plate-floor-2-1	0			Block		false
+B	new-horizon-plate-floor-3-0	0			Block		false
+B	new-horizon-plate-floor-3-1	0			Block		false
+B	new-horizon-plate-floor-3-2	0			Block		false
+B	new-horizon-lab-floor-4-0	0			Block		false
+B	new-horizon-lab-floor-4-1	0			Block		false
+B	new-horizon-lab-floor-8-0	0			Block		false
+B	new-horizon-lab-floor-8-1	0			Block		false
+B	new-horizon-plating-metal-floor	0			TiledFloor		false
+B	new-horizon-flood-pipe	0			FloodFluidBlock		false
+B	new-horizon-core-conflux	0	graphite,titanium,silicon,		CoreBlock	new-horizon-midantha	true
+B	new-horizon-core-array	2	carbide,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,		CoreBlock	new-horizon-core-conflux	true
+B	new-horizon-core-nexus	9	phase-fabric,surge-alloy,carbide,new-horizon-zeta,new-horizon-multiple-steel,		CoreBlock	new-horizon-core-array	true
+B	new-horizon-core-cluster	11	new-horizon-zeta,new-horizon-processor-senior,new-horizon-irayrond-panel,new-horizon-seton-alloy,		CoreBlock	new-horizon-core-nexus	true
+B	new-horizon-standard-storage	0	new-horizon-presstanium,new-horizon-processor-junior,		StorageBlock	new-horizon-core-conflux	true
+B	new-horizon-heavy-storage	1	carbide,new-horizon-presstanium,new-horizon-processor-junior,		StorageBlock	new-horizon-standard-storage	true
+B	new-horizon-remote-storage	8	new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-irayrond-panel,		RemoteCoreStorage	new-horizon-heavy-storage	true
+B	new-horizon-junior-module-beacon	4	carbide,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-zeta,		AdaptOverdriveProjector	new-horizon-standard-storage	true
+B	new-horizon-senior-module-beacon	4	phase-fabric,surge-alloy,carbide,new-horizon-zeta,		AssignedBeacon	new-horizon-junior-module-beacon	true
+B	new-horizon-silicar-crusher	0	new-horizon-silicar,	new-horizon-silicar,	GenericCrafter	new-horizon-core-conflux	true
+R	new-horizon-silicar-crusher	new-horizon-silicar,	graphite,silicon,
+B	new-horizon-recrystallizer	0	graphite,titanium,silicon,	graphite,silicon,water,	GenericCrafter	silicon-arc-furnace	true
+R	new-horizon-recrystallizer	graphite,silicon,water,	new-horizon-silicar,
+B	new-horizon-chemical-dissociation-chamber	0	graphite,titanium,silicon,new-horizon-hard-light,	spore-pod,water,	GenericCrafter	spore-press	true
+R	new-horizon-chemical-dissociation-chamber	spore-pod,water,	new-horizon-ammonia,
+B	new-horizon-stamping-facility	0	titanium,silicon,new-horizon-hard-light,	titanium,graphite,	GenericCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-stamping-facility	titanium,graphite,	new-horizon-presstanium,
+B	new-horizon-heavy-stamping-facility	4	plastanium,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,	titanium,graphite,new-horizon-neutron-stream,	MultiBlockCrafter	new-horizon-stamping-facility	true
+R	new-horizon-heavy-stamping-facility	titanium,graphite,new-horizon-neutron-stream,	new-horizon-presstanium,
+B	new-horizon-heavy-stamping-facility-link-entity	0			Block		false
+B	new-horizon-processor-manu-factory	0	graphite,silicon,new-horizon-hard-light,	silicon,	GenericCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-processor-manu-factory	silicon,	new-horizon-processor-junior,
+B	new-horizon-processor-printer	3	new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	new-horizon-quantum-liquid,silicon,	MultiBlockCrafter	new-horizon-processor-manu-factory	true
+R	new-horizon-processor-printer	new-horizon-quantum-liquid,silicon,	new-horizon-processor-junior,
+B	new-horizon-processor-printer-link-entity	0			Block		false
+B	new-horizon-sub-cooler	0	titanium,silicon,new-horizon-hard-light,	titanium,water,	GenericCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-sub-cooler	titanium,water,	cryofluid,
+B	new-horizon-hyper-cooler	2	titanium,carbide,new-horizon-presstanium,new-horizon-multiple-steel,	new-horizon-xen-fluid,new-horizon-hydrazine,	MultiBlockCrafter	new-horizon-sub-cooler	true
+R	new-horizon-hyper-cooler	new-horizon-xen-fluid,new-horizon-hydrazine,	cryofluid,
+B	new-horizon-hyper-cooler-link-entity	0			Block		false
+B	new-horizon-rectificatior	0	graphite,titanium,silicon,new-horizon-hard-light,	silicon,	GenericCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-rectificatior	silicon,	new-horizon-photon,
+B	new-horizon-phase-rectificatior	4	phase-fabric,new-horizon-processor-junior,new-horizon-zeta,new-horizon-multiple-steel,	phase-fabric,	GenericCrafter	new-horizon-rectificatior	true
+R	new-horizon-phase-rectificatior	phase-fabric,	new-horizon-photon,
+B	new-horizon-plasticator	0	silicon,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,	titanium,new-horizon-photon,new-horizon-xen-fluid,	GenericCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-plasticator	titanium,new-horizon-photon,new-horizon-xen-fluid,	plastanium,
+B	new-horizon-photocatalyst-factory	0	silicon,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-ammonia,new-horizon-photon,	GenericCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-photocatalyst-factory	new-horizon-ammonia,new-horizon-photon,	new-horizon-hydrazine,
+B	new-horizon-crystallizer	1	silicon,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-ammonia,	MultiBlockCrafter	new-horizon-stamping-facility	true
+R	new-horizon-crystallizer	new-horizon-ammonia,	new-horizon-metal-oxhydrigen,
+B	new-horizon-crystallizer-link-entity	0			Block		false
+B	new-horizon-metal-oxhydrigen-restructuror	3	plastanium,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-fusion-core-energy,	new-horizon-ammonia,new-horizon-proton-stream,	MultiBlockCrafter	new-horizon-crystallizer	true
+R	new-horizon-metal-oxhydrigen-restructuror	new-horizon-ammonia,new-horizon-proton-stream,	new-horizon-metal-oxhydrigen,
+B	new-horizon-metal-oxhydrigen-restructuror-link-entity	0			Block		false
+B	new-horizon-eutectic-purifier-graphite	0	graphite,tungsten,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	new-horizon-silicar,new-horizon-xen-fluid,	MultiBlockCrafter		false
+R	new-horizon-eutectic-purifier-graphite	new-horizon-silicar,new-horizon-xen-fluid,	graphite,
+B	new-horizon-eutectic-purifier-graphite-link-entity	0			Block		false
+B	new-horizon-eutectic-purifier-silicon	0	silicon,plastanium,tungsten,new-horizon-processor-junior,	new-horizon-silicar,new-horizon-hydrazine,	MultiBlockCrafter		false
+R	new-horizon-eutectic-purifier-silicon	new-horizon-silicar,new-horizon-hydrazine,	silicon,
+B	new-horizon-eutectic-purifier-silicon-link-entity	0			Block		false
+B	new-horizon-particle-activator	0	graphite,titanium,new-horizon-hard-light,new-horizon-processor-junior,	graphite,	GenericCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-particle-activator	graphite,	new-horizon-xen-fluid,
+B	new-horizon-plasma-activator	4	plastanium,phase-fabric,surge-alloy,new-horizon-zeta,	graphite,thorium,	GenericCrafter	new-horizon-particle-activator	true
+R	new-horizon-plasma-activator	graphite,thorium,	new-horizon-xen-fluid,
+B	new-horizon-crucible-foundry	1	plastanium,tungsten,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	graphite,tungsten,	MultiBlockCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-crucible-foundry	graphite,tungsten,	carbide,
+B	new-horizon-crucible-foundry-link-entity	0			Block		false
+B	new-horizon-casting-foundry	4	surge-alloy,tungsten,carbide,new-horizon-zeta,	graphite,tungsten,new-horizon-hydrazine,	MultiBlockCrafter	new-horizon-crucible-foundry	true
+R	new-horizon-casting-foundry	graphite,tungsten,new-horizon-hydrazine,	carbide,
+B	new-horizon-casting-foundry-link-entity	0			Block		false
+B	new-horizon-xen-separator	1	plastanium,new-horizon-hard-light,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	new-horizon-xen-fluid,	GenericCrafter	new-horizon-particle-activator	true
+R	new-horizon-xen-separator	new-horizon-xen-fluid,	new-horizon-neutron-stream,new-horizon-proton-stream,
+B	new-horizon-multiple-rolling-mill	2	titanium,new-horizon-presstanium,new-horizon-metal-oxhydrigen,	new-horizon-presstanium,new-horizon-metal-oxhydrigen,	GenericCrafter	new-horizon-stamping-facility	true
+R	new-horizon-multiple-rolling-mill	new-horizon-presstanium,new-horizon-metal-oxhydrigen,	new-horizon-multiple-steel,
+B	new-horizon-mixed-rolling-mill	4	silicon,plastanium,carbide,new-horizon-multiple-steel,	graphite,tungsten,	GenericCrafter	new-horizon-multiple-rolling-mill	true
+R	new-horizon-mixed-rolling-mill	graphite,tungsten,	new-horizon-multiple-steel,
+B	new-horizon-heavy-rolling-mill	10	surge-alloy,carbide,new-horizon-zeta,new-horizon-multiple-steel,	surge-alloy,carbide,cryofluid,	MultiBlockCrafter	new-horizon-mixed-rolling-mill	true
+R	new-horizon-heavy-rolling-mill	surge-alloy,carbide,cryofluid,	new-horizon-multiple-steel,
+B	new-horizon-heavy-rolling-mill-link-entity	0			Block		false
+B	new-horizon-thorium-transmuter	2	thorium,carbide,new-horizon-processor-junior,new-horizon-multiple-steel,	thorium,new-horizon-proton-stream,new-horizon-neutron-stream,	GenericCrafter	new-horizon-crucible-foundry	true
+R	new-horizon-thorium-transmuter	thorium,new-horizon-proton-stream,new-horizon-neutron-stream,	fissile-matter,
+B	new-horizon-fusion-core-energy-factory	3	thorium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,	new-horizon-xen-fluid,cryofluid,	GenericCrafter	new-horizon-thorium-transmuter	true
+R	new-horizon-fusion-core-energy-factory	new-horizon-xen-fluid,cryofluid,	new-horizon-fusion-core-energy,
+B	new-horizon-zeta-factory	4	carbide,new-horizon-hard-light,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,	fissile-matter,new-horizon-fusion-core-energy,	MultiBlockCrafter	new-horizon-fusion-core-energy-factory	true
+R	new-horizon-zeta-factory	fissile-matter,new-horizon-fusion-core-energy,	new-horizon-zeta,
+B	new-horizon-zeta-factory-link-entity	0			Block		false
+B	new-horizon-fabric-restructuror	2	thorium,fissile-matter,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	silicon,thorium,	GenericCrafter	new-horizon-thorium-transmuter	true
+R	new-horizon-fabric-restructuror	silicon,thorium,	phase-fabric,
+B	new-horizon-fabric-synthesizer	8	phase-fabric,fissile-matter,new-horizon-zeta,new-horizon-processor-senior,new-horizon-irayrond-panel,	new-horizon-zeta,new-horizon-photon,	MultiBlockCrafter	new-horizon-fabric-restructuror	true
+R	new-horizon-fabric-synthesizer	new-horizon-zeta,new-horizon-photon,	phase-fabric,
+B	new-horizon-fabric-synthesizer-link-entity	0			Block		false
+B	new-horizon-alloy-smelter	3	thorium,plastanium,new-horizon-multiple-steel,new-horizon-fusion-core-energy,	titanium,silicon,new-horizon-xen-fluid,	GenericCrafter	new-horizon-plasticator	true
+R	new-horizon-alloy-smelter	titanium,silicon,new-horizon-xen-fluid,	surge-alloy,
+B	new-horizon-surge-synthesizer	5	surge-alloy,new-horizon-zeta,new-horizon-processor-senior,new-horizon-seton-alloy,new-horizon-fusion-core-energy,	titanium,silicon,new-horizon-zeta,new-horizon-xen-fluid,	MultiBlockCrafter	new-horizon-alloy-smelter	true
+R	new-horizon-surge-synthesizer	titanium,silicon,new-horizon-zeta,new-horizon-xen-fluid,	surge-alloy,
+B	new-horizon-surge-synthesizer-link-entity	0			Block		false
+B	new-horizon-irdryon-fluid-factory	2	plastanium,carbide,fissile-matter,new-horizon-metal-oxhydrigen,	cryofluid,new-horizon-hydrazine,	GenericCrafter	new-horizon-photocatalyst-factory	true
+R	new-horizon-irdryon-fluid-factory	cryofluid,new-horizon-hydrazine,	new-horizon-irdryon-fluid,
+B	new-horizon-irdryon-phase-ascender	5	phase-fabric,surge-alloy,new-horizon-multiple-steel,new-horizon-processor-senior,	phase-fabric,new-horizon-xen-fluid,	GenericCrafter	new-horizon-irdryon-fluid-factory	true
+R	new-horizon-irdryon-phase-ascender	phase-fabric,new-horizon-xen-fluid,	new-horizon-irdryon-fluid,
+B	new-horizon-processor-etching-facility	5	phase-fabric,surge-alloy,carbide,new-horizon-processor-junior,new-horizon-zeta,	surge-alloy,new-horizon-processor-junior,new-horizon-quantum-liquid,	MultiBlockCrafter	new-horizon-processor-manu-factory	true
+R	new-horizon-processor-etching-facility	surge-alloy,new-horizon-processor-junior,new-horizon-quantum-liquid,	new-horizon-processor-senior,
+B	new-horizon-processor-etching-facility-link-entity	0			Block		false
+B	new-horizon-processor-compactor	8	new-horizon-presstanium,new-horizon-processor-senior,new-horizon-irayrond-panel,new-horizon-seton-alloy,	silicon,surge-alloy,new-horizon-irdryon-fluid,	GenericCrafter	new-horizon-processor-etching-facility	true
+R	new-horizon-processor-compactor	silicon,surge-alloy,new-horizon-irdryon-fluid,	new-horizon-processor-junior,new-horizon-processor-senior,
+B	new-horizon-irayrond-factory	8	surge-alloy,new-horizon-zeta,new-horizon-multiple-steel,new-horizon-processor-senior,	new-horizon-presstanium,surge-alloy,	GenericCrafter	new-horizon-multiple-rolling-mill	true
+R	new-horizon-irayrond-factory	new-horizon-presstanium,surge-alloy,	new-horizon-irayrond-panel,
+B	new-horizon-large-irayrond-factory	10	new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-irayrond-panel,new-horizon-nodex-plate,	surge-alloy,new-horizon-multiple-steel,new-horizon-irdryon-fluid,	MultiBlockCrafter	new-horizon-irayrond-factory	true
+R	new-horizon-large-irayrond-factory	surge-alloy,new-horizon-multiple-steel,new-horizon-irdryon-fluid,	new-horizon-irayrond-panel,
+B	new-horizon-large-irayrond-factory-link-entity	0			Block		false
+B	new-horizon-dense-factory	5	carbide,new-horizon-metal-oxhydrigen,new-horizon-zeta,new-horizon-processor-senior,	plastanium,tungsten,new-horizon-irdryon-fluid,	GenericCrafter	new-horizon-multiple-rolling-mill	true
+R	new-horizon-dense-factory	plastanium,tungsten,new-horizon-irdryon-fluid,	new-horizon-seton-alloy,
+B	new-horizon-tandem-factory	0	new-horizon-zeta,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-seton-alloy,new-horizon-nodex-plate,	thorium,new-horizon-zeta,carbide,	MultiBlockCrafter		false
+R	new-horizon-tandem-factory	thorium,new-horizon-zeta,carbide,	new-horizon-seton-alloy,
+B	new-horizon-tandem-factory-link-entity	0			Block		false
+B	new-horizon-positive-phase-decayer	10	plastanium,surge-alloy,carbide,new-horizon-multiple-steel,new-horizon-processor-senior,	new-horizon-fusion-core-energy,new-horizon-zeta,new-horizon-proton-stream,	MultiBlockCrafter	new-horizon-zeta-factory	true
+R	new-horizon-positive-phase-decayer	new-horizon-fusion-core-energy,new-horizon-zeta,new-horizon-proton-stream,	new-horizon-thermo-core-positive,
+B	new-horizon-positive-phase-decayer-link-entity	0			Block		false
+B	new-horizon-negative-phase-decayer	10	plastanium,surge-alloy,carbide,new-horizon-multiple-steel,new-horizon-processor-senior,	fissile-matter,new-horizon-zeta,new-horizon-neutron-stream,	MultiBlockCrafter	new-horizon-zeta-factory	true
+R	new-horizon-negative-phase-decayer	fissile-matter,new-horizon-zeta,new-horizon-neutron-stream,	new-horizon-thermo-core-negative,
+B	new-horizon-negative-phase-decayer-link-entity	0			Block		false
+B	new-horizon-nodex-factory	10	new-horizon-presstanium,new-horizon-processor-senior,new-horizon-irayrond-panel,new-horizon-seton-alloy,	new-horizon-processor-senior,new-horizon-seton-alloy,	GenericCrafter	new-horizon-dense-factory	true
+R	new-horizon-nodex-factory	new-horizon-processor-senior,new-horizon-seton-alloy,	new-horizon-nodex-plate,
+B	new-horizon-ancimembrane-concentrator	10	new-horizon-zeta,new-horizon-processor-senior,new-horizon-irayrond-panel,new-horizon-seton-alloy,	new-horizon-multiple-steel,new-horizon-irayrond-panel,new-horizon-quantum-liquid,	GenericCrafter	new-horizon-irayrond-factory	true
+R	new-horizon-ancimembrane-concentrator	new-horizon-multiple-steel,new-horizon-irayrond-panel,new-horizon-quantum-liquid,	new-horizon-ancimembrane,
+B	new-horizon-reverse-collapse-facility	8	surge-alloy,tungsten,new-horizon-zeta,new-horizon-irayrond-panel,	new-horizon-quantum-liquid,	MultiBlockCrafter	new-horizon-silicar-crusher	true
+R	new-horizon-reverse-collapse-facility	new-horizon-quantum-liquid,	new-horizon-anti-matter-stream,
+B	new-horizon-reverse-collapse-facility-link-entity	0			Block		false
+B	new-horizon-dark-energy-trap	11	new-horizon-presstanium,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-nodex-plate,	new-horizon-neutron-stream,new-horizon-proton-stream,new-horizon-anti-matter-stream,	MultiBlockCrafter	new-horizon-nodex-factory	true
+R	new-horizon-dark-energy-trap	new-horizon-neutron-stream,new-horizon-proton-stream,new-horizon-anti-matter-stream,	new-horizon-dark-energy,
+B	new-horizon-dark-energy-trap-link-entity	0			Block		false
+B	new-horizon-hadron-composite-builder	11	surge-alloy,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-nodex-plate,new-horizon-ancimembrane,	new-horizon-nodex-plate,new-horizon-zeta,new-horizon-neutron-stream,	MultiBlockCrafter	new-horizon-nodex-factory	true
+R	new-horizon-hadron-composite-builder	new-horizon-nodex-plate,new-horizon-zeta,new-horizon-neutron-stream,	new-horizon-hadronicomp,
+B	new-horizon-hadron-composite-builder-link-entity	0			Block		false
+B	new-horizon-hyper-processor	10	surge-alloy,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-nodex-plate,new-horizon-ancimembrane,	new-horizon-ancimembrane,new-horizon-proton-stream,new-horizon-irdryon-fluid,	MultiBlockCrafter	new-horizon-ancimembrane-concentrator	true
+R	new-horizon-hyper-processor	new-horizon-ancimembrane,new-horizon-proton-stream,new-horizon-irdryon-fluid,	new-horizon-processor-hyper,
+B	new-horizon-hyper-processor-link-entity	0			Block		false
+B	new-horizon-flux-node-mk1	0	new-horizon-hard-light,new-horizon-silicar,		PowerNode	new-horizon-photon-panel	true
+B	new-horizon-flux-node-mk2	2	fissile-matter,new-horizon-hard-light,new-horizon-metal-oxhydrigen,		PowerNode	new-horizon-flux-node-mk1	true
+B	new-horizon-flux-node-large-mk1	0	titanium,tungsten,new-horizon-hard-light,		PowerNode	new-horizon-flux-node-mk1	true
+B	new-horizon-flux-node-large-mk2	4	carbide,new-horizon-hard-light,new-horizon-zeta,		PowerNode	new-horizon-flux-node-large-mk1	true
+B	new-horizon-photothermal-generator	0	copper,lead,	?ConsumeItemFlammable,?ConsumeItemExplode,	ConsumeGenerator	combustion-generator	false
+B	new-horizon-geological-photothermal-generator	0	lead,metaglass,graphite,plastanium,new-horizon-processor-junior,		ThermalGenerator	thermal-generator	false
+B	new-horizon-vector-condenser	0	graphite,beryllium,		ThermalGenerator	turbine-condenser	false
+B	new-horizon-differential-reactor	0	graphite,silicon,oxide,carbide,	cryofluid,slag,	ConsumeGenerator	pyrolysis-generator	false
+B	new-horizon-photon-panel	0	new-horizon-silicar,		SolarGenerator	new-horizon-core-conflux	true
+B	new-horizon-xen-extractor	0	new-horizon-presstanium,new-horizon-processor-junior,		ThermalGenerator	new-horizon-particle-activator	true
+B	new-horizon-neutralization-generator	0	graphite,titanium,silicon,	new-horizon-ammonia,	MultiBlockConsumeGenerator	new-horizon-photon-panel	true
+B	new-horizon-neutralization-generator-link-entity	0			Block		false
+B	new-horizon-hydrazine-generator	6	tungsten,new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-hydrazine,	ConsumeGenerator	new-horizon-neutralization-generator	true
+B	new-horizon-fission-reactor	8	titanium,carbide,fissile-matter,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,	fissile-matter,cryofluid,	NuclearReactor	new-horizon-hydrazine-generator	true
+B	new-horizon-fusion-reactor	10	carbide,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,	new-horizon-fusion-core-energy,new-horizon-irdryon-fluid,	MultiBlockConsumeGenerator	new-horizon-fission-reactor	true
+B	new-horizon-fusion-reactor-link-entity	0			Block		false
+B	new-horizon-hyper-reactor	11	surge-alloy,new-horizon-presstanium,new-horizon-irayrond-panel,new-horizon-seton-alloy,new-horizon-nodex-plate,	new-horizon-thermo-core-positive,new-horizon-thermo-core-negative,new-horizon-metal-oxhydrigen,phase-fabric,new-horizon-neutron-stream,new-horizon-proton-stream,	HyperReactor	new-horizon-fusion-reactor	true
+B	new-horizon-gravity-trap-small	0	titanium,tungsten,		GravityWell	new-horizon-photon-panel	true
+B	new-horizon-gravity-trap	5	new-horizon-multiple-steel,new-horizon-processor-senior,		GravityWell	new-horizon-gravity-trap-small	true
+B	new-horizon-armor-battery	0	new-horizon-presstanium,new-horizon-processor-junior,		Battery	new-horizon-photon-panel	true
+B	new-horizon-armor-battery-large	4	new-horizon-presstanium,new-horizon-processor-junior,new-horizon-zeta,		Battery	new-horizon-armor-battery	true
+B	new-horizon-armor-battery-huge	9	new-horizon-zeta,new-horizon-multiple-steel,new-horizon-processor-senior,		Battery	new-horizon-armor-battery-large	true
+B	new-horizon-icon-display	0	silicon,		IconDisplay	new-horizon-core-conflux	true
+B	new-horizon-icon-display-small	0	silicon,		IconDisplay	new-horizon-icon-display	true
+B	new-horizon-character-display	0	silicon,		CharacterDisplay	new-horizon-icon-display	true
+B	new-horizon-character-display-small	0	silicon,		CharacterDisplay	new-horizon-character-display	true
+B	new-horizon-stream-source	0			StreamSource		false
+B	new-horizon-stream-extractor	0			StreamExtractor		false
+B	new-horizon-stream-receiver	0			StreamReceiver		false
+B	new-horizon-stream-repeater	0			StreamRepeater		false
+B	new-horizon-stream-redirector	0			StreamRedirector		false
+B	new-horizon-stream-splitter	0			StreamSplitter		false
+B	new-horizon-turbo-pump-small	0	silicon,		AdaptPump	new-horizon-conduit	true
+B	new-horizon-turbo-pump	0	titanium,tungsten,		AdaptPump	new-horizon-turbo-pump-small	true
+B	new-horizon-standard-liquid-storage	1	new-horizon-presstanium,new-horizon-metal-oxhydrigen,		LiquidRouter	new-horizon-conduit	true
+B	new-horizon-heavy-liquid-storage	1	new-horizon-presstanium,new-horizon-metal-oxhydrigen,		LiquidRouter	new-horizon-standard-liquid-storage	true
+B	new-horizon-basic-jump-gate	0	graphite,titanium,silicon,		JumpGate	new-horizon-core-conflux	true
+U	new-horizon-origin	0	new-horizon-silicar,	new-horizon-basic-jump-gate	true
+U	new-horizon-thynomo	0	silicon,graphite,titanium,tungsten,	new-horizon-basic-jump-gate	true
+U	new-horizon-sharp	0	new-horizon-silicar,titanium,	new-horizon-basic-jump-gate	true
+U	new-horizon-branch	0	silicon,graphite,titanium,tungsten,	new-horizon-basic-jump-gate	true
+U	poly	0	silicon,titanium,	new-horizon-basic-jump-gate	false
+U	horizon	0	silicon,graphite,	new-horizon-basic-jump-gate	false
+U	minke	0	silicon,graphite,titanium,	new-horizon-basic-jump-gate	false
+U	oxynoe	0	silicon,graphite,tungsten,	new-horizon-basic-jump-gate	false
+U	new-horizon-relay	0	silicon,graphite,tungsten,titanium,	new-horizon-basic-jump-gate	true
+U	locus	0	silicon,tungsten,titanium,	new-horizon-basic-jump-gate	false
+U	cleroi	0	silicon,titanium,tungsten,	new-horizon-basic-jump-gate	false
+U	new-horizon-histone	1	carbide,new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-basic-jump-gate	true
+B	new-horizon-primary-jump-gate	3	tungsten,new-horizon-presstanium,new-horizon-processor-junior,		JumpGate	new-horizon-basic-jump-gate	true
+U	new-horizon-assaulter	3	new-horizon-processor-junior,new-horizon-silicar,thorium,	new-horizon-primary-jump-gate	true
+U	new-horizon-apparition	3	plastanium,new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-primary-jump-gate	true
+U	mega	0	silicon,tungsten,thorium,	new-horizon-primary-jump-gate	false
+U	quasar	0	silicon,titanium,thorium,	new-horizon-primary-jump-gate	false
+U	zenith	0	silicon,titanium,thorium,	new-horizon-primary-jump-gate	false
+U	cyerce	0	silicon,tungsten,thorium,	new-horizon-primary-jump-gate	false
+U	new-horizon-ghost	3	silicon,new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-primary-jump-gate	true
+U	new-horizon-warper	6	tungsten,new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-primary-jump-gate	true
+U	new-horizon-aliotiat	3	tungsten,new-horizon-presstanium,new-horizon-processor-junior,	new-horizon-primary-jump-gate	true
+U	new-horizon-rhino	3	new-horizon-presstanium,new-horizon-processor-junior,carbide,new-horizon-metal-oxhydrigen,	new-horizon-primary-jump-gate	true
+U	new-horizon-gather	3	new-horizon-processor-junior,carbide,new-horizon-metal-oxhydrigen,surge-alloy,	new-horizon-primary-jump-gate	true
+U	obviate	0	new-horizon-processor-junior,tungsten,new-horizon-metal-oxhydrigen,phase-fabric,	new-horizon-primary-jump-gate	false
+U	precept	0	new-horizon-processor-junior,tungsten,thorium,carbide,	new-horizon-primary-jump-gate	false
+U	anthicus	0	new-horizon-processor-junior,tungsten,carbide,new-horizon-multiple-steel,	new-horizon-primary-jump-gate	false
+U	scepter	0	new-horizon-processor-junior,new-horizon-metal-oxhydrigen,carbide,new-horizon-multiple-steel,	new-horizon-primary-jump-gate	false
+U	quad	0	new-horizon-processor-junior,new-horizon-presstanium,carbide,new-horizon-multiple-steel,	new-horizon-primary-jump-gate	false
+U	tecta	0	new-horizon-processor-junior,surge-alloy,phase-fabric,new-horizon-multiple-steel,	new-horizon-primary-jump-gate	false
+U	sei	0	new-horizon-processor-junior,surge-alloy,new-horizon-zeta,new-horizon-multiple-steel,	new-horizon-primary-jump-gate	false
+U	aegires	0	new-horizon-processor-junior,carbide,phase-fabric,new-horizon-metal-oxhydrigen,	new-horizon-primary-jump-gate	false
+U	new-horizon-restriction-enzyme	3	carbide,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-junior,	new-horizon-primary-jump-gate	true
+B	new-horizon-standard-jump-gate	5	new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-zeta,		JumpGate	new-horizon-primary-jump-gate	true
+U	new-horizon-naxos	5	new-horizon-metal-oxhydrigen,surge-alloy,new-horizon-processor-senior,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	true
+U	new-horizon-striker	5	new-horizon-metal-oxhydrigen,carbide,new-horizon-processor-senior,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	true
+U	new-horizon-tarlidor	7	new-horizon-processor-junior,new-horizon-metal-oxhydrigen,surge-alloy,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	true
+U	new-horizon-zarkov	7	tungsten,new-horizon-metal-oxhydrigen,surge-alloy,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	true
+U	eclipse	0	new-horizon-presstanium,new-horizon-processor-junior,phase-fabric,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	false
+U	omura	0	new-horizon-presstanium,new-horizon-processor-junior,phase-fabric,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	false
+U	disrupt	0	new-horizon-zeta,carbide,phase-fabric,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	false
+U	corvus	0	new-horizon-processor-junior,surge-alloy,phase-fabric,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	false
+U	navanax	0	new-horizon-processor-junior,surge-alloy,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,	new-horizon-standard-jump-gate	false
+U	collaris	0	carbide,surge-alloy,phase-fabric,new-horizon-processor-senior,	new-horizon-standard-jump-gate	false
+U	new-horizon-macrophage	5	phase-fabric,plastanium,new-horizon-processor-senior,new-horizon-multiple-steel,new-horizon-seton-alloy,	new-horizon-standard-jump-gate	true
+U	new-horizon-lymph	5	surge-alloy,new-horizon-zeta,new-horizon-processor-senior,new-horizon-multiple-steel,new-horizon-seton-alloy,	new-horizon-standard-jump-gate	true
+B	new-horizon-hyper-jump-gate	10	new-horizon-presstanium,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-irayrond-panel,		JumpGate	new-horizon-standard-jump-gate	true
+U	new-horizon-destruction	11	new-horizon-processor-senior,new-horizon-irayrond-panel,new-horizon-seton-alloy,new-horizon-thermo-core-negative,	new-horizon-hyper-jump-gate	true
+U	new-horizon-longinus	11	new-horizon-multiple-steel,new-horizon-irayrond-panel,new-horizon-seton-alloy,new-horizon-thermo-core-negative,	new-horizon-hyper-jump-gate	true
+U	new-horizon-annihilation	11	new-horizon-irayrond-panel,new-horizon-seton-alloy,new-horizon-thermo-core-negative,	new-horizon-hyper-jump-gate	true
+U	new-horizon-saviour	10	new-horizon-zeta,surge-alloy,new-horizon-processor-senior,new-horizon-irayrond-panel,new-horizon-thermo-core-positive,	new-horizon-hyper-jump-gate	true
+U	new-horizon-declining	10	tungsten,new-horizon-irayrond-panel,new-horizon-processor-senior,new-horizon-thermo-core-negative,new-horizon-nodex-plate,	new-horizon-hyper-jump-gate	true
+U	new-horizon-hurricane	11	new-horizon-processor-senior,new-horizon-thermo-core-negative,new-horizon-nodex-plate,new-horizon-ancimembrane,	new-horizon-hyper-jump-gate	true
+U	new-horizon-anvil	10	new-horizon-processor-junior,carbide,new-horizon-multiple-steel,new-horizon-thermo-core-positive,new-horizon-nodex-plate,	new-horizon-hyper-jump-gate	true
+U	new-horizon-sin	10	new-horizon-metal-oxhydrigen,new-horizon-processor-senior,new-horizon-thermo-core-positive,new-horizon-nodex-plate,new-horizon-ancimembrane,	new-horizon-hyper-jump-gate	true
+U	new-horizon-collapser	12	new-horizon-thermo-core-positive,new-horizon-thermo-core-negative,new-horizon-nodex-plate,new-horizon-ancimembrane,	new-horizon-hyper-jump-gate	true
+U	new-horizon-laugra	10	new-horizon-processor-senior,carbide,new-horizon-irayrond-panel,new-horizon-thermo-core-positive,new-horizon-nodex-plate,	new-horizon-hyper-jump-gate	true
+U	new-horizon-guardian	12	new-horizon-dark-energy,	new-horizon-hyper-jump-gate	true
+U	new-horizon-pester	12	new-horizon-hadronicomp,new-horizon-processor-hyper,new-horizon-thermo-core-positive,new-horizon-thermo-core-negative,	new-horizon-hyper-jump-gate	true
+U	new-horizon-nucleoid	0	new-horizon-hadronicomp,new-horizon-processor-hyper,new-horizon-dark-energy,	new-horizon-hyper-jump-gate	false
+B	new-horizon-multi-router	2	new-horizon-processor-junior,new-horizon-multiple-steel,		FloatMultiRouter	new-horizon-hard-light-rail	true
+B	new-horizon-multi-junction	2	new-horizon-processor-junior,new-horizon-multiple-steel,		FloatMultiJunction	new-horizon-multi-router	true
+B	new-horizon-multi-armor-conveyor	9	thorium,new-horizon-zeta,new-horizon-multiple-steel,		FloatArmoredConveyor	new-horizon-multi-junction	true
+B	new-horizon-hard-light-rail	0	new-horizon-hard-light,		AdaptConveyor	new-horizon-core-conflux	true
+B	new-horizon-stack-rail	5	new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,		AdaptStackConveyor	new-horizon-hard-light-rail	true
+B	new-horizon-steady-stack-rail	5	new-horizon-hard-light,new-horizon-multiple-steel,new-horizon-processor-senior,		AdaptStackConveyor	new-horizon-stack-rail	true
+B	new-horizon-light-stack-loader	5	new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,		AdaptStackConveyor	new-horizon-stack-rail	true
+B	new-horizon-heavy-stack-loader	9	new-horizon-hard-light,new-horizon-multiple-steel,new-horizon-processor-senior,		AdaptStackConveyor	new-horizon-light-stack-loader	true
+B	new-horizon-logistics-bridge	0	silicon,new-horizon-hard-light,		AdaptItemBridge	new-horizon-hard-light-rail	true
+B	new-horizon-logistics-extend-bridge	2	new-horizon-hard-light,new-horizon-multiple-steel,		AdaptItemBridge	new-horizon-logistics-bridge	true
+B	new-horizon-logistics-router	0	new-horizon-hard-light,		Router	new-horizon-hard-light-rail	true
+B	new-horizon-logistics-junction	0	new-horizon-hard-light,		AdaptJunction	new-horizon-logistics-router	true
+B	new-horizon-logistics-directional-router	0	new-horizon-hard-light,		AdaptDirectionalRouter	new-horizon-logistics-router	true
+B	new-horizon-logistics-directional-merger	0	new-horizon-hard-light,		AdaptDirectionalMerger	new-horizon-logistics-directional-router	true
+B	new-horizon-logistics-directional-overflow-gate	0	new-horizon-hard-light,		OverflowDuct	new-horizon-logistics-directional-router	true
+B	new-horizon-logistics-directional-underflow-gate	0	new-horizon-hard-light,		OverflowDuct	new-horizon-logistics-directional-overflow-gate	true
+B	new-horizon-logistics-omni-overflow-gate	0	new-horizon-hard-light,		OverflowGate	new-horizon-logistics-router	true
+B	new-horizon-logistics-omni-underflow-gate	0	new-horizon-hard-light,		OverflowGate	new-horizon-logistics-omni-overflow-gate	true
+B	new-horizon-logistics-omni-sorter	0	new-horizon-hard-light,		AdaptSorter	new-horizon-logistics-omni-overflow-gate	true
+B	new-horizon-logistics-omni-blocker	0	new-horizon-hard-light,		AdaptSorter	new-horizon-logistics-omni-sorter	true
+B	new-horizon-logistics-unloader	0	new-horizon-hard-light,		AdaptDirectionalUnloader	new-horizon-hard-light-rail	true
+B	new-horizon-logistics-fast-unloader	2	new-horizon-hard-light,new-horizon-multiple-steel,		AdaptDirectionalUnloader	new-horizon-logistics-unloader	true
+B	new-horizon-omni-unloader	0	new-horizon-presstanium,new-horizon-processor-junior,		AdaptUnloader	new-horizon-hard-light-rail	true
+B	new-horizon-rapid-unloader	2	new-horizon-processor-junior,new-horizon-multiple-steel,		AdaptUnloader	new-horizon-omni-unloader	true
+B	new-horizon-conduit	0	silicon,new-horizon-hard-light,		AdaptConduit	new-horizon-core-conflux	true
+B	new-horizon-logistics-liquid-junction	0	silicon,new-horizon-hard-light,		LiquidJunction	new-horizon-conduit	true
+B	new-horizon-logistics-liquid-router	0	silicon,new-horizon-hard-light,		LiquidRouter	new-horizon-conduit	true
+B	new-horizon-logistics-liquid-bridge	0	silicon,new-horizon-hard-light,		AdaptLiquidBridge	new-horizon-conduit	true
+B	new-horizon-logistics-extend-liquid-bridge	2	new-horizon-hard-light,new-horizon-multiple-steel,		AdaptLiquidBridge	new-horizon-logistics-liquid-bridge	true
+B	new-horizon-logistics-liquid-unloader	0	new-horizon-hard-light,		AdaptLiquidDirectionalUnloader	new-horizon-conduit	true
+I	copper	1
+I	lead	1
+I	metaglass	0
+I	graphite	0
+I	sand	0
+I	coal	2
+I	titanium	3
+I	thorium	4
+I	scrap	0
+I	silicon	3
+I	plastanium	0
+I	phase-fabric	0
+I	surge-alloy	0
+I	spore-pod	0
+I	blast-compound	0
+I	pyratite	0
+I	beryllium	3
+I	tungsten	5
+I	oxide	0
+I	carbide	0
+I	fissile-matter	0
+I	dormant-cyst	0
+I	new-horizon-hard-light	0
+I	new-horizon-silicar	2
+I	new-horizon-presstanium	8
+I	new-horizon-processor-junior	0
+I	new-horizon-metal-oxhydrigen	0
+I	new-horizon-zeta	8
+I	new-horizon-multiple-steel	10
+I	new-horizon-processor-senior	0
+I	new-horizon-irayrond-panel	12
+I	new-horizon-seton-alloy	16
+I	new-horizon-nodex-plate	20
+I	new-horizon-ancimembrane	0
+I	new-horizon-hadronicomp	1000
+I	new-horizon-processor-hyper	0
+I	new-horizon-fusion-core-energy	0
+I	new-horizon-thermo-core-positive	0
+I	new-horizon-thermo-core-negative	0
+I	new-horizon-dark-energy	0
+M	1	lead:156,thorium:257,tungsten:154,sand:186,copper:197,new-horizon-zeta:255,coal:192,water:168,beryllium:155,new-horizon-silicar:461,titanium:192,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-zeta,
+M	2	lead:155,thorium:257,tungsten:154,sand:186,copper:198,new-horizon-zeta:259,coal:190,water:168,beryllium:156,new-horizon-silicar:447,titanium:196,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-zeta,
+M	3	lead:147,thorium:262,tungsten:151,sand:186,copper:199,new-horizon-zeta:248,coal:199,water:168,beryllium:157,new-horizon-silicar:458,titanium:196,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-zeta,
+M	4	lead:245,thorium:491,scrap:91,tungsten:343,sand:25832,copper:297,new-horizon-zeta:152,coal:286,water:370,beryllium:295,new-horizon-silicar:279,titanium:425,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	5	lead:286,thorium:616,scrap:77,tungsten:321,sand:25901,copper:291,new-horizon-zeta:302,coal:289,water:97815,beryllium:243,new-horizon-silicar:317,titanium:414,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	6	lead:142,thorium:510,scrap:95,tungsten:330,sand:28989,copper:144,new-horizon-zeta:141,coal:289,water:348,beryllium:364,new-horizon-silicar:296,titanium:404,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	7	lead:296,thorium:655,scrap:205,tungsten:365,sand:400,copper:131,new-horizon-zeta:293,coal:273,water:223,beryllium:349,new-horizon-silicar:298,titanium:443,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	8	lead:304,thorium:488,scrap:165,tungsten:364,sand:405,new-horizon-zeta:299,copper:307,coal:295,water:21457,beryllium:328,new-horizon-silicar:295,titanium:435,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	9	lead:292,thorium:507,scrap:107,tungsten:358,sand:33298,copper:296,new-horizon-zeta:143,coal:283,water:14272,beryllium:348,new-horizon-silicar:286,titanium:408,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	10	lead:597,thorium:642,scrap:76,tungsten:320,sand:4509,copper:550,new-horizon-zeta:280,coal:171,water:15428,beryllium:254,new-horizon-silicar:608,titanium:818,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	11	lead:284,thorium:652,scrap:306,tungsten:350,sand:38327,copper:304,new-horizon-zeta:280,coal:246,water:253,beryllium:348,new-horizon-silicar:159,titanium:411,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	12	lead:280,thorium:466,scrap:179,tungsten:353,sand:361,copper:318,new-horizon-zeta:138,coal:289,water:7354,beryllium:358,new-horizon-silicar:314,titanium:436,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	13	lead:293,thorium:666,scrap:105,tungsten:369,sand:375,copper:302,new-horizon-zeta:280,coal:293,water:269,beryllium:358,new-horizon-silicar:225,titanium:410,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	14	lead:431,thorium:844,scrap:683,tungsten:388,sand:34069,copper:555,new-horizon-zeta:1116,coal:489,water:10441,beryllium:306,new-horizon-silicar:504,titanium:523,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	15	lead:466,thorium:861,scrap:1197,tungsten:340,sand:62879,copper:495,new-horizon-zeta:727,coal:518,water:61549,beryllium:275,new-horizon-silicar:513,titanium:547,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,
+M	16	lead:386,thorium:605,scrap:678,tungsten:354,sand:126,copper:517,new-horizon-zeta:600,coal:504,water:173,beryllium:296,new-horizon-silicar:505,titanium:537,	copper,lead,titanium,silicon,graphite,coal,sand,tungsten,thorium,metaglass,beryllium,carbide,plastanium,surge-alloy,phase-fabric,new-horizon-silicar,new-horizon-hard-light,new-horizon-presstanium,new-horizon-processor-junior,new-horizon-metal-oxhydrigen,new-horizon-multiple-steel,new-horizon-processor-senior,new-horizon-zeta,

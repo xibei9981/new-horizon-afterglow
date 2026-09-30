@@ -2,6 +2,6 @@ displayName: "New Horizon · Afterglow (Community Edition)"
 author: "Yuria & Lao"
 name: "new-horizon"
 main: "newhorizon.NewHorizon"
-description: "Unofficial community continuation: 13 connected Midantha missions. Includes New Horizon. Target: Mindustry desktop 160.4. See CAMPAIGN.md."
-version: "2.2.2-afterglow-0.4.0"
+description: "Unofficial community continuation: 16 connected Midantha missions. Includes New Horizon. Target: Mindustry desktop 160.4. See CAMPAIGN.md."
+version: "2.2.2-afterglow-0.5.0"
 minGameVersion: 160.4

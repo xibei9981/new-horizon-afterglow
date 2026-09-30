@@ -14,3 +14,16 @@ CLIENT_OK mission=13
 All 10 new maps: version tag 0.4.0, restoration-site tag and post-planet irradiance verified.
 Native screenshots and map previews generated from this build.
 Native Windows and full human playthrough not tested.
+
+Afterglow 0.5.0 / Mindustry 160.4 / macOS client / 2026-09-30
+CLIENT_ZH_OK 余烬航线 I · 断流峡谷
+CLIENT_RESEARCH_OK explicit cost = 6
+CLIENT_RULES chapter=13 initial=28800 mapInitial=28800
+CLIENT_OK mission=14
+CLIENT_RULES chapter=14 initial=36000 mapInitial=36000
+CLIENT_CARGO thorium=77 zeta=51 (after landing animation, native mining)
+CLIENT_OK mission=15
+CLIENT_RULES chapter=15 initial=14400 mapInitial=14400
+CLIENT_OK mission=16
+Native maps and screenshots generated after landing animation.
+No Windows or Android native runtime or full human playthrough tested.

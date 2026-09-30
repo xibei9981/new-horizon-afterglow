@@ -1,8 +1,7 @@
 ANDROID_ARCHIVE_OK
 D8: Android SDK build-tools 36.1.0; min-api 21; DEX 035
-Original class definitions: 1635 / 1635
-DEX definitions including desugaring helpers: 3923
-All 13 campaign maps and all original non-metadata entries byte-identical.
+Original class definitions: 1637 / 1637
+DEX definitions including desugaring helpers: 3926
+All 16 campaign maps and all original non-metadata entries byte-identical.
 DEX header, SHA-1, Adler-32, ZIP CRC and unique entries verified.
 No Android device/runtime test performed.
-Android SDK dexdump -c: Checksum verified.
