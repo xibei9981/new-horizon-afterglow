@@ -3,5 +3,5 @@ author: "Yuria & Lao"
 name: "new-horizon"
 main: "newhorizon.NewHorizon"
 description: "Unofficial community continuation: 16 connected Midantha missions. Includes New Horizon. Complete bases and physical logistics. Target: Mindustry desktop / Android 160.4. See CAMPAIGN.md."
-version: "2.2.2-afterglow-0.7.0"
+version: "2.2.2-afterglow-0.8.0"
 minGameVersion: 160.4

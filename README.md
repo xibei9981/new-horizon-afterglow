@@ -12,11 +12,20 @@ xibei9981/new-horizon-afterglow
 
 完整地址：[https://github.com/xibei9981/new-horizon-afterglow](https://github.com/xibei9981/new-horizon-afterglow)
 
-或在[最新发布](https://github.com/xibei9981/new-horizon-afterglow/releases/latest)下载 `dexed-NewHorizon-Afterglow-0.7.0-Android160.4.jar`，安卓和电脑通用，无需解压。此包包含新视界本体，移除原版/旧版后导入并重启，安装前请备份游戏数据。
+或在[最新发布](https://github.com/xibei9981/new-horizon-afterglow/releases/latest)下载 `dexed-NewHorizon-Afterglow-0.8.0-Android160.4.jar`，安卓和电脑通用，无需解压。此包包含新视界本体，移除原版/旧版后导入并重启，安装前请备份游戏数据。
 
 **已有区块存档不会自动换建筑，需重新开始对应关卡查看新版基地；已研究科技保留。**
 
-## 0.7.0：展开敌占区，连接前线与纵深
+## 0.8.0：分散资源与野外工业
+
+- 全部 16 关加入不规则零散矿脉，保留开局资源与矿机脚下的矿，外部矿区沿可建设陆地展开。
+- 共 35 处可接管采矿/加工设施，自带电力、运输、仓储和维修。在中心建修理投影器并供电 20 秒接管；生产走真实建筑，原料储备有限，产品需要自行运走。
+- 赤峡闸口补齐重炮桥头和对应装甲进攻；白海矿驿改成两个分离矿场、跨湖货运、港口工业与六处敌方沿岸炮阵；三相遗城补入可接管工业和散矿，保留三点供能目标与纵深攻城。
+- 科研仍约 20% 费用，第 12 关后开放全部战役研究门槛。新设施不占额外远程核心仓库名额，不改变武器伤害倍率。
+
+[矿脉与地图对比](https://github.com/xibei9981/new-horizon-afterglow/releases/download/v0.8.0/Afterglow-0.8.0-map-comparison.png) · [完整玩法](CAMPAIGN.md) · [验证记录](campaign-tools/VALIDATION.md)
+
+## 0.7.0：展开敌占区，连接前线与纵深（历史版本）
 
 - 修正敌军仅围绕核心占据小片区域的问题。前沿、两翼、核心之间和后方新增有工业与后勤的驻防区，保留原有山脊、河流、岛屿、矿湖和任务目标。
 - 第 13 关由 118 座敌方炮台增至 367 座，新增 37 片驻防区；第 16 关由 80 座增至 401 座，新增 49 片驻防区。实际建筑占地与射程覆盖分别测量，不把两者混作密度。

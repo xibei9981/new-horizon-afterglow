@@ -44,6 +44,7 @@ public class CampaignHarness implements ApplicationListener {
             if(System.getProperty("campaign.resources") != null) mods.getMod("new-horizon").loader.loadClass("ResourceChecks").getMethod("run").invoke(null);
             if(System.getProperty("campaign.workshop") != null) mods.getMod("new-horizon").loader.loadClass("WorkshopChecks").getMethod("run").invoke(null);
             if(System.getProperty("campaign.territory") != null) mods.getMod("new-horizon").loader.loadClass("TerritoryChecks").getMethod("run").invoke(null);
+            if(System.getProperty("campaign.polish") != null) mods.getMod("new-horizon").loader.loadClass("PolishChecks").getMethod("run").invoke(null);
             System.exit(0);
         } catch(Throwable t) {t.printStackTrace(); System.exit(1);}
     }

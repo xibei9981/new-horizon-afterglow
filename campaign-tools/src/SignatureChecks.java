@@ -52,7 +52,15 @@ public class SignatureChecks extends CampaignChecks {
                 if(b.power.status<=.9f)for(var tile:world.tiles){var q=tile.build;if(q!=null&&tile.isCenter()&&q.team==Team.sharded&&q.power!=null)System.out.println("POWER "+q.block.name+" "+q.tileX()+","+q.tileY()+" graph="+q.power.graph.getID()+" produced="+q.power.graph.getPowerProduced()+" status="+q.power.status+" links="+q.power.links);}
                 check(b.power.status>.9f,"powered starter "+b.block.name+" "+b.tileX()+","+b.tileY()+" "+b.power.status);
             }
-            if(i==1){var b=world.build(SignatureCampaign.cargoX,SignatureCampaign.cargoY);check(b.items.get(Items.thorium)>0&&b.items.get(NHItems.zeta)>0,"actual tier-eight mining and two conveyors supply cargo");log("MINING cargo after 30s: thorium="+b.items.get(Items.thorium)+" zeta="+b.items.get(NHItems.zeta));}
+            if(i==1){
+                var b=world.build(SignatureCampaign.cargoX,SignatureCampaign.cargoY);int seconds=30;
+                log("MINING in transit after30s: thorium="+b.items.get(Items.thorium)+" zeta="+b.items.get(NHItems.zeta));
+                // The separated concessions now have 160+ tile physical routes. Measure
+                // first arrival instead of requiring the former adjacent mines' 30s deadline.
+                while(seconds<90&&(b.items.get(Items.thorium)==0||b.items.get(NHItems.zeta)==0)){ticks(900);seconds+=15;}
+                check(b.items.get(Items.thorium)>0&&b.items.get(NHItems.zeta)>0,"actual tier-eight mining and two causeways supply cargo within90s");
+                log("MINING cargo after "+seconds+"s: thorium="+b.items.get(Items.thorium)+" zeta="+b.items.get(NHItems.zeta));
+            }
             state.wave=1;logic.runWave();ticks(240);check(Groups.unit.contains(u->u.team==Team.blue),"real wave units spawned");clear();
             if(i==0)gate();if(i==1)cargo();if(i==2)grid();
             log("PASS "+SignatureCampaign.names[i]+": native map, paths, power, mining, waves, persistent objectives, engine capture.");

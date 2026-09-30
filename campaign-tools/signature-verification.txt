@@ -1,10 +1,11 @@
 PASS staged research: 140 contents across the first 12 victories; all alternate entries gated, prerequisites retained, no existing unlock revoked.
-MAP redgate surfaces=13 walls=44108 water=10534 metal=39402 wave peak=65
+MAP redgate surfaces=14 walls=45084 water=10386 metal=35869 wave peak=62
 PASS 赤峡闸口: native map, paths, power, mining, waves, persistent objectives, engine capture.
-MAP saltworks surfaces=12 walls=45357 water=61073 metal=28046 wave peak=27
-MINING cargo after 30s: thorium=123 zeta=80
+MAP saltworks surfaces=13 walls=44420 water=56065 metal=29478 wave peak=27
+MINING in transit after30s: thorium=0 zeta=0
+MINING cargo after 45s: thorium=100 zeta=30
 PASS 白海矿驿: native map, paths, power, mining, waves, persistent objectives, engine capture.
-MAP triune surfaces=13 walls=63787 water=693 metal=67499 wave peak=15
-GRID_POST_ASSAULT cleared=250 hostile guns whose actual firing envelopes threaten a captured courtyard
+MAP triune surfaces=13 walls=63376 water=681 metal=67919 wave peak=15
+GRID_POST_ASSAULT cleared=226 hostile guns whose actual firing envelopes threaten a captured courtyard
 PASS 三相遗城: native map, paths, power, mining, waves, persistent objectives, engine capture.
 PASS custom-game objective capture; research remains at previous 20% cost.

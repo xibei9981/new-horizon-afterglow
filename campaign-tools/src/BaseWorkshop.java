@@ -229,9 +229,12 @@ public final class BaseWorkshop {
     // Tactical siege emplacement. Ammunition is a finite deployed military reserve;
     // required antimatter is continuously manufactured from pumped water, not prefilled.
     static void siegeBattery(){
+        siegeBattery(true);
+    }
+    static void siegeBattery(boolean coreSupply){
         put(NHBlocks.endOfEra,0,10);
-        var nodex=put(team==Team.sharded?SpecialBlock.remoteStorage:SpecialBlock.heavyStorage,0,0);
-        if(team!=Team.sharded)nodex.items.add(NHItems.nodexPlate,4000);
+        var nodex=put(team==Team.sharded&&coreSupply?SpecialBlock.remoteStorage:SpecialBlock.heavyStorage,0,0);
+        if(team!=Team.sharded||!coreSupply)nodex.items.add(NHItems.nodexPlate,4000);
         else for(int side:new int[]{-1,1}){
             var feed=put(DistributionBlock.conveyorUnloaderFast,side*2,0);feed.rotation=side<0?2:0;feed.configureAny(NHItems.fusionEnergy);
             itemBridge(side*3,0,side*3,5);horizontal(side*4,side*6,5);
@@ -366,7 +369,11 @@ public final class BaseWorkshop {
     // Each foundry returns fuel to the shared core; each weapon hub draws it through
     // native remote storage. The power cost and ten-hub player limit remain unchanged.
     static void fusionFoundry(){
-        put(SpecialBlock.remoteStorage,0,0);
+        fusionFoundry(true);
+    }
+    static void fusionFoundry(boolean remote){
+        var supply=put(remote?SpecialBlock.remoteStorage:SpecialBlock.heavyStorage,0,0);
+        if(!remote){supply.items.add(Items.graphite,4000);supply.items.add(Items.thorium,2000);supply.items.add(Items.titanium,3000);}
         for(int x:new int[]{-5,5}){
             put(CraftingBlock.fusionCoreEnergyFactory,x,0);
             if(x<0)horizontal(-3,-2,0);else horizontal(3,2,0);
@@ -587,6 +594,55 @@ public final class BaseWorkshop {
         begin(x,y+44,Team.sharded,14,-39,-14,39,17);
         at(-24,0,()->laserBattery());at(4,0,()->siegeBattery());
         prefab(Items.thorium,15,28,0,0);maintenance(24,-10);grid(-38,-13,38,13);
+    }
+
+    /** Recoverable, physically supplied roadside works; no remote-core slot is consumed. */
+    public static void waystation(int x,int y,int c,int kind,int index){
+        begin(x,y,Team.derelict,c,kind==3?-11:-21,kind==3?-11:-17,kind==3?11:21,kind==3?12:22);
+        if(kind==3){
+            mine(7,-6,c>=8?newhorizon.content.NHItems.zeta:Items.titanium,true);vertical(7,-3,4);put(SpecialBlock.heavyStorage,7,6);
+            for(int gy:new int[]{-6,0,6})geothermal(-7,gy);
+            put(PowerBlock.fluxNodeMK2,-2,-5);put(PowerBlock.fluxNodeMK2,0,5);maintenance(-3,8);
+        }else if(kind==2){
+            at(0,11,()->fusionFoundry(false));
+            for(int gx:new int[]{-16,16})for(int gy=-12;gy<=18;gy+=4)geothermal(gx,gy);
+        }else{
+            for(int gx:new int[]{-12,12}){
+                Item input=kind==1?NHItems.silicar:gx<0?(c>=8?Items.thorium:Items.titanium):(c>=8?NHItems.zeta:Items.coal);
+                mine(gx,-10,input,c>=4);vertical(gx,c>=4?-7:-8,kind==1?-1:5);
+                if(kind==1){put(CraftingBlock.silicarCrusher,gx,0);vertical(gx,2,5);}
+                put(SpecialBlock.heavyStorage,gx,7);
+            }
+            for(int gx:new int[]{-12,-6,0,6,12})geothermal(gx,16);
+        }
+        if(kind!=3){put(PowerBlock.fluxNodeLargeMK1,0,-7);put(PowerBlock.fluxNodeLargeMK1,0,4);
+        put(PowerBlock.fluxNodeLargeMK1,-12,11);put(PowerBlock.fluxNodeLargeMK1,12,11);
+        put(PowerBlock.armorBatteryLarge,-5,-7).power.status=0;
+        maintenance(-5,0);maintenance(5,0);
+        // Broken walls retain an entrance and a working area for the repair projector.
+        for(int gx=-20;gx<=20;gx++)if(Math.abs(gx)>5)for(int gy:new int[]{-16,21})if(free(wallFor(c),ox+gx,oy+gy))put(wallFor(c),gx,gy);
+        for(int gy=-15;gy<=20;gy++)if(Math.abs(gy)>4)for(int gx:new int[]{-20,20})if(free(wallFor(c),ox+gx,oy+gy))put(wallFor(c),gx,gy);}
+        var positions=new StringBuilder();
+        for(int dx=kind==3?-11:-21;dx<=(kind==3?11:21);dx++)for(int dy=kind==3?-11:-17;dy<=(kind==3?12:22);dy++){
+            var tile=world.tile(x+dx,y+dy);if(tile!=null&&tile.isCenter()&&tile.build!=null&&tile.team()==Team.derelict){
+                tile.build.enabled=false;positions.append(tile.pos()).append(',');
+            }
+        }
+        state.rules.tags.put("landmark.center."+index,""+Point2.pack(x,y));
+        state.rules.tags.put("landmark.blocks."+index,positions.toString());
+        state.rules.tags.put("landmark.kind."+index,""+kind);
+        for(int dx=-1;dx<=1;dx++)for(int dy=-1;dy<=1;dy++)world.tile(x+dx,y+dy).setFloor(Blocks.metalFloor5.asFloor());
+    }
+    public static void coastalBastion(int x,int y,int kind){
+        begin(x,y,Team.blue,14,-20,-15,20,25);
+        if(kind==0)denseLaserBattery();else if(kind==1)executorBattery();else siegeBattery();
+        for(int gx:new int[]{-16,16})for(int gy=-11;gy<=21;gy+=4)geothermal(gx,gy);
+        grid(-16,-14,16,24);perimeter(-20,-15,20,25,true);
+    }
+    public static void bridgeHead(int x,int y){
+        begin(x,y,Team.sharded,13,-19,-14,19,23);siegeBattery(false);
+        for(int gx:new int[]{-16,16})for(int gy=-10;gy<=18;gy+=4)geothermal(gx,gy);
+        grid(-16,-13,16,22);perimeter(-19,-14,19,23,true);
     }
 
     /** Occupy the theater between and around command forts, not just a radius of each core.

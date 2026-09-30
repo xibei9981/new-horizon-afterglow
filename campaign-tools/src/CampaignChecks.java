@@ -127,6 +127,10 @@ public class CampaignChecks {
         }
         for(Tile t:world.tiles)if(t.overlay()==Blocks.spawn)check(seen[t.array()],"unreachable spawn at "+t.x+","+t.y);
         for(var enemy:Team.blue.cores())check(seen[enemy.tile.array()],"unreachable enemy fortress");
+        for(int n=0;n<state.rules.tags.getInt("landmark.count",0);n++){
+            var tile=world.tile(state.rules.tags.getInt("landmark.center."+n,-1));
+            check(tile!=null&&seen[tile.array()],"unreachable optional works "+n+" at "+tile);
+        }
     }
     static void preview(int c){
         Pixmap pix=new Pixmap(world.width(),world.height());

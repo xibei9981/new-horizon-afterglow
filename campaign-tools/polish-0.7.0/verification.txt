@@ -1,0 +1,16 @@
+ORES map=1 mineableTiles=1389 remoteTiles=523 patches4plus=30 small4to100=27 large=3 occupied8x8Bins=14/64
+ORES map=2 mineableTiles=1354 remoteTiles=593 patches4plus=31 small4to100=29 large=2 occupied8x8Bins=10/64
+ORES map=3 mineableTiles=1272 remoteTiles=591 patches4plus=30 small4to100=28 large=2 occupied8x8Bins=12/64
+ORES map=4 mineableTiles=2558 remoteTiles=1564 patches4plus=31 small4to100=22 large=9 occupied8x8Bins=15/64
+ORES map=5 mineableTiles=2371 remoteTiles=1293 patches4plus=26 small4to100=17 large=9 occupied8x8Bins=14/64
+ORES map=6 mineableTiles=2376 remoteTiles=1640 patches4plus=28 small4to100=19 large=9 occupied8x8Bins=15/64
+ORES map=7 mineableTiles=2578 remoteTiles=1624 patches4plus=25 small4to100=14 large=11 occupied8x8Bins=15/64
+ORES map=8 mineableTiles=2662 remoteTiles=1322 patches4plus=24 small4to100=12 large=12 occupied8x8Bins=13/64
+ORES map=9 mineableTiles=2246 remoteTiles=1356 patches4plus=22 small4to100=14 large=8 occupied8x8Bins=11/64
+ORES map=10 mineableTiles=2782 remoteTiles=1984 patches4plus=49 small4to100=41 large=8 occupied8x8Bins=18/64
+ORES map=11 mineableTiles=2031 remoteTiles=1368 patches4plus=24 small4to100=18 large=6 occupied8x8Bins=11/64
+ORES map=12 mineableTiles=2406 remoteTiles=1593 patches4plus=36 small4to100=27 large=9 occupied8x8Bins=13/64
+ORES map=13 mineableTiles=2415 remoteTiles=1583 patches4plus=26 small4to100=18 large=8 occupied8x8Bins=10/64
+ORES map=14 mineableTiles=3155 remoteTiles=1550 patches4plus=46 small4to100=41 large=5 occupied8x8Bins=14/64
+ORES map=15 mineableTiles=3135 remoteTiles=1553 patches4plus=39 small4to100=34 large=5 occupied8x8Bins=13/64
+ORES map=16 mineableTiles=2197 remoteTiles=670 patches4plus=40 small4to100=35 large=5 occupied8x8Bins=7/64

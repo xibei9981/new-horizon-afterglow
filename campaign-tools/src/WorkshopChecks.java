@@ -58,7 +58,7 @@ public class WorkshopChecks extends CampaignChecks{
    if(Boolean.getBoolean("workshop.combat")){if(c>=12){enemyManufacturing(c);emptyMagazines();}sustainedFire();dynamicAssault(c);yardProduction(c);openingBattle(c);}
    log("PASS WORKSHOP "+(c+1)+": guns="+guns+" enemy-guns="+enemyGuns+" conveyors="+belts+" repair="+repair+"; mining, graphite, silicon, healing and physical ammunition verified.");
   }
-  new Fi(Boolean.getBoolean("workshop.combat")?"campaign-tools/combat-verification.txt":"campaign-tools/workshop-verification.txt").writeString(report.toString());
+  new Fi(Boolean.getBoolean("workshop.combat")?"campaign-tools/combat-verification.txt":System.getProperty("workshop.start")!=null?"campaign-tools/workshop-polish-verification.txt":"campaign-tools/workshop-verification.txt").writeString(report.toString());
  }
  static void industryProduction(int c){
   var core=state.rules.defaultTeam.core();

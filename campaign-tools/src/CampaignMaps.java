@@ -55,7 +55,9 @@ public class CampaignMaps {
             for(int[] p:spawns){clearCircle(p[0],p[1],13);world.tile(p[0],p[1]).setOverlay(Blocks.spawn);}
             ruins(w/2-35,h/2+20);
             ruins(w/2+46,h/2-10);
+            MapPolish.sites(chapter,sx,sy,spawns);
             BaseWorkshop.territory(chapter,spawns);
+            MapPolish.resources(chapter,sx,sy);
 
         });
         // Resolve links after world generation; the engine spatial index is empty inside the generator.

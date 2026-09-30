@@ -39,6 +39,7 @@ public class DesktopCheck {
                 Vars.renderer.setScale(1.5f);
                 if(mission==14)System.out.println("CLIENT_CARGO_EARLY tile="+Vars.world.tile(434,214).block()+" build="+Vars.world.build(434,214));
                 if(!"true".equals(Vars.state.rules.tags.get("afterglow.physical-logistics")))throw new IllegalStateException("Wrong campaign version");
+                if(!"0.8.0".equals(Vars.state.rules.tags.get("landscape.version")))throw new IllegalStateException("Missing distributed ores");
                 if(mission>0&&!"0.7.0".equals(Vars.state.rules.tags.get("territory.version")))throw new IllegalStateException("Missing theater layout");
                 if(mission>=3&&mission<13&&Vars.state.rules.tags.getInt("frontier.relay",-1)<0)throw new IllegalStateException("Missing restoration site");
                 if(mission>=3&&Vars.state.rules.attributes.get(mindustry.world.meta.Attribute.light)!=1f)throw new IllegalStateException("Planet overwrote chapter irradiance");
@@ -71,6 +72,11 @@ public class DesktopCheck {
                             var cargo=Vars.world.build(434,214);
                             if(cargo==null||cargo.block!=mindustry.content.Blocks.vault)throw new IllegalStateException("Missing cargo after landing: tile="+Vars.world.tile(434,214).block()+" build="+cargo);
                             System.out.println("CLIENT_CARGO "+cargo.items);
+                            if(Boolean.getBoolean("campaign.cargoTest")){
+                                for(var b:mindustry.gen.Groups.build)if(b.team==mindustry.game.Team.sharded&&b.block.name.contains("beam-mining"))System.out.println("CLIENT_MINE "+b.tileX()+","+b.tileY()+" power="+b.power.status+" eff="+b.efficiency+" items="+b.items);
+                                if(cargo.items.get(mindustry.content.Items.thorium)==0||cargo.items.get(Vars.content.item("new-horizon-zeta"))==0)throw new IllegalStateException("Native cargo delivery missing after landing and transit");
+                                System.out.println("CLIENT_CARGO_DELIVERY_OK");
+                            }
                         }
                         var settled=mindustry.io.MapIO.generatePreview(Vars.world.tiles);arc.graphics.PixmapIO.writePng(new Fi("campaign-tools/previews/native-map-"+(mission+1)+".png"),settled);settled.dispose();
                     }

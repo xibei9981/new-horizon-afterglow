@@ -44,7 +44,9 @@ public class FrontierMaps extends CampaignMaps {
                 if(nearBase(x,y,48))continue;
                 clearCircle(x,y,12);ore(x,y,7,n%2==0?EnvironmentBlock.oreThoriumDense:EnvironmentBlock.oreZetaDense);
             }
+            MapPolish.sites(chapter,sx,sy,spawns);
             BaseWorkshop.territory(chapter,spawns);
+            MapPolish.resources(chapter,sx,sy);
         });
         linkPower();state.rules=r;
         state.map=new Map(StringMap.of("name","余烬航线 "+(i+4)+" · "+m.name,"author","New Horizon / Afterglow community chapter","description",m.brief));

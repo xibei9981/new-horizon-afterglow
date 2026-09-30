@@ -63,12 +63,14 @@ public final class AfterglowCampaign {
             // Map rules may be reapplied on sector launch. Keep campaign event progress on save/load.
             StringMap progress = new StringMap();
             r.tags.each((key, value) -> {
-                if (key.startsWith("afterglow.")) progress.put(key, value);
+                if (key.startsWith("afterglow.") || key.startsWith("landmark.") || key.startsWith("landscape.")) progress.put(key, value);
             });
             // A saved 0.5 map still contains the former depot layout. Do not switch its
             // supply controller just because current map headers have been upgraded.
             if(r.tags.containsKey(tag)&&!r.tags.containsKey("afterglow.physical-logistics"))
                 progress.put("afterglow.physical-logistics","false");
+            // Legacy saves have no recoverable works; never apply new coordinates to old buildings.
+            if(r.tags.containsKey(tag)&&!r.tags.containsKey("landmark.count"))progress.put("landmark.count","0");
             p.generator.map.rules(r);
             r.tags.putAll(progress);
             r.sector = p.sector;
@@ -176,6 +178,7 @@ public final class AfterglowCampaign {
         hudTimer += Time.delta;
         if (hudTimer < 60f) return;
         hudTimer = 0;
+        if(!net.client())AfterglowLandmarks.update();
         if(c>=SignatureCampaign.first && !net.client())SignatureCampaign.update(c-SignatureCampaign.first);
         else if(c>=3 && !net.client()) FrontierCampaign.update(c-3);
         if (!net.client() && c == 2) {
@@ -188,6 +191,7 @@ public final class AfterglowCampaign {
                     : Core.bundle.format("afterglow.hud.attack", state.rules.waveTeam.cores().size);
             if(c>=SignatureCampaign.first)objective=SignatureCampaign.objective(c-SignatureCampaign.first);
             else if(c>=3) objective=FrontierCampaign.objective(c-3);
+            if(AfterglowLandmarks.count()>0)objective+="\n"+Core.bundle.format("afterglow.hud.landmarks",AfterglowLandmarks.owned(),AfterglowLandmarks.count());
             if (state.isCampaign() && state.rules.sector.info.wasCaptured) objective = Core.bundle.get("afterglow.hud.complete");
             ui.hudfrag.setHudText("[accent]" + Core.bundle.get("afterglow.chapter." + c) + "[]\n" + objective);
             showingHud = true;
@@ -211,6 +215,7 @@ public final class AfterglowCampaign {
     private static void unlockFieldKit() {
         // A mission field kit, not a global all-tech unlock; later research remains intact.
         UnlockableContent[] kit = {
+                Blocks.mendProjector,
                 ProductionBlock.interlockingDrill, ProductionBlock.resonanceMiningFacility,
                 CraftingBlock.stampingFacility, CraftingBlock.processorManuFactory,
                 ProductionBlock.sandCracker, ProductionBlock.titaniumReconstructor, ProductionBlock.tungstenReconstructor,

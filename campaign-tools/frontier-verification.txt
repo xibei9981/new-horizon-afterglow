@@ -3,43 +3,43 @@ PASS new-horizon-afterglow-ridges 320x320 | connected paths, 87 powered consumer
 PASS new-horizon-afterglow-citadel 384x352 | connected paths, 87 powered consumers, events, saved game, victory
 PASS: all chapter unlock links, maps, paths, power, waves, save/load and capture conditions.
 PASS research costs: explicit 30 -> 6; standard building research 5x -> 1x construction; prerequisites intact
-GEOLOGY forge significant floors=6 cliff tiles=60610 water tiles=145 props=751 ruins=6
-STARTUP forge titanium after 20s=5004 (working factories consume inventory)
+GEOLOGY forge significant floors=6 cliff tiles=59100 water tiles=145 props=742 ruins=6
+STARTUP forge titanium after 20s=5003 (working factories consume inventory)
 PASS restoration 0 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS forge 420x420 | waves=60 max/wave=89 sampled total=2093 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY isles significant floors=9 cliff tiles=11476 water tiles=95805 props=235 ruins=1
+GEOLOGY isles significant floors=9 cliff tiles=11476 water tiles=95282 props=232 ruins=1
 STARTUP isles titanium after 20s=5003 (working factories consume inventory)
 PASS restoration 1 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS isles 448x384 | waves=attack max/wave=16 sampled total=457 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY trident significant floors=6 cliff tiles=26793 water tiles=157 props=1404 ruins=6
-STARTUP trident titanium after 20s=5004 (working factories consume inventory)
+GEOLOGY trident significant floors=6 cliff tiles=28003 water tiles=157 props=1430 ruins=6
+STARTUP trident titanium after 20s=5003 (working factories consume inventory)
 PASS restoration 2 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS trident 448x448 | waves=72 max/wave=105 sampled total=3274 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY hunt significant floors=7 cliff tiles=27507 water tiles=76 props=923 ruins=12
-STARTUP hunt titanium after 20s=5004 (working factories consume inventory)
+GEOLOGY hunt significant floors=7 cliff tiles=27507 water tiles=76 props=934 ruins=12
+STARTUP hunt titanium after 20s=5003 (working factories consume inventory)
 PASS restoration 3 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS hunt 416x416 | waves=attack max/wave=28 sampled total=924 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY storm significant floors=10 cliff tiles=11706 water tiles=21065 props=951 ruins=6
+GEOLOGY storm significant floors=10 cliff tiles=11790 water tiles=21065 props=996 ruins=6
 STARTUP storm titanium after 20s=5003 (working factories consume inventory)
 PASS restoration 4 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS storm 416x416 | waves=80 max/wave=47 sampled total=1378 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY march significant floors=8 cliff tiles=16679 water tiles=13679 props=1479 ruins=6
+GEOLOGY march significant floors=8 cliff tiles=16680 water tiles=13683 props=1526 ruins=6
 STARTUP march titanium after 20s=4951 (working factories consume inventory)
 PASS restoration 5 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS march 448x576 | waves=attack max/wave=18 sampled total=599 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY bastion significant floors=9 cliff tiles=15255 water tiles=14845 props=1393 ruins=6
-STARTUP bastion titanium after 20s=4902 (working factories consume inventory)
+GEOLOGY bastion significant floors=9 cliff tiles=15255 water tiles=14845 props=1353 ruins=6
+STARTUP bastion titanium after 20s=4901 (working factories consume inventory)
 PASS restoration 6 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS bastion 480x448 | waves=90 max/wave=82 sampled total=3027 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY arsenal significant floors=6 cliff tiles=16016 water tiles=477 props=1644 ruins=20
+GEOLOGY arsenal significant floors=6 cliff tiles=15998 water tiles=481 props=1605 ruins=20
 STARTUP arsenal titanium after 20s=4951 (working factories consume inventory)
 PASS restoration 7 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS arsenal 512x512 | waves=attack max/wave=17 sampled total=465 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY blackout significant floors=7 cliff tiles=29698 water tiles=7166 props=1377 ruins=12
+GEOLOGY blackout significant floors=7 cliff tiles=29693 water tiles=7179 props=1363 ruins=12
 STARTUP blackout titanium after 20s=4858 (working factories consume inventory)
 PASS restoration 8 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS blackout 480x448 | waves=attack max/wave=33 sampled total=1269 | paths, power, production, logistics, mechanics, save, victory
-GEOLOGY daybreak significant floors=8 cliff tiles=27810 water tiles=554 props=1568 ruins=6
+GEOLOGY daybreak significant floors=8 cliff tiles=28129 water tiles=538 props=1556 ruins=6
 STARTUP daybreak titanium after 20s=4858 (working factories consume inventory)
 PASS restoration 9 resources, power, pause, save/load, completion, one-time reward (building-target ceasefire isolates objective contract)
 PASS daybreak 512x544 | waves=100 max/wave=104 sampled total=1566 | paths, power, production, logistics, mechanics, save, victory

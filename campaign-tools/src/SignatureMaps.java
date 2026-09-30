@@ -38,6 +38,7 @@ public class SignatureMaps extends CampaignMaps {
         world.loadGenerator(w,h,tiles->{
             tiles.fill();geology();routes();landmarks();resourcesAt(sx,sy);starter();
             if(op==0){
+                BaseWorkshop.bridgeHead(240,183);
                 var control=place(Blocks.switchBlock,SignatureCampaign.switchX,SignatureCampaign.switchY,playerTeam);control.configureAny(true);
                 message(sx+16,sy-11,playerTeam,"调度台：点击左边黄色开关。开启=西峡；关闭=东峡。每六波双路齐攻，空军独立。开关被毁保持上次方向，可原位重建。下一波方向显示在 HUD。");
             }
@@ -46,7 +47,9 @@ public class SignatureMaps extends CampaignMaps {
             for(int[] p:spawns){clearing(p[0],p[1],15);world.tile(p[0],p[1]).setOverlay(Blocks.spawn);}
             for(Tile t:world.tiles)if(t.block()==Blocks.air&&t.build==null&&!t.floor().isLiquid&&!roads[t.array()]&&Math.hypot(t.x-sx,t.y-sy)>62&&hash(t.x,t.y,93)<.018)
                 t.setBlock(op==0?Blocks.sandBoulder:op==1?Blocks.daciteBoulder:Blocks.sporeCluster);
+            MapPolish.sites(chapter,sx,sy,spawns);
             BaseWorkshop.territory(chapter,spawns);
+            MapPolish.resources(chapter,sx,sy);
         });
         FrontierMaps.linkPower();state.rules=r;
         state.map=new Map(StringMap.of("name","余烬航线 "+(chapter+1)+" · "+SignatureCampaign.names[op],"author","Afterglow community / New Horizon","description",SignatureCampaign.briefs[op]));
@@ -68,11 +71,11 @@ public class SignatureMaps extends CampaignMaps {
         if(op==0)for(int wave=1;wave<=72;wave++){
             boolean split=wave%6==0,rest=wave%12==1&&wave>1;int phase=(wave-1)/24;
             for(int lane=0;lane<(split?2:1);lane++){
-                add(r,phase<2?NHUnitTypes.aliotiat:NHUnitTypes.tarlidor,wave,wave,1,rest?3:6+phase*4+wave%6,1,24,lane);
-                if(wave>=17&&!rest)add(r,phase<2?NHUnitTypes.tarlidor:NHUnitTypes.longinus,wave,wave,1,3+phase*3,1,20,lane);
-                if(wave%12==0)add(r,wave<48?NHUnitTypes.longinus:NHUnitTypes.hurricane,wave,wave,1,phase+1,1,3,lane);
+                add(r,NHUnitTypes.tarlidor,wave,wave,1,rest?4:8+phase*4+wave%6,1,26,lane);
+                if(wave>=13&&!rest)add(r,NHUnitTypes.longinus,wave,wave,1,2+phase*2,1,10,lane);
+                if(wave%12==0)add(r,NHUnitTypes.hurricane,wave,wave,1,phase+1,1,3,lane);
             }
-            if(wave%4==0)add(r,wave<40?NHUnitTypes.warper:NHUnitTypes.striker,wave,wave,1,5+phase*4,1,20,1);
+            if(wave%4==0)add(r,NHUnitTypes.striker,wave,wave,1,4+phase*4,1,20,1);
         }
         if(op==1){
             for(int lane=0;lane<2;lane++){
@@ -202,21 +205,62 @@ public class SignatureMaps extends CampaignMaps {
     static void solar(int x,int y,Team team,int columns){
         for(int k=0;k<columns;k++)for(int dy:new int[]{0,5})place(Blocks.largeSolarPanel,x+(k-columns/2)*5,y+dy,team);
     }
+    static Building service(Block block,int x,int y){
+        int low=-(block.size-1)/2;
+        for(int dx=low;dx<low+block.size;dx++)for(int dy=low;dy<low+block.size;dy++){
+            var t=world.tile(x+dx,y+dy);if(t==null||t.build!=null)throw new IllegalStateException("Port overlap "+block+" at "+x+","+y);
+            t.setBlock(Blocks.air);if(t.floor().isLiquid)t.setFloor(Blocks.metalFloorDamaged.asFloor());
+        }
+        return place(block,x,y,playerTeam);
+    }
+    static void portBelt(int x,int y,int rotation){
+        for(int dx=-3;dx<=3;dx++)for(int dy=-3;dy<=3;dy++){
+            var t=world.tile(x+dx,y+dy);if(t!=null&&t.build==null){t.setBlock(Blocks.air);if(t.floor().isLiquid)t.setFloor(Blocks.metalFloorDamaged.asFloor());}
+        }
+        service(Blocks.titaniumConveyor,x,y).rotation=rotation;
+    }
     static void quarry(){
         int x=SignatureCampaign.cargoX,y=SignatureCampaign.cargoY;
-        place(Blocks.vault,x,y,playerTeam);message(x+5,y-4,playerTeam,SignatureCampaign.briefs[1]);
-        // Two actual mining lines terminate in the mission vault. Players expand a working example.
-        vein(x-35,y,15,EnvironmentBlock.oreThoriumDense);vein(x+32,y,15,EnvironmentBlock.oreZetaDense);
-        for(int sign:new int[]{-1,1}){
-            int mx=x+(sign<0?-35:32);
-            for(int a=-2;a<=2;a++)for(int b=-2;b<=2;b++)world.tile(mx+a,y+b).setOverlay(sign<0?EnvironmentBlock.oreThoriumDense:EnvironmentBlock.oreZetaDense);
-            place(ProductionBlock.beamMiningFacility,mx,y,playerTeam);
-            for(int xx=mx+(sign<0?3:-2);Math.abs(xx-x)>1;xx+=(sign<0?1:-1))world.tile(xx,y).setBlock(Blocks.titaniumConveyor,playerTeam,sign<0?0:2);
+        service(Blocks.vault,x,y);message(x+5,y-4,playerTeam,SignatureCampaign.briefs[1]);
+        // Separate mineral concessions feed the port along two real, destructible causeways.
+        for(int side=0;side<2;side++){
+            int mx=side==0?320:506,my=side==0?166:152;
+            BaseWorkshop.begin(mx,my,playerTeam,14,-12,-7,12,8);
+            for(int dx:new int[]{-7,0,7}){
+                BaseWorkshop.mine(dx,0,side==0?Items.thorium:NHItems.zeta,true);
+                BaseWorkshop.belt(dx,3,1);
+            }
+            BaseWorkshop.horizontal(-7,7,4);for(int dx:new int[]{-7,0,7})BaseWorkshop.router(dx,4);
+            BaseWorkshop.put(PowerBlock.fluxNodeLargeMK1,0,-5);
         }
-        solar(x,y-30,playerTeam,10);place(Blocks.batteryLarge,x,y-14,playerTeam);
-        for(int[]d:new int[][]{{0,-23},{-12,-23},{12,-23},{0,-8},{-12,-8},{12,-8},{-24,-8},{24,-8},{-36,-8},{36,-8}})place(Blocks.powerNodeLarge,x+d[0],y+d[1],playerTeam);
+        for(int xx=328;xx<=384;xx++)portBelt(xx,170,xx==384?1:0);
+        for(int yy=171;yy<=214;yy++)portBelt(384,yy,yy==214?0:1);
+        for(int xx=385;xx<=432;xx++)portBelt(xx,214,0);
+        for(int xx=514;xx<=536;xx++)portBelt(xx,156,xx==536?1:0);
+        for(int yy=157;yy<=214;yy++)portBelt(536,yy,yy==214?2:1);
+        for(int xx=535;xx>=436;xx--)portBelt(xx,214,2);
+        // A working port fuel plant, armoured storage and NH power generation.
+        BaseWorkshop.begin(434,184,playerTeam,14,-10,-6,10,8);BaseWorkshop.fusionFoundry(false);
+        for(int gx:new int[]{402,408,414,454,460,466})for(int gy:new int[]{176,184,192}){
+            var gen=service(PowerBlock.geologicalPhotothermalGenerator,gx,gy);BaseWorkshop.terrainUnder(gen,Blocks.magmarock);
+        }
+        service(PowerBlock.armorBatteryLarge,434,203).power.status=1;
+        for(int[] n:new int[][]{{340,166},{358,166},{376,166},{376,176},{380,186},{380,204},{398,210},{416,210},{408,180},{408,198},{420,198},{434,198},{434,210},{448,198},{460,180},{460,198},{452,210},{470,210},{488,210},{506,210},{524,210},{528,200},{532,190},{532,172},{520,160}})
+            service(PowerBlock.fluxNodeLargeMK1,n[0],n[1]);
+        service(Blocks.mendProjector,408,224);service(Blocks.mendProjector,460,224);
+        service(PowerBlock.fluxNodeLargeMK1,434,229);
         BaseWorkshop.quarryGuard(x,y);
-        for(int dy:new int[]{7,20,30})place(Blocks.powerNodeLarge,x,y+dy,playerTeam);
+        for(int dy:new int[]{7,20,30})service(Blocks.powerNodeLarge,x,y+dy);
+        // Quay retaining walls protect the power plant without closing the freight approach.
+        for(int xx=393;xx<=474;xx++)if(Math.abs(xx-434)>7)for(int yy:new int[]{172,173})
+            if(world.tile(xx,yy).build==null)service(DefenseBlock.shapedWall,xx,yy);
+        state.rules.tags.put("signature.port-lines","2");
+        state.rules.tags.put("signature.port-fuel",""+Point2.pack(434,184));
+        for(int k=0;k<6;k++){
+            int px=151+k*43,py=348+(int)(14*Math.sin(k));
+            terrace(px,py,27,34);
+            BaseWorkshop.coastalBastion(px,py,k==5?0:k%3);
+        }
     }
     static void citadel(){
         state.rules.tags.put("frontier.depots","4");state.rules.tags.put("frontier.finite-depots","true");

@@ -1,0 +1,14 @@
+PASS legacy rule migration: 0.5 layout retains legacy logistics and completed depot state.
+PASS upstream wave progression: 3000 seeded high-difficulty generations, valid tier indices.
+ACTUAL_CORE new-horizon-core-cluster size=6 at=240,74
+WORKSHOP 14 core titanium=154 graphite=106 silicon=695 presstanium=114 processor=96
+INDUSTRY RECOVERY 14: hubs=9 fusion=1920 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 14: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 14: guns=42 enemy-guns=219 conveyors=505 repair=37; mining, graphite, silicon, healing and physical ammunition verified.
+CARGO_INITIAL vault build=Building#26300[434,214]:vault
+CARGO_AFTER vault build=Building#26300[434,214]:vault
+ACTUAL_CORE new-horizon-core-cluster size=6 at=90,80
+WORKSHOP 15 core titanium=224 graphite=106 silicon=763 presstanium=112 processor=96
+INDUSTRY RECOVERY 15: hubs=10 fusion=1920 senior=120 nodex=120 (product core stocks emptied; recipes consume physical inputs)
+PASS WALL 15: new-horizon-shaped-wall distributes a real 1000-damage hit to 5 neighboring walls; friendly passage preserved.
+PASS WORKSHOP 15: guns=48 enemy-guns=51 conveyors=913 repair=45; mining, graphite, silicon, healing and physical ammunition verified.

@@ -7,27 +7,29 @@ tracked=subprocess.check_output(['git','ls-files','-z'],cwd=root).decode().split
 files={Path(p) for p in tracked if p and (root/p).is_file()}
 for pattern in ['assets/maps/afterglow-*.msav','src/newhorizon/content/campaign/*.java','campaign-tools/src/*.java','campaign-tools/*.py']:
     files.update(p.relative_to(root) for p in root.glob(pattern))
-files.update(map(Path,['CAMPAIGN.md','campaign-tools/VALIDATION.md','campaign-tools/verification.txt','campaign-tools/frontier-verification.txt','campaign-tools/client-verification.txt','campaign-tools/power-verification.txt','campaign-tools/signature-verification.txt','campaign-tools/resource-verification.txt','campaign-tools/resource-inputs.tsv','campaign-tools/android-verification.txt','campaign-tools/workshop-verification.txt','campaign-tools/combat-verification.txt','campaign-tools/BASE-DESIGN.md','campaign-tools/base-catalog.tsv','campaign-tools/four-reference-audit.txt','campaign-tools/territory-verification.txt','campaign-tools/territory-assault-verification.txt','campaign-tools/territory-0.6.0/metrics.txt','campaign-tools/territory-0.7.0/metrics.txt']))
-for version in ['0.6.0','0.7.0']:
+files.update(map(Path,['CAMPAIGN.md','campaign-tools/VALIDATION.md','campaign-tools/verification.txt','campaign-tools/frontier-verification.txt','campaign-tools/client-verification.txt','campaign-tools/power-verification.txt','campaign-tools/signature-verification.txt','campaign-tools/resource-verification.txt','campaign-tools/resource-inputs.tsv','campaign-tools/android-verification.txt','campaign-tools/workshop-verification.txt','campaign-tools/combat-verification.txt','campaign-tools/BASE-DESIGN.md','campaign-tools/base-catalog.tsv','campaign-tools/four-reference-audit.txt','campaign-tools/territory-verification.txt','campaign-tools/territory-assault-verification.txt','campaign-tools/territory-0.6.0/metrics.txt','campaign-tools/territory-0.7.0/metrics.txt','campaign-tools/territory-0.8.0/metrics.txt','campaign-tools/polish-0.8.0/verification.txt','campaign-tools/polish-0.7.0/verification.txt','campaign-tools/workshop-polish-verification.txt']))
+for version in ['0.6.0','0.7.0','0.8.0']:
     for chapter in [13,16]:
         files.add(Path(f'campaign-tools/territory-{version}/map-{chapter}.png'))
-source=out/'NewHorizon-Afterglow-0.7.0-source.zip'
+for version in ['0.7.0','0.8.0']:
+    for chapter in range(1,17):files.add(Path(f'campaign-tools/polish-{version}/map-{chapter}.png'))
+source=out/'NewHorizon-Afterglow-0.8.0-source.zip'
 with zipfile.ZipFile(source,'w',zipfile.ZIP_DEFLATED) as z:
-    for p in sorted(files):z.write(root/p,Path('NewHorizon-Afterglow-0.7.0')/p)
-shutil.copy2(root/'CAMPAIGN.md',out/'安装与玩法说明-0.7.0.md')
-jar=out/'NewHorizon-Afterglow-0.7.0-Windows160.4.jar'
+    for p in sorted(files):z.write(root/p,Path('NewHorizon-Afterglow-0.8.0')/p)
+shutil.copy2(root/'CAMPAIGN.md',out/'安装与玩法说明-0.8.0.md')
+jar=out/'NewHorizon-Afterglow-0.8.0-Windows160.4.jar'
 with zipfile.ZipFile(jar) as z:
     assert z.testzip() is None
     maps=list((root/'assets/maps').glob('afterglow-*.msav'))
     assert len(maps)==16
     for p in maps:assert z.read(str(p.relative_to(root/'assets')))==p.read_bytes()
     for n in ['mod.hjson','LICENSE','CAMPAIGN.md']:assert z.read(n)==(root/n).read_bytes()
-    for n in ['AfterglowCampaign','FrontierCampaign','FrontierMissions','FrontierSites','SignatureCampaign','AfterglowTech']:
+    for n in ['AfterglowCampaign','AfterglowLandmarks','FrontierCampaign','FrontierMissions','FrontierSites','SignatureCampaign','AfterglowTech']:
         assert 'newhorizon/content/campaign/'+n+'.class' in z.namelist()
-    assert not any(n.startswith(('CampaignChecks','CampaignMaps','FrontierChecks','FrontierMaps','DesktopCheck','CampaignHarness','SignatureChecks','SignatureMaps','ResourceChecks','BaseWorkshop','WorkshopChecks','TerritoryChecks')) for n in z.namelist())
+    assert not any(n.startswith(('CampaignChecks','CampaignMaps','FrontierChecks','FrontierMaps','DesktopCheck','CampaignHarness','SignatureChecks','SignatureMaps','ResourceChecks','BaseWorkshop','WorkshopChecks','TerritoryChecks','MapPolish','PolishChecks')) for n in z.namelist())
 with zipfile.ZipFile(source) as z:
     assert z.testzip() is None
     assert not any(any(part.startswith('client-') and part.endswith('data') for part in Path(n).parts) or '/lib/dependencies' in n or '/run/' in n for n in z.namelist())
-(out/'SHA256SUMS-0.7.0.txt').write_text('\n'.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name for p in [jar,source])+'\n')
+(out/'SHA256SUMS-0.8.0.txt').write_text('\n'.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name for p in [jar,source])+'\n')
 for p in [jar,source]:print(p.name,p.stat().st_size)
 print('ARCHIVE_CHECKS_OK',len(files),'source files, 16 campaign maps')
