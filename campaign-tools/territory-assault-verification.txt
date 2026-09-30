@@ -1,0 +1,45 @@
+0.7.0 / official 160.4 / one native-AI assault fixture, not a full campaign difficulty rating.
+PASS legacy rule migration: 0.5 layout retains legacy logistics and completed depot state.
+PASS upstream wave progression: 3000 seeded high-difficulty generations, valid tier indices.
+COMMAND READY ammo=80 antimatter=120.0 power=1.0 graph-output=3096.4011 demand=222.00009
+PASS ENEMY MANUFACTURING: 24 executor magazines and all negative-core stores emptied; native decayers replenish all guns in 120 seconds from finite fissile/zeta feedstock.
+COMMAND BATTLE sec=0 alive=true health=800000.0 ammo=49 coolant=120.0 power=1.0 reload=63.089993 rotation=268.1773 target=Unit#67493:new-horizon-hurricane (2195.1548, 3281.2693) shots=1
+COMMAND BATTLE sec=10 alive=true health=800000.0 ammo=80 coolant=98.01496 power=1.0 reload=903.0952 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=20 alive=true health=800000.0 ammo=80 coolant=73.52008 power=1.0 reload=1743.1099 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=30 alive=true health=800000.0 ammo=80 coolant=86.49387 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=40 alive=true health=800000.0 ammo=80 coolant=102.63224 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=50 alive=true health=800000.0 ammo=80 coolant=117.81182 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=60 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=70 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=80 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=90 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=100 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=110 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=120 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=130 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=140 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=150 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=160 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+COMMAND BATTLE sec=170 alive=true health=800000.0 ammo=80 coolant=120.0 power=1.0 reload=1800.5109 rotation=269.9591 target=null shots=1
+FORTRESS FIRE shots={new-horizon-concentration=19, new-horizon-end-of-era=18, new-horizon-eternity=1, new-horizon-executor=0, new-horizon-interferon=0, new-horizon-prism=8, new-horizon-synchro=36} guns surviving={new-horizon-concentration=16, new-horizon-end-of-era=4, new-horizon-eternity=1, new-horizon-executor=4, new-horizon-interferon=2, new-horizon-prism=6}
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-20216.164 at=209.00604,418.0354
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-20673.094 at=233.41873,393.9048
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-20071.76 at=239.53708,426.9635
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-82562.74 at=252.42688,385.0071
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-21729.395 at=251.24269,442.22476
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-87323.57 at=253.98953,429.33646
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-34809.504 at=266.7185,390.14578
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-21194.785 at=275.68106,430.84378
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-52940.36 at=281.2102,393.54614
+ASSAULT UNIT new-horizon-hurricane alive=false range=74.08751 health=-21562.139 at=293.43466,417.246
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-6826.1562 at=230.0957,418.7094
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-1830.2622 at=226.04187,408.8296
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-2582.0703 at=232.46315,384.78653
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-3283.0063 at=242.75836,434.54993
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-2985.689 at=264.83466,430.09946
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-5003.123 at=277.75314,380.67435
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-2769.5872 at=267.08884,436.97348
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-1230.3223 at=284.68964,418.65335
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=-2594.9531 at=316.3856,402.15613
+ASSAULT UNIT new-horizon-longinus alive=false range=124.5 health=449.05444 at=284.88702,410.07236
+PASS DYNAMIC ASSAULT: 180 seconds, ten NH hurricane + ten NH longinus, armed native unit AI; observed moving=20 lost=20 survivor damage=0.0 enemy structures lost=915 cores remaining=3. One raid fixture, not a full campaign balance verdict.

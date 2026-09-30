@@ -39,6 +39,7 @@ public class DesktopCheck {
                 Vars.renderer.setScale(1.5f);
                 if(mission==14)System.out.println("CLIENT_CARGO_EARLY tile="+Vars.world.tile(434,214).block()+" build="+Vars.world.build(434,214));
                 if(!"true".equals(Vars.state.rules.tags.get("afterglow.physical-logistics")))throw new IllegalStateException("Wrong campaign version");
+                if(mission>0&&!"0.7.0".equals(Vars.state.rules.tags.get("territory.version")))throw new IllegalStateException("Missing theater layout");
                 if(mission>=3&&mission<13&&Vars.state.rules.tags.getInt("frontier.relay",-1)<0)throw new IllegalStateException("Missing restoration site");
                 if(mission>=3&&Vars.state.rules.attributes.get(mindustry.world.meta.Attribute.light)!=1f)throw new IllegalStateException("Planet overwrote chapter irradiance");
                 if(Boolean.getBoolean("campaign.scenic")&&mission==4){
@@ -54,6 +55,10 @@ public class DesktopCheck {
                 if(Boolean.getBoolean("campaign.baseview")){
                     var core=Vars.state.rules.defaultTeam.core();Vars.player.unit().set(core.x,core.y+22*Vars.tilesize);Vars.renderer.setScale(1.2f);
                     if(Boolean.getBoolean("campaign.enemyview")&&mission==12){var gun=mindustry.gen.Groups.build.find(b->b.team==mindustry.game.Team.blue&&b.block.name.equals("new-horizon-eternity"));Vars.control.input.panCamera(new arc.math.geom.Vec2(gun.x,gun.y-20*Vars.tilesize));}
+                }
+                if(Boolean.getBoolean("campaign.territoryview")){
+                    Vars.renderer.setScale(1.0f);
+                    Vars.control.input.panCamera(new arc.math.geom.Vec2(Vars.world.width()*4f,Vars.world.height()*5.5f));
                 }
                 var preview=mindustry.io.MapIO.generatePreview(Vars.world.tiles);
                 arc.graphics.PixmapIO.writePng(new Fi("campaign-tools/previews/native-map-"+(mission+1)+".png"),preview);

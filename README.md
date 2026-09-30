@@ -12,26 +12,25 @@ xibei9981/new-horizon-afterglow
 
 完整地址：[https://github.com/xibei9981/new-horizon-afterglow](https://github.com/xibei9981/new-horizon-afterglow)
 
-或在[最新发布](https://github.com/xibei9981/new-horizon-afterglow/releases/latest)下载 `dexed-NewHorizon-Afterglow-0.6.0-Android160.4.jar`，安卓和电脑通用，无需解压。此包包含新视界本体，移除原版/旧版后导入并重启，安装前请备份游戏数据。
+或在[最新发布](https://github.com/xibei9981/new-horizon-afterglow/releases/latest)下载 `dexed-NewHorizon-Afterglow-0.7.0-Android160.4.jar`，安卓和电脑通用，无需解压。此包包含新视界本体，移除原版/旧版后导入并重启，安装前请备份游戏数据。
 
 **已有区块存档不会自动换建筑，需重新开始对应关卡查看新版基地；已研究科技保留。**
 
-## 0.6.0：后期火力与实物后勤
+## 0.7.0：展开敌占区，连接前线与纵深
 
-- 保留 16 关不同地貌和目标：双核心防守、岛屿推进、物流突袭、分流闸口、实体货运、三点供能及百波反攻。
-- 预设武器全部采用新视界装备。第 13 关玩家主基地为 3 终焉、6 光棱、30 凝聚；敌方三座要塞共 118 座炮台，包含 12 终焉、9 裁决和中央主堡的永恒。
-- 后期主工业使用新视界矿机、硅碳破碎、处理器打印与蚀刻、合金厂、聚变燃料和节点板制造。八座聚变燃料厂实测合计每秒 16 个燃料；重炮弹库通过核心物流补充，管线断裂会断供。
-- 敌方裁决配负相核心工厂；永恒配实体暗能量弹库、六座反物质工厂和直连装甲储能。跃迁兵工厂消耗本地物料制造新视界单位，军备储备有上限。
-- 多层新视界城墙实际分担伤害，基地配有维修、护盾和工业电网。没有全局伤害倍率增强或脚本无限补弹。
-- 第 13 关第一波就有扫荡、冲击、长戟混编，之后加入飓风、湮灭与首领。休整波减数量，保留当前兵种。
-- 研究费用约为原需求的 20%；第 12 关通关后满足全部战役研究门槛，仍须研究前置和材料。
+- 修正敌军仅围绕核心占据小片区域的问题。前沿、两翼、核心之间和后方新增有工业与后勤的驻防区，保留原有山脊、河流、岛屿、矿湖和任务目标。
+- 第 13 关由 118 座敌方炮台增至 367 座，新增 37 片驻防区；第 16 关由 80 座增至 401 座，新增 49 片驻防区。实际建筑占地与射程覆盖分别测量，不把两者混作密度。
+- 外围装备按阶段采用同步、怖烬、凝聚、光棱、终焉和裁决；每片阵地配真实电站、装甲储能、维修、物料或液体生产与输送。没有新增核心、改伤害倍率或用脚本补弹。
+- 九炮激光阵地由六座氙液工厂供给：四座使用矿物生产线，两座消耗可破坏仓库中的有限石墨/钍储备。重炮的高级弹药同样有储量限制。
+- 保留玩家出发基地、准备期、原有波次、16 关的不同目标和科技推进。防守关的外围驻军可以主动打掉，但不额外要求清除全部建筑才通关；群岛与矿湖不为追求数量强行填海。
+- 研究费用仍约为原需求的 20%；第 12 关通关后满足全部战役研究门槛，仍须研究前置和材料。
 
-[安装与玩法](CAMPAIGN.md) · [实测结果与范围](campaign-tools/VALIDATION.md) · [参考设计与许可](campaign-tools/BASE-DESIGN.md)
+[全图前后对比](https://github.com/xibei9981/new-horizon-afterglow/releases/download/v0.7.0/Afterglow-0.7.0-territory-comparison.png) · [安装与玩法](CAMPAIGN.md) · [实测结果与范围](campaign-tools/VALIDATION.md) · [参考设计与许可](campaign-tools/BASE-DESIGN.md)
 
 预置工业仍需玩家扩产，部分高级中间材料与敌方弹药为有限储备。生产检查、固定目标压力测试、移动部队攻城和波次实战分别记录；没有把它们宣称为人类完整通关。未做安卓真机、Windows 原生启动或联机兼容验证。
 
 ## 源码与许可
 
-基于 [Yuria-Shikibe/NewHorizonMod](https://github.com/Yuria-Shikibe/NewHorizonMod)，上游提交 `e29819bde94eaecf5b760c37e7af1c51c5484b57`，原作者 Yuria & Lao。修改版本为 `2.2.2-afterglow-0.6.0`，按 [GPL-3.0](LICENSE) 分发完整对应源码。
+基于 [Yuria-Shikibe/NewHorizonMod](https://github.com/Yuria-Shikibe/NewHorizonMod)，上游提交 `e29819bde94eaecf5b760c37e7af1c51c5484b57`，原作者 Yuria & Lao。修改版本为 `2.2.2-afterglow-0.7.0`，按 [GPL-3.0](LICENSE) 分发完整对应源码。
 
 早期电站复用 Mindustry 160.4 的 GPL-3.0 基地蓝图；饱和火力 3.3.0、神恒之心 1.10 与 CT-origin 为设计参考，未搬运其地图或美术。

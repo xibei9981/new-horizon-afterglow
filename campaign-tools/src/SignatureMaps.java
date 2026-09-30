@@ -46,6 +46,7 @@ public class SignatureMaps extends CampaignMaps {
             for(int[] p:spawns){clearing(p[0],p[1],15);world.tile(p[0],p[1]).setOverlay(Blocks.spawn);}
             for(Tile t:world.tiles)if(t.block()==Blocks.air&&t.build==null&&!t.floor().isLiquid&&!roads[t.array()]&&Math.hypot(t.x-sx,t.y-sy)>62&&hash(t.x,t.y,93)<.018)
                 t.setBlock(op==0?Blocks.sandBoulder:op==1?Blocks.daciteBoulder:Blocks.sporeCluster);
+            BaseWorkshop.territory(chapter,spawns);
         });
         FrontierMaps.linkPower();state.rules=r;
         state.map=new Map(StringMap.of("name","余烬航线 "+(chapter+1)+" · "+SignatureCampaign.names[op],"author","Afterglow community / New Horizon","description",SignatureCampaign.briefs[op]));

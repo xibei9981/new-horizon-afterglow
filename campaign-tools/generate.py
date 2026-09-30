@@ -8,7 +8,7 @@ def java_tool(name):
 subprocess.run([java_tool('javac'),'-encoding','UTF-8','--release','17','-sourcepath','campaign-tools/src','-cp',os.pathsep.join(['campaign-tools/lib/server-v160.4.jar','campaign-tools/classes']),'-d','campaign-tools/test-classes','campaign-tools/src/CampaignMaps.java','campaign-tools/src/FrontierMaps.java','campaign-tools/src/SignatureMaps.java','campaign-tools/src/CampaignHarness.java'],check=True)
 Path('campaign-tools/launcher').mkdir(exist_ok=True)
 for p in Path('campaign-tools/test-classes').glob('CampaignHarness*.class'): shutil.copy2(p,'campaign-tools/launcher')
-shutil.copy2('dist/NewHorizon-Afterglow-0.6.0-Windows160.4.jar','campaign-tools/run/mods/afterglow.jar')
+shutil.copy2('dist/NewHorizon-Afterglow-0.7.0-Windows160.4.jar','campaign-tools/run/mods/afterglow.jar')
 with zipfile.ZipFile('campaign-tools/run/mods/afterglow.jar','a') as z:
  # Content registration needs map headers before generation. Bootstrap only this disposable harness JAR.
  for name in ['redgate','saltworks','triune']:

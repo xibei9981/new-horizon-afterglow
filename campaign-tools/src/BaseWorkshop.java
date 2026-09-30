@@ -589,4 +589,122 @@ public final class BaseWorkshop {
         prefab(Items.thorium,15,28,0,0);maintenance(24,-10);grid(-38,-13,38,13);
     }
 
+    /** Occupy the theater between and around command forts, not just a radius of each core.
+     * Calls happen after mission landmarks: reservations cannot erase an objective or a spawn.
+     * No extra cores or unit factories: existing victory conditions and wave pacing stay intact.
+     */
+    public static void territory(int c,int[][] spawns){
+        if(c==0)return;
+        int count=0,row=0;
+        for(int y=28;y<world.height()-25;y+=44,row++){
+            int column=0;
+            for(int x=25+(row%2)*8;x<world.width()-22;x+=42,column++){
+                if(!districtZone(c,x,y)||!districtSpace(c,x,y,spawns))continue;
+                // Heavy siege positions behind the first line, chemical laser blocks on
+                // approaches, missile flanks on earlier maps. No per-map cloned mega-base.
+                int kind=(column+row*3+c)%7;
+                begin(x,y,Team.blue,c,-19,-15,19,24);
+                if(c>=10){
+                    if(kind==0||kind==5)at(0,0,()->siegeBattery());
+                    else if(kind==3)at(0,0,()->executorBattery());
+                    else denseLaserBattery();
+                }else if(c>=7){
+                    if(kind==0)steelBattery();else denseLaserBattery();
+                }else rapidBattery(Math.min(8,c+1),kind%2==0&&c>=3);
+                // Independent local generation prevents a disconnected outer district
+                // from being a decorative gun field. Every bank is destructible.
+                for(int gx:new int[]{-16,16})for(int gy=-11;gy<=21;gy+=4)geothermal(gx,gy);
+                for(int gx:new int[]{-16,16}){
+                    put(PowerBlock.armorBatteryLarge,gx,-14).power.status=1;
+                    for(int gy:new int[]{-5,7,19})put(PowerBlock.fluxNodeMK2,gx<0?-13:13,gy);
+                }
+                if(c<7){maintenance(-4,18);maintenance(4,18);}
+                else if(kind==0||kind==3||kind==5){maintenance(-4,19);maintenance(4,19);}
+                grid(-16,-14,16,24);
+                // Stepped frontage and short traverses; rear service streets remain open.
+                for(int layer=0;layer<(c>=10?3:2);layer++){
+                    for(int gx=-19;gx<=19;gx++)if(free(wallFor(c),ox+gx,oy-15+layer))put(wallFor(c),gx,-15+layer);
+                    for(int gy=-12;gy<=22;gy++)for(int gx:new int[]{-19+layer,19-layer})
+                        if(free(wallFor(c),ox+gx,oy+gy))put(wallFor(c),gx,gy);
+                }
+                state.rules.tags.put("territory.cell."+count,Point2.pack(x,y)+"");
+                count++;
+            }
+        }
+        state.rules.tags.put("territory.districts",""+count);
+        state.rules.tags.put("territory.version","0.7.0");
+        System.out.println("THEATER chapter="+(c+1)+" districts="+count);
+    }
+    static void denseLaserBattery(){
+        laserBattery();
+        // Six real xen plants provide 108/s for nine guns consuming 12/s each.
+        // Four plants use mined feedstock; two have finite, visible reserve magazines.
+        world.tile(ox,oy+16).remove();
+        pipe(-13,10,1);liquidV(-13,11,16);
+        world.build(ox-13,oy+16).rotation=0;
+        for(int x=-12;x<=10;x++)put(Blocks.liquidRouter,x,16);
+        for(int x:new int[]{-8,0,8})put(TurretBlock.concentration,x,19);
+        for(int side:new int[]{-1,1}){
+            var raw=put(SpecialBlock.heavyStorage,side*9,23);
+            raw.items.add(Items.graphite,4000);raw.items.add(Items.thorium,4000);
+            put(Blocks.unloader,side*7,23);put(CraftingBlock.plasmaActivator,side*5,23);
+            pipe(side*3,23,side<0?0:2);
+            world.tile(ox+side*2,oy+16).remove();
+            liquidBridge(side*2,23,side*2,16);
+        }
+        maintenance(0,23);
+        for(int x:new int[]{-4,4})put(PowerBlock.fluxNodeMK2,x,20);
+    }
+    static boolean districtZone(int c,int x,int y){
+        int w=world.width(),h=world.height();
+        return switch(c){
+            case 1 -> y>=145;
+            case 2 -> y>=155;
+            case 3 -> y>=255; // Foundry siege belt, room for rear industrial development.
+            case 4 -> y>=145; // Only dry island ground survives the water reservation below.
+            case 5 -> y>=260||(y>=220&&(x<110||x>w-110));
+            case 6 -> y>=200;
+            case 7 -> Math.hypot(x-w/2.,y-h/2.)>=165;
+            case 8 -> y>=160; // Alternating river banks along the long expedition.
+            case 9 -> y>=270;
+            case 10 -> y>=200;
+            case 11 -> y>=200;
+            case 12 -> y>=225;
+            case 13 -> y>=280;
+            case 14 -> y>=300; // Preserve lake, cargo station and its mining/transport approach.
+            case 15 -> y>=220;
+            default -> false;
+        };
+    }
+    static boolean districtSpace(int c,int x,int y,int[][] spawns){
+        for(int[] p:spawns)if(Math.abs(x-p[0])<37&&Math.abs(y-p[1])<41)return false;
+        // Keep every pre-authored object, including static walls (not in Groups.build),
+        // advanced multi-block links, repair objectives and cargo buildings.
+        int water=0;
+        for(int dx=-21;dx<=21;dx++)for(int dy=-17;dy<=26;dy++){
+            var tile=world.tile(x+dx,y+dy);
+            if(tile==null||tile.build!=null||tile.overlay()==Blocks.spawn)return false;
+            if(tile.floor().isLiquid)water++;
+        }
+        if(water>43*44*.18)return false;
+        // New artillery must not hit the landing district while the initial timer runs.
+        // Reserve against actual player buildings, including the two-core defense map.
+        float range=c>=10?100:c>=7?75:45;
+        for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.team()==Team.sharded){
+            // Forward objective signs should be assaultable later, not a huge no-build circle.
+            if(t.block() instanceof mindustry.world.blocks.logic.MessageBlock)continue;
+            double enemyDx=Math.max(0,Math.abs(x-t.x)-8),enemyDy=Math.max(0,Math.max(y+(c>=7?7:0)-t.y,t.y-y-19));
+            if(Math.hypot(enemyDx,enemyDy)<range+t.block().size/2f+8)return false;
+            double dx=Math.max(0,Math.abs(x-t.x)-19),dy=Math.max(0,Math.max(y-15-t.y,t.y-y-24));
+            if(t.block() instanceof mindustry.world.blocks.defense.turrets.Turret gun&&Math.hypot(dx,dy)<gun.range/tilesize+8)return false;
+        }
+        if(c>=3&&c<=12){
+            var p=newhorizon.content.campaign.FrontierSites.positions[c-3];
+            if(Math.abs(x-p[0])<45&&Math.abs(y-p[1])<47)return false;
+        }
+        if(c==15)for(var p:newhorizon.content.campaign.SignatureCampaign.terminals)
+            if(Math.abs(x-p[0])<63&&Math.abs(y-p[1])<63)return false;
+        return true;
+    }
+
 }

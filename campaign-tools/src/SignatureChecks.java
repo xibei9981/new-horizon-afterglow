@@ -110,11 +110,18 @@ public class SignatureChecks extends CampaignChecks {
         // This is the post-assault capture fixture. Real play must clear the courtyard
         // weapons before replacing a battery; otherwise they correctly shoot captured equipment.
         clear();
-        for(var t:world.tiles)if(t.isCenter()&&t.build!=null&&t.team()==Team.blue&&t.block() instanceof mindustry.world.blocks.defense.turrets.BaseTurret)
-            for(var center:SignatureCampaign.terminals)if(t.build!=null&&t.build.within(center[0]*tilesize,center[1]*tilesize,70*tilesize)){t.remove();break;}
+        int cleared=0;
+        for(var t:world.tiles)if(t.isCenter()&&t.build instanceof mindustry.world.blocks.defense.turrets.Turret.TurretBuild gun&&t.team()==Team.blue)
+            for(var center:SignatureCampaign.terminals){
+                double dx=Math.max(0,Math.abs(t.x-center[0])-22),dy=Math.max(0,Math.max(center[1]-12-t.y,t.y-center[1]-31));
+                // Clear actual firing envelopes around the whole captured electrical yard.
+                // The old fixed 70-tile radius missed the new 75/100-tile siege positions.
+                if(Math.hypot(dx,dy)<=gun.range()/tilesize+20){t.remove();cleared++;break;}
+            }
+        log("GRID_POST_ASSAULT cleared="+cleared+" hostile guns whose actual firing envelopes threaten a captured courtyard");
         var first=SignatureCampaign.terminals[0];world.tile(first[0],first[1]).setBlock(Blocks.batteryLarge,Team.sharded,0);
         SignatureCampaign.captureGrids();ticks(600);
-        check(world.build(first[0],first[1]+23).team==Team.sharded,"live solar field captured with terminal");
+        check(world.build(first[0],first[1]+23)!=null&&world.build(first[0],first[1]+23).team==Team.sharded,"live solar field captured with terminal");
         check(SignatureCampaign.terminal(0).power.graph.getBatteryStored()>600,"captured solar grid actually generates useful energy");
         check(SignatureCampaign.charge()==0,"one captured grid cannot complete three-point synchronization");
         for(var p:SignatureCampaign.terminals){world.tile(p[0],p[1]).setBlock(Blocks.batteryLarge,Team.sharded,0);new PowerGraph().reflow(world.build(p[0],p[1]));world.build(p[0],p[1]).power.status=1f;}

@@ -1,0 +1,16 @@
+SPATIAL map=1 size=256x288 enemyGuns=0 occupiedTiles=0 (0.00%) weaponEnvelope=0.00% districts=0
+SPATIAL map=2 size=320x320 enemyGuns=98 occupiedTiles=4250 (4.15%) weaponEnvelope=29.16% districts=0
+SPATIAL map=3 size=384x352 enemyGuns=147 occupiedTiles=6387 (4.73%) weaponEnvelope=30.19% districts=0
+SPATIAL map=4 size=420x420 enemyGuns=0 occupiedTiles=0 (0.00%) weaponEnvelope=0.00% districts=0
+SPATIAL map=5 size=448x384 enemyGuns=147 occupiedTiles=8544 (4.97%) weaponEnvelope=33.18% districts=0
+SPATIAL map=6 size=448x448 enemyGuns=0 occupiedTiles=0 (0.00%) weaponEnvelope=0.00% districts=0
+SPATIAL map=7 size=416x416 enemyGuns=74 occupiedTiles=5528 (3.19%) weaponEnvelope=22.04% districts=0
+SPATIAL map=8 size=416x416 enemyGuns=0 occupiedTiles=0 (0.00%) weaponEnvelope=0.00% districts=0
+SPATIAL map=9 size=448x576 enemyGuns=144 occupiedTiles=12316 (4.77%) weaponEnvelope=48.45% districts=0
+SPATIAL map=10 size=480x448 enemyGuns=0 occupiedTiles=0 (0.00%) weaponEnvelope=0.00% districts=0
+SPATIAL map=11 size=512x512 enemyGuns=175 occupiedTiles=28975 (11.05%) weaponEnvelope=60.68% districts=0
+SPATIAL map=12 size=480x448 enemyGuns=129 occupiedTiles=18999 (8.84%) weaponEnvelope=54.46% districts=0
+SPATIAL map=13 size=512x544 enemyGuns=118 occupiedTiles=20686 (7.43%) weaponEnvelope=44.51% districts=0
+SPATIAL map=14 size=480x512 enemyGuns=0 occupiedTiles=0 (0.00%) weaponEnvelope=0.00% districts=0
+SPATIAL map=15 size=576x448 enemyGuns=0 occupiedTiles=0 (0.00%) weaponEnvelope=0.00% districts=0
+SPATIAL map=16 size=512x576 enemyGuns=80 occupiedTiles=14948 (5.07%) weaponEnvelope=49.82% districts=0

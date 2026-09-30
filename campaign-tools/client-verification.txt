@@ -1,10 +1,7 @@
-Native desktop verification: official Mindustry 160.4 on macOS, 2026-09-30.
-All 16 chapters loaded in a fresh profile; chapters 11–13 repeated after the last arsenal front-line edit.
-Headless runs verify mechanics independently; this is a rendered startup check, not a full campaign playthrough.
-The freight station lands later than the main base: native Control.prebuildBase schedules by distance; cargo assertion waits 50 seconds after sector load.
-No Windows or Android device test.
+0.7.0 native desktop verification: official Mindustry 160.4 on macOS, 2026-09-30.
+Fresh isolated profile; all 16 chapters loaded. Native screenshots inspected for chapters 13 and 16.
+This is startup/rendering validation, not a human full playthrough or Windows/Android device test.
 
-client-final-industry-06.log
 CLIENT_ZH_OK 余烬航线 I · 断流峡谷
 CLIENT_RESEARCH_OK explicit cost = 6
 CLIENT_OK mission=1
@@ -20,22 +17,7 @@ CLIENT_OK mission=10
 CLIENT_OK mission=11
 CLIENT_OK mission=12
 CLIENT_OK mission=13
-CLIENT_RULES chapter=13 initial=28800.0 mapInitial=28800.0 wave=27019.43
 CLIENT_OK mission=14
-CLIENT_RULES chapter=14 initial=36000.0 mapInitial=36000.0 wave=33016.207
 CLIENT_CARGO ItemModule{thorium:66,new-horizon-zeta:44}
 CLIENT_OK mission=15
-CLIENT_RULES chapter=15 initial=14400.0 mapInitial=14400.0 wave=12623.752
 CLIENT_OK mission=16
-
-client-final-front-06.log
-CLIENT_ZH_OK 余烬航线 I · 断流峡谷
-CLIENT_RESEARCH_OK explicit cost = 6
-CLIENT_OK mission=11
-CLIENT_OK mission=12
-CLIENT_OK mission=13
-
-Final arsenal spacing check: client-arsenal-spacing-06.log
-CLIENT_ZH_OK 余烬航线 I · 断流峡谷
-CLIENT_RESEARCH_OK explicit cost = 6
-CLIENT_OK mission=11

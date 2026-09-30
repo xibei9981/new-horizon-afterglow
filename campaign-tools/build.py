@@ -12,7 +12,7 @@ sources = sorted(str(p) for p in Path('src').rglob('*.java'))
 Path('campaign-tools/sources.txt').write_text('\n'.join(sources))
 subprocess.run([javac, '-encoding','UTF-8','--release','17','-sourcepath','src','-cp','campaign-tools/lib/dependencies-v160.4.jar','-d',str(classes),'@campaign-tools/sources.txt'], check=True)
 Path('dist').mkdir(exist_ok=True)
-out = Path('dist/NewHorizon-Afterglow-0.6.0-Windows160.4.jar')
+out = Path('dist/NewHorizon-Afterglow-0.7.0-Windows160.4.jar')
 with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
  for base in [classes, root / 'assets']:
   for p in sorted(base.rglob('*')):
